@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:previewImage="@drawable/widget_4x1_prevision_today_info_preview"
+    android:initialLayout="@layout/widget_prevision_today_4x1"
+    android:minHeight="40dp"
+    android:minWidth="294dp"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="10800000" >
+</appwidget-provider>

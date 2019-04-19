@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">Bollettino locale</string>
+    <string name="nav_boll_prob">Bollettino prob.</string>
+    <string name="nav_stazioni_meteo">Stazioni meteo</string>
+    <string name="nav_stazioni_neve">Neve e valanghe</string>
+    <string name="nav_radar">Radar</string>
+    <string name="nav_webcam">Webcam</string>
+    <string name="nav_preferences">Impostazioni</string>
+    <string name="nav_guida">Guida</string>
+    <string name="nav_about">About</string>
+</resources>

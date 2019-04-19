@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="list_snow_stations_description">Elenco dei campi di osservazione e di rilievo informazioni nivo-meteorologiche.</string>
+	<string name="quote">Quota (m)</string>
+
+    <!-- Sections -->
+	<string name="snow_section_weather_contidions">Condizioni del tempo</string>
+	<string name="snow_section_cloudiness">Nuvolosità</string>
+	<string name="snow_section_visibility">Visibilità</string>
+	<string name="snow_section_altitude_wind_type">Vento in quota (tipo)</string>
+	<string name="snow_section_altitude_wind_phenomena">Vento in quota (fenomeni)</string>
+	<string name="snow_section_surface_layer">Strato superficiale</string>
+	<string name="snow_section_surface_roughness">Rugosità superficiale</string>
+	<string name="snow_section_surface_hoarfrost">Brina di superficie</string>
+	<string name="snow_section_air_temperature">Temperatura aria</string>
+    <string name="snow_section_temperature_min_max">Temperatura (min-max)</string>
+    <string name="snow_section_snow_height">Altezza manto nevoso</string>
+    <string name="snow_section_fresh_snow_height">Altezza neve fresca</string>
+	
+	<!-- Sections descriptions -->
+	<string name="snow_section_altitude_wind_type_description">Tipo e attività del vento</string>
+	<string name="snow_section_altitude_wind_phenomena_description">Localizzazione dei fenomeni</string>
+	<string name="snow_section_surface_layer_description">Caratteristiche dello strato superficiale del manto nevoso.\nPortante=sopporta il peso di una persona a piedi</string>
+	<string name="snow_section_surface_roughness_1">Liscia</string>
+	<string name="snow_section_surface_roughness_2">Ondulata</string>
+	<string name="snow_section_surface_roughness_3">S.concavi</string>
+	<string name="snow_section_surface_roughness_4">S.convessi</string>
+	<string name="snow_section_surface_roughness_5">S.irregolari</string>
+	<string name="snow_section_air_temperature_description">Misurata all\'ombra a circa 1,5m dalla superficie</string>
+    <string name="snow_section_air_temperature_nodata">Rilievo non disponibile</string>
+</resources>

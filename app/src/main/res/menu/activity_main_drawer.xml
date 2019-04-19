@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_boll_prob"
+            android:icon="@drawable/format_list"
+            android:title="@string/nav_boll_prob" />
+        <item
+            android:id="@+id/nav_stazioni_meteo"
+            android:icon="@drawable/stazione"
+            android:title="@string/nav_stazioni_meteo" />
+        <item
+            android:id="@+id/nav_stazioni_neve"
+            android:icon="@drawable/stazione"
+            android:title="@string/nav_stazioni_neve" />
+        <item
+            android:id="@+id/nav_radar"
+            android:icon="@drawable/wifi"
+            android:title="@string/nav_radar" />
+        <item
+            android:id="@+id/nav_webcam"
+            android:icon="@drawable/videocam"
+            android:title="@string/nav_webcam" />
+        <item
+            android:id="@+id/nav_preferences"
+            android:icon="@drawable/settings"
+            android:title="@string/nav_preferences" />
+        <item
+            android:id="@+id/nav_guida"
+            android:icon="@drawable/info"
+            android:title="@string/nav_guida" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/info"
+            android:title="@string/nav_about" />
+    </group>
+
+</menu>

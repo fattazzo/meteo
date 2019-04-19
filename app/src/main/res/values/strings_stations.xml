@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="station">Stazione</string>
+    <string name="station_value">Dato</string>
+
+    <string name="list_stations_description">Anagrafica delle stazioni meteo automatiche fornita da http://dati.trentino.it</string>
+
+    <string name="only_working">Solo in funzione</string>
+
+    <string name="station_configured_for_widget">Stazione %s configurata per il widget</string>
+
+    <string name="station_widget_info_title">Configurazione widget</string>
+    <string name="station_widget_info_message">Per poter utilizzare la stazione nel widget tenere premuto su di essa fino alla comparsa della notifica</string>
+</resources>

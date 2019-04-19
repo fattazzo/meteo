@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="widget_stazione_meteo_chart_font_size" type="dimen" format="float">3.0</item>
+
+    <dimen name="default_icon_size">50dp</dimen>
+</resources>

@@ -1,0 +1,57 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:customColor="com.gmail.fattazzo.meteo.preferences.iconthemepicker.IconThemePickerPreference">
+
+    <PreferenceCategory android:title="@string/weather_stations_pref">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="stazMeteoGraphShowSeriesBg"
+            android:summary="@string/weather_stations_pref_graph_show_series_bg_desc"
+            android:title="@string/weather_stations_pref_graph_show_series_bg" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_stazMeteoGraphShowPoint"
+            android:summary="@string/weather_stations_pref_graph_show_points_desc"
+            android:title="@string/weather_stations_pref_graph_show_points" />
+
+        <com.gmail.fattazzo.meteo.preferences.numberpicker.NumberPickerDialogPreference
+            android:defaultValue="5"
+            android:key="@string/pref_key_stazMeteoGraphPointRadius"
+            android:max="10"
+            android:title="@string/weather_stations_pref_graph_points_radius"
+            custom:min="1" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/widgets_pref">
+            <com.gmail.fattazzo.meteo.preferences.imagelist.ImageListPreference
+                android:defaultValue="widget_shape_transparent_40_black"
+                android:entries="@array/widget_style_name"
+                android:entryValues="@array/widget_style_id"
+                android:key="widgetsBackground"
+                android:layout="@layout/preferences_image_item"
+                android:summary="Seleziona un tema"
+                android:title="@string/widgets_theme" />
+
+            <com.gmail.fattazzo.meteo.preferences.view.colorpicker.ColorPickerPreference
+                android:defaultValue="0xFFFFFFFF"
+                android:key="widgetsTextColor"
+                android:title="@string/widgets_text_color"
+                customColor:alphaSlider="true" />
+            <ListPreference
+                android:defaultValue="21600000"
+                android:entries="@array/widget_interval_entries"
+                android:entryValues="@array/widget_interval_entries_values"
+                android:key="@string/pref_key_widgetsUpdateInterval"
+                android:summary=""
+                android:title="@string/widgets_update_interval" />
+            <ListPreference
+                android:defaultValue="1800000"
+                android:entries="@array/widget_interval_entries"
+                android:entryValues="@array/widget_interval_entries_values"
+                android:key="@string/pref_key_widgetsWebcamUpdateInterval"
+                android:summary=""
+                android:title="@string/widgets_update_interval_webcam" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

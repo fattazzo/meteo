@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin">8dp</dimen>
+
+    <integer name="previsione_columns">1</integer>
+
+    <dimen name="about_image_height">320dp</dimen>
+
+    <dimen name="default_icon_size">70dp</dimen>
+
+    <dimen name="drawer_menu_item_height">80dp</dimen>
+</resources>

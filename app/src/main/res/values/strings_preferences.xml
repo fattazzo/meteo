@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pref_key_stazMeteoGraphShowPoint">stazMeteoGraphShowPoint</string>
+    <string name="pref_key_stazMeteoGraphPointRadius">stazMeteoGraphPointRadius</string>
+    <string name="pref_key_widgetsUpdateInterval">widgetsUpdateInterval</string>
+    <string name="pref_key_widgetsWebcamUpdateInterval">widgetsWebcamUpdateInterval</string>
+
+    <string name="weather_stations_pref">Stazioni meteo</string>
+    <string name="weather_stations_pref_graph_show_series_bg">Sfondo delle serie</string>
+    <string name="weather_stations_pref_graph_show_series_bg_desc">Visualizza lo sfondo delle serie</string>
+    <string name="weather_stations_pref_graph_show_points">Punti delle serie</string>
+    <string name="weather_stations_pref_graph_show_points_desc">Visualizza i punti dei valori delle serie</string>
+    <string name="weather_stations_pref_graph_points_radius">Spessore punti</string>
+    <string name="weather_stations_pref_graph_points_radius_desc">Indica la grandezza dei punti visualizzati</string>
+    
+    <string name="widgets_pref">Widgets</string>
+    <string name="widgets_bull_pref">Bulletin</string>
+    <string name="widgets_webcam_pref">Webcam</string>
+    <string name="widgets_update_interval">Intervallo di aggiornamento bollettino</string>
+    <string name="widgets_update_interval_webcam">Intervallo di aggiornamento webcam</string>
+    <string name="widgets_theme">Tema</string>
+    <string name="widgets_text_color">Colore del testo</string>
+    <string name="widgets_pref_zone">Zona widgets</string>
+    <string name="widgets_pref_zone_text"><![CDATA[I widget contrassegnati con la lettera <b>"Z"</b>, a differenza di quelli generali, forniscono informazioni specifiche relative alla zona scelta dall\'utente. Le zone disponibili sono:<br><br><i>Nord-Ovest</i> <b>(NW)</b><br><i>Nord-Est</i> <b>(NE)</b><br><i>Sud</i> <b>(S)</b><br><br>Selezionare dalla mappa sottostante quella desiderata.]]></string>
+    <string name="widgets_pref_zone_summary">Zona selezionata:</string>
+
+</resources>

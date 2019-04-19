@@ -1,0 +1,127 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    signingConfigs {
+        config {
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.gmail.fattazzo.meteo"
+        minSdkVersion 14
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 39
+        versionName "5.4.1"
+        setProperty("archivesBaseName", "MeteoDelTrentino")
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+        animationsDisabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def version = variant.versionName
+            def date = new Date()
+            def formattedDate = date.format('ddMMyy')
+            outputFileName = "${archivesBaseName}-${version}_${formattedDate}.apk"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
+}
+
+dependencies {
+    // Compile ---------------------------------------------------------------
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    kapt "org.androidannotations:androidannotations:$aa_version"
+    implementation "org.androidannotations:androidannotations-api:$aa_version"
+
+    implementation 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation('com.squareup.picasso:picasso:2.71828', {
+        exclude group: 'com.android.support', module: 'exifinterface'
+    })
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    implementation('com.squareup.retrofit2:converter-simplexml:2.5.0') {
+        exclude module: 'stax-api'
+        exclude module: 'stax'
+        exclude module: 'xpp3'
+    }
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "com.google.android.material:material:1.1.0-alpha05"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
+
+    implementation "com.github.fattazzo:android-about-library:0.5.2"
+    // Test ------------------------------------------------------------------
+    testImplementation 'junit:junit:4.13-beta-2'
+    testImplementation 'org.mockito:mockito-core:2.27.0'
+
+    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    // Android test ----------------------------------------------------------------
+    androidTestImplementation 'androidx.test:core:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation('androidx.test:runner:1.2.0-alpha04') {
+        exclude module: 'support-annotations'
+    }
+    androidTestImplementation('androidx.test:rules:1.2.0-alpha04') {
+        exclude module: 'support-annotations'
+    }
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0-alpha04') {
+        exclude module: 'support-annotations'
+    }
+    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.2.0-alpha04') {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'support-v13'
+        exclude module: 'recyclerview-v7'
+    }
+}
+repositories {
+    mavenCentral()
+
+    // ActiveAndroid
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    google()
+}
+
+apply plugin: 'kotlin-android-extensions'

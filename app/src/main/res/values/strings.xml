@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Meteo Trentino</string>
+
+    <string name="author">Autore</string>
+    <string name="author_name">Fattarsi Gianluca</string>
+    <string name="author_email">fattazzo82@gmail.com</string>
+    <string name="project_link">Sorgente</string>
+    <string name="report_error">Segnalazioni</string>
+    <string name="play_store">Play store</string>
+
+    <string name="app_title">Meteo del Trentino</string>
+
+    <string name="changelog">Versioni</string>
+
+    <string name="other_apps">Altre applicazioni</string>
+
+    <!-- About -->
+    <string name="about_text">Informazioni meteo ottenute tramite l\'Ufficio Previsioni e Pianificazione della Provincia Autonoma di Trento dal sito: http://dati.trentino.it forniti da www.meteotrentino.it</string>
+    <!-- About -->
+
+    <string name="default_label_text">-.-</string>
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Seleziona il colore da utilizzare</string>
+
+    <string name="graph">Grafico</string>
+    <string name="table">Tabella</string>
+    <string name="date_time">Data e ora</string>
+    <string name="name">Nome</string>
+    <string name="code">Codice</string>
+
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+
+    <string name="wait">Attendere</string>
+
+    <string name="service_error">Meteo del Trentino: Rete non disponibile o servizio momentaneamente non raggiungibile. Riprovare più tardi</string>
+
+    <string name="refresh">Ricarica</string>
+    <string name="fullscreen">Schermo intero</string>
+
+    <string name="zone_NW">NW</string>
+    <string name="zone_NE">NE</string>
+    <string name="zone_S">S</string>
+
+    <string name="title_activity_webcams_viewer">Webcam</string>
+
+    <string name="exit_message">Uscire dall\'applicazione?</string>
+
+    <string name="show">Visualizza</string>
+    <string name="all">Tutte</string>
+
+    <string name="location">Località</string>
+
+    <string name="favorite">Favorite</string>
+    <string name="widget">Widget</string>
+
+    <string name="bug_report_user_request">Descrivi la tua richiesta o problema prima di questo testo.Per favore non rimuovere le informazioni che trovi di seguito, serviranno per risolvere il tuo problema al meglio.</string>
+
+    <string name="max">Massima</string>
+    <string name="min">Minima</string>
+
+    <string name="google_maps">Google maps</string>
+    <string name="street_view">Street view</string>
+</resources>
