@@ -6,8 +6,7 @@
         <link>http://ftp.vit.argentea.it/vit/images/cam34.jpg</link>
     </webcam>
     <webcam id="102" localita="Trento" zona="Laste">
-        <link>http://content.meteotrentino.it/dati-meteo/webcam/trento_laste/trentoLaste1_04.jpg
-        </link>
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/trento_laste/trentoLaste1_04.jpg</link>
         <ratio>16:9</ratio>
     </webcam>
     <webcam id="103" localita="Malles" zona="Camping Mals">

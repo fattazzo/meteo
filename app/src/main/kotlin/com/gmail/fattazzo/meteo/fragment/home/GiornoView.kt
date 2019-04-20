@@ -32,10 +32,11 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.DettaglioGiornoActivity_
 import com.gmail.fattazzo.meteo.domain.json.previsione.Giorno
-import com.squareup.picasso.Picasso
+import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
@@ -92,7 +93,10 @@ open class GiornoView : LinearLayout {
         temperatureMaxTV.text = String.format("%d°C", giorno.temperaturaMax)
 
         if (!giorno.icona.isNullOrBlank()) {
-            Picasso.get().load(giorno.icona).into(iconaImageView)
+            Glide.with(context)
+                    .load(giorno.icona)
+                    .apply(GlideHelper.createNoCacheOptions(context!!, false, addTimeOut = false))
+                    .into(iconaImageView)
         }
 
 

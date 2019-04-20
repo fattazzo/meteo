@@ -35,6 +35,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.domain.json.previsione.Fascia
+import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
 
@@ -58,7 +59,10 @@ open class FasciaHeaderView @JvmOverloads constructor(
         descriptionTV.text = String.format("%s",fascia.descrizione.orEmpty().capitalize())
 
         if (!fascia.icona.isNullOrBlank()) {
-            Glide.with(context).load(fascia.icona).into(iconaImageView)
+            Glide.with(context)
+                    .load(fascia.icona)
+                    .apply(GlideHelper.createNoCacheOptions(context!!, false, addTimeOut = false))
+                    .into(iconaImageView)
         }
     }
 

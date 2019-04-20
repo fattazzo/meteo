@@ -31,7 +31,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.github.chrisbanes.photoview.PhotoView
 import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.R
@@ -40,6 +39,7 @@ import com.gmail.fattazzo.meteo.fragment.home.HomeFragment_
 import com.gmail.fattazzo.meteo.fragment.home.dettaglio.RadarAdapter
 import com.gmail.fattazzo.meteo.utils.FragmentUtils
 import com.gmail.fattazzo.meteo.utils.ItemOffsetDecoration
+import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EFragment
@@ -102,10 +102,7 @@ open class RadarFragment : BaseFragment(), RadarAdapter.OnClickListener {
 
         Glide.with(this)
                 .load(currentRadar.url)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
-                .timeout(10 * 1000)
-                .placeholder(circularProgressDrawable)
+                .apply(GlideHelper.createNoCacheOptions(context!!, true, addTimeOut = true))
                 .into(radarView)
     }
 }

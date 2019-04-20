@@ -41,10 +41,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.domain.xml.webcam.Webcam
 import com.gmail.fattazzo.meteo.preferences.widget.webcam.WebcamWidgetsSettingsManager
-import com.squareup.picasso.Picasso
+import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
 
 
 class WebcamsAdapter(private val context: Context, private val webcams: List<Webcam>) : RecyclerView.Adapter<WebcamsAdapter.ViewHolder>(), View.OnClickListener {
@@ -81,15 +82,16 @@ class WebcamsAdapter(private val context: Context, private val webcams: List<Web
             changeTint(viewHolder.favoriteImageButton, R.drawable.favorite, colorFa)
         }
 
-        val width = if (webcam.ratio == "16:9") (100 * 1.77).toInt() else 100
-        val height = 100
-
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()
 
-        Picasso.get().load(webcam.link).resize(width, height).centerCrop().placeholder(circularProgressDrawable).into(viewHolder.thumbImageView)
+        Glide.with(context)
+                .load(webcam.link)
+                .apply(GlideHelper.createNoCacheOptions(context, true, addTimeOut = true, errorDrawable = R.drawable.browser_error))
+                .centerCrop()
+                .into(viewHolder.thumbImageView)
 
         viewHolder.thumbImageView.setTag(R.id.thumbImageView, webcam)
         viewHolder.thumbImageView.setOnClickListener(this)

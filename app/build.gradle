@@ -13,8 +13,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 28
         multiDexEnabled true
-        versionCode 39
-        versionName "5.4.1"
+        versionCode 40
+        versionName "5.4.2"
         setProperty("archivesBaseName", "MeteoDelTrentino")
         vectorDrawables.useSupportLibrary = true
 
@@ -67,9 +67,6 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
-    implementation('com.squareup.picasso:picasso:2.71828', {
-        exclude group: 'com.android.support', module: 'exifinterface'
-    })
 
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
