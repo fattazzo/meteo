@@ -14,6 +14,19 @@ Informazioni meteo ottenute tramite l'Ufficio Previsioni e Pianificazione della 
 Link all'ultima versione disponibile: [Google Play Store](https://play.google.com/store/apps/details?id=com.gmail.fattazzo.meteo)
 
 ## Screenshot
+
+<a href="https://github.com/fattazzo/meteo/wiki/images/splash.png" target="_blank">
+<img align="left" src="https://github.com/fattazzo/meteo/wiki/images/splash.png" height=500> 
+</a>
+
+<a href="https://github.com/fattazzo/meteo/wiki/images/bollettino_locale.png" target="_blank">
+<img align="left" src="https://github.com/fattazzo/meteo/wiki/images/bollettino_locale.png" height=500> 
+</a>
+
+<a href="https://github.com/fattazzo/meteo/wiki/images/bollettino_locale_dettaglio.png" target="_blank">
+<img align="left" src="https://github.com/fattazzo/meteo/wiki/images/bollettino_locale_dettaglio.png" height=500> 
+</a>
+
 ![s_splash.png](https://bitbucket.org/repo/A7orjK/images/3544174760-s_splash.png)
 ![s_widget.png](https://bitbucket.org/repo/A7orjK/images/3679807707-s_widget.png)
 ![s_home.png](https://bitbucket.org/repo/A7orjK/images/4280734812-s_home.png)
