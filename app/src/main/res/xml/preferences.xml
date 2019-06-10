@@ -1,6 +1,18 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:customColor="com.gmail.fattazzo.meteo.preferences.iconthemepicker.IconThemePickerPreference">
+    xmlns:customColor="com.gmail.fattazzo.meteo.preferences.iconthemepicker.IconThemePickerPreference"
+    xmlns:customIcon="http://schemas.android.com/tools">
+
+    <PreferenceCategory android:title="Generali">
+            <com.gmail.fattazzo.meteo.preferences.iconthemepicker.IconThemePickerPreference
+                android:entries="@array/iconThemeName"
+                android:entryValues="@array/iconThemeKey"
+                android:key="@string/pref_key_iconsTheme"
+                android:layout="@layout/icon_theme_item_preference"
+                android:title="Tema icone"
+                android:summary="Select an icon"
+                customIcon:iconFile="Default" />
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/weather_stations_pref">
         <CheckBoxPreference

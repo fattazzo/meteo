@@ -37,6 +37,7 @@ import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.DettaglioGiornoActivity_
 import com.gmail.fattazzo.meteo.domain.json.previsione.Giorno
 import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
+import com.gmail.fattazzo.meteo.utils.icons.WeatherIconsFactory
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
@@ -93,10 +94,17 @@ open class GiornoView : LinearLayout {
         temperatureMaxTV.text = String.format("%d°C", giorno.temperaturaMax)
 
         if (!giorno.icona.isNullOrBlank()) {
-            Glide.with(context)
-                    .load(giorno.icona)
-                    .apply(GlideHelper.createNoCacheOptions(context!!, false, addTimeOut = false))
-                    .into(iconaImageView)
+            val iconsRetriever = WeatherIconsFactory.getIconsRetriever(context)
+            val icona = iconsRetriever.getIcon(giorno.idIcona)
+
+            if (icona == null) {
+                Glide.with(context)
+                        .load(giorno.icona)
+                        .apply(GlideHelper.createNoCacheOptions(context!!, false, addTimeOut = false))
+                        .into(iconaImageView)
+            } else {
+                iconaImageView.setImageResource(icona)
+            }
         }
 
 

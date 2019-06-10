@@ -1,0 +1,34 @@
+<!--
+  ~ Project: meteo
+  ~ File: storm18.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="18dp" android:viewportHeight="512"
+    android:viewportWidth="512" android:width="18dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#787680" android:pathData="M512,263.477c0,37.734 -30.658,68.33 -68.474,68.33c-20.516,0 -38.916,-9.01 -51.458,-23.276c-3.378,-3.844 -9.566,-2.814 -11.435,1.95c-11.827,30.152 -41.227,51.52 -75.634,51.52c-33.513,0 -62.252,-20.263 -74.666,-49.168c-1.424,-3.315 -5.236,-4.869 -8.604,-3.576c-11.195,4.297 -23.39,6.655 -36.163,6.655c-16.015,0 -31.135,-3.716 -44.513,-10.306c-2.784,-1.372 -6.128,-0.606 -8.127,1.77c-12.555,14.932 -31.386,24.432 -52.444,24.432c-37.817,0 -68.474,-30.596 -68.474,-68.33c0,-5.529 0.66,-10.914 1.908,-16.061c1.393,-5.748 3.51,-11.212 6.253,-16.292c1.5,-2.777 0.966,-6.247 -1.445,-8.283C7.277,213.17 0,198.728 0,182.583c0,-29.131 23.664,-52.743 52.857,-52.743c4.526,0 8.917,0.568 13.106,1.638c3.68,0.94 7.414,-1.376 8.216,-5.088C88.615,59.615 148.128,9.561 219.359,9.561c67.076,0 123.766,44.394 142.201,105.341c1.252,4.141 5.991,6.145 9.752,4.007c12.552,-7.137 27.073,-11.226 42.556,-11.226c47.575,0 86.155,38.497 86.155,85.98c0,7.856 -1.066,15.463 -3.048,22.686c-0.558,2.034 -0.141,4.205 1.136,5.884c5.605,7.374 9.745,15.911 11.98,25.195C511.34,252.574 512,257.948 512,263.477z"/>
+    <path android:fillColor="#898890" android:pathData="M509.659,245.728c0.298,1.109 0.297,2.287 -0.001,3.396c-7.837,29.126 -34.478,50.56 -66.133,50.56c-20.516,0 -38.915,-9.01 -51.457,-23.275c-3.379,-3.844 -9.567,-2.814 -11.435,1.951c-11.826,30.158 -41.227,51.518 -75.635,51.518c-33.514,0 -62.254,-20.255 -74.667,-49.161c-1.424,-3.314 -5.235,-4.868 -8.602,-3.576c-11.195,4.293 -23.391,6.659 -36.163,6.659c-16.015,0 -31.135,-3.716 -44.514,-10.313c-2.785,-1.373 -6.131,-0.608 -8.129,1.769c-12.555,14.93 -31.385,24.43 -52.442,24.43c-31.66,0 -58.316,-21.442 -66.138,-50.586c-0.295,-1.1 -0.294,-2.265 0.002,-3.364c1.383,-5.134 3.349,-10.029 5.823,-14.61c1.5,-2.777 0.966,-6.247 -1.445,-8.283C7.277,213.17 0,198.728 0,182.583c0,-29.131 23.664,-52.743 52.857,-52.743c4.526,0 8.917,0.568 13.106,1.638c3.68,0.94 7.414,-1.376 8.216,-5.088C88.615,59.615 148.128,9.561 219.359,9.561c67.076,0 123.766,44.394 142.201,105.341c1.252,4.141 5.991,6.145 9.752,4.007c12.552,-7.137 27.073,-11.226 42.556,-11.226c47.575,0 86.155,38.497 86.155,85.98c0,7.856 -1.066,15.463 -3.048,22.686c-0.558,2.034 -0.141,4.205 1.136,5.884C503.372,229.153 507.343,237.1 509.659,245.728z"/>
+    <path android:fillColor="#EEBF00" android:pathData="M290.753,392.359l-69.093,71.744l-34.959,36.3c-4.786,4.972 -13.008,0.072 -10.903,-6.499l20.579,-64.544c1.341,-4.209 -1.795,-8.51 -6.21,-8.51h-44.254c-5.096,0 -8.221,-5.581 -5.56,-9.924l111.624,-182.254c3.951,-6.458 13.895,-2.115 11.832,5.178l-11.698,41.458l-27.563,97.709c-1.176,4.167 1.95,8.294 6.272,8.294h55.24C291.805,381.311 294.745,388.212 290.753,392.359z"/>
+    <path android:fillColor="#FFD422" android:pathData="M290.753,392.359l-69.093,71.744l19.424,-60.882c1.341,-4.198 -1.795,-8.5 -6.21,-8.5H190.62c-5.096,0 -8.221,-5.581 -5.56,-9.924l67.051,-109.489l-27.563,97.709c-1.176,4.167 1.95,8.294 6.272,8.294h55.24C291.805,381.311 294.745,388.212 290.753,392.359z"/>
+</vector>

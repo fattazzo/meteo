@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~
   ~ Project: meteo
   ~ File: widget_fasce_item.xml
@@ -33,15 +32,15 @@
     android:id="@+id/widget_background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="3dp">
+    android:padding="1dp">
 
     <ImageView
         android:id="@+id/iconaImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:scaleType="fitCenter"
         tools:ignore="ContentDescription" />
@@ -50,11 +49,13 @@
         android:id="@+id/precipitazioniTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/giornoTV"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/temporaliTV"
-        android:drawableLeft="@drawable/pioggia"
+        android:layout_marginTop="2dp"
+        android:drawableRight="@drawable/drop18"
         android:drawablePadding="2dp"
+        android:gravity="center_vertical"
         android:text="@string/default_label_text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="11sp"
@@ -64,12 +65,12 @@
         android:id="@+id/temporaliTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/descrizioneTV"
-        android:layout_alignStart="@+id/descrizioneTV"
-        android:layout_below="@+id/descrizioneTV"
-        android:layout_marginTop="1dp"
-        android:drawableLeft="@drawable/temporale"
+        android:layout_below="@+id/giornoTV"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/iconaImageView"
+        android:drawableLeft="@drawable/storm18"
         android:drawablePadding="2dp"
+        android:gravity="center_vertical"
         android:text="@string/default_label_text"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="11sp"
@@ -82,6 +83,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_toRightOf="@+id/iconaImageView"
         android:ellipsize="end"
         android:gravity="bottom"
@@ -95,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/temporaliTV"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/iconaImageView"
         android:layout_toRightOf="@+id/iconaImageView">
 
@@ -103,8 +106,9 @@
             android:id="@+id/tempMinTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/tempmin"
+            android:drawableLeft="@drawable/thermometer_cold18"
             android:drawablePadding="2dp"
+            android:gravity="center_vertical"
             android:text="@string/default_label_text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="11sp"
@@ -114,8 +118,9 @@
             android:id="@+id/tempMaxTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/tempmax"
+            android:drawableLeft="@drawable/thermometer_hot18"
             android:drawablePadding="2dp"
+            android:gravity="center_vertical"
             android:text="@string/default_label_text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="11sp"
@@ -127,43 +132,14 @@
         android:id="@+id/ventoTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/precipitazioniTV"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/precipitazioniTV"
-        android:layout_marginLeft="113dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="1dp"
-        android:drawableLeft="@drawable/vento"
+        android:layout_marginTop="2dp"
+        android:drawableRight="@drawable/windy18"
         android:drawablePadding="2dp"
-        android:gravity="bottom"
+        android:gravity="center_vertical"
         android:text="@string/default_label_text"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="11sp"
-        tools:ignore="SmallSp" />
-
-    <TextView
-        android:id="@+id/descrizioneTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/giornoTV"
-        android:layout_marginTop="1dp"
-        android:layout_toEndOf="@+id/iconaImageView"
-        android:layout_toRightOf="@+id/iconaImageView"
-        android:text="@string/default_label_text"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="11sp"
-        tools:ignore="SmallSp" />
-
-    <TextView
-        android:id="@+id/syncDateTV"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/iconaImageView"
-        android:layout_toLeftOf="@+id/temporaliTV"
-        android:layout_toStartOf="@+id/temporaliTV"
-        android:gravity="bottom|center_horizontal"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="11sp"
         tools:ignore="SmallSp" />

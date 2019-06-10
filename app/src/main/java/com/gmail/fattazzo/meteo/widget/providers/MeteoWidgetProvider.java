@@ -1,6 +1,6 @@
 /*
  * Project: meteo
- * File: MeteoWidgetProvider
+ * File: MeteoAppWidgetProvider
  *
  * Created by fattazzo
  * Copyright © 2019 Gianluca Fattarsi. All rights reserved.
@@ -36,6 +36,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import androidx.annotation.Nullable;
+
 import com.gmail.fattazzo.meteo.R;
 import com.gmail.fattazzo.meteo.activity.SplashActivity_;
 import com.gmail.fattazzo.meteo.manager.MeteoManager;
@@ -47,8 +49,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import androidx.annotation.Nullable;
 
 /**
  * @author fattazzo
@@ -231,7 +231,7 @@ public abstract class MeteoWidgetProvider extends AppWidgetProvider {
 
     /**
      * Registra l'intent per aprire l'app sulla view specificata nel metodo
-     * {@link MeteoWidgetProvider#getOpenAppResourceView()}.
+     * {@link MeteoAppWidgetProvider#getOpenAppResourceView()}.
      *
      * @param context     context
      * @param remoteViews remoteView
@@ -248,7 +248,7 @@ public abstract class MeteoWidgetProvider extends AppWidgetProvider {
 
     /**
      * Registra l'intent per eseguire il refresh del widget sulla view specificata nel metodo
-     * {@link MeteoWidgetProvider#getRefreshResourceView()}.
+     * {@link MeteoAppWidgetProvider#getRefreshResourceView()}.
      *
      * @param context      context
      * @param remoteViews  remoteView

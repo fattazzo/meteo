@@ -32,7 +32,6 @@ import android.widget.RemoteViewsService
 
 class FasceListWidgetService : RemoteViewsService() {
 
-    override fun onGetViewFactory(intent: Intent): RemoteViewsFactory =
-            FasceListRemoteViewsFactory(this.applicationContext, intent)
+    override fun onGetViewFactory(intent: Intent): RemoteViewsFactory = FasceListRemoteViewsFactory(this.applicationContext, intent)
 
 }

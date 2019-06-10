@@ -50,7 +50,7 @@ import com.gmail.fattazzo.meteo.R
  */
 class DialogBuilder(val context: Context, val type: DialogType) {
 
-    public interface OnClickListener {
+    interface OnClickListener {
         fun onClick(dialog: Dialog?)
     }
 

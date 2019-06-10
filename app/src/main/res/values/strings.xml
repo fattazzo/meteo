@@ -63,4 +63,6 @@
 
     <string name="google_maps">Google maps</string>
     <string name="street_view">Street view</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

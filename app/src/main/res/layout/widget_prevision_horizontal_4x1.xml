@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~
   ~ Project: meteo
   ~ File: widget_prevision_horizontal_4x1.xml
@@ -29,6 +28,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/widget_background_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -36,18 +36,19 @@
 
     <ImageView
         android:id="@+id/widget_sync"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentBottom="true"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sinchronize" />
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:baselineAligned="false"
         android:orientation="horizontal">
 
@@ -63,18 +64,20 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp" />
 
             <ImageView
                 android:id="@+id/icona1Image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/temp1TV"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/giorno1TV"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter" />
 
             <TextView
@@ -83,7 +86,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -98,18 +103,21 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp" />
 
             <ImageView
                 android:id="@+id/icona2Image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/temp2TV"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/giorno2TV"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:cropToPadding="true"
                 android:scaleType="fitCenter" />
 
             <TextView
@@ -118,7 +126,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -133,18 +143,20 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp" />
 
             <ImageView
                 android:id="@+id/icona3Image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/temp3TV"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/giorno3TV"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter" />
 
             <TextView
@@ -153,7 +165,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -168,18 +182,20 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp" />
 
             <ImageView
                 android:id="@+id/icona4Image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/temp4TV"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/giorno4TV"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter" />
 
             <TextView
@@ -188,7 +204,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="11sp"
+                tools:ignore="SmallSp"/>
         </RelativeLayout>
 
     </LinearLayout>
@@ -197,14 +215,14 @@
         android:id="@+id/errorPrevisionHorizontalTV"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:gravity="center_vertical|center_horizontal"
-        android:text="@string/widget_service_error"
         android:padding="14dp"
+        android:text="@string/widget_service_error"
         android:textStyle="bold" />
 
 </RelativeLayout>

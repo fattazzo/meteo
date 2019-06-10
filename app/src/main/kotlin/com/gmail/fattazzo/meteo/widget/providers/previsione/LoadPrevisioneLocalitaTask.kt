@@ -37,13 +37,32 @@ import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
  *         <p/>
  *         date: 02/11/17
  */
-class LoadPrevisioneLocalitaTask(private val meteoManager: MeteoManager, private val preferencesManager: ApplicationPreferencesManager) : AsyncTask<Void, Void, PrevisioneLocalita>() {
+class LoadPrevisioneLocalitaTask(
+        private val meteoManager: MeteoManager,
+        private val preferencesManager: ApplicationPreferencesManager,
+        private val onComplete: ((previsioneLocalita: PrevisioneLocalita?) -> Unit)? = null) : AsyncTask<Void, Void, PrevisioneLocalita>() {
 
     override fun doInBackground(vararg p0: Void?): PrevisioneLocalita? {
         return try {
+            Thread.sleep(3000)
             meteoManager.caricaPrevisioneLocalita(preferencesManager.getLocalita(), true)
         } catch (e: Exception) {
             null
         }
+    }
+
+    override fun onCancelled() {
+        super.onCancelled()
+        onComplete?.invoke(null)
+    }
+
+    override fun onCancelled(result: PrevisioneLocalita?) {
+        super.onCancelled(result)
+        onComplete?.invoke(result)
+    }
+
+    override fun onPostExecute(result: PrevisioneLocalita?) {
+        super.onPostExecute(result)
+        onComplete?.invoke(result)
     }
 }

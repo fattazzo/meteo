@@ -32,6 +32,6 @@ import android.widget.RemoteViewsService
 
 class PrevisioneLocaleGridWidgetService : RemoteViewsService() {
 
-    override fun onGetViewFactory(intent: Intent): RemoteViewsService.RemoteViewsFactory = PrevisioneLocaleGridRemoteViewsFactory(this.applicationContext, intent)
+    override fun onGetViewFactory(intent: Intent): RemoteViewsFactory = PrevisioneLocaleGridRemoteViewsFactory(this.applicationContext,intent)
 
 }

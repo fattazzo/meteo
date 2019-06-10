@@ -2,6 +2,7 @@
 <resources>
     <string name="nav_home">Bollettino locale</string>
     <string name="nav_boll_prob">Bollettino prob.</string>
+    <string name="nav_news_e_allerte">News e allerte</string>
     <string name="nav_stazioni_meteo">Stazioni meteo</string>
     <string name="nav_stazioni_neve">Neve e valanghe</string>
     <string name="nav_radar">Radar</string>

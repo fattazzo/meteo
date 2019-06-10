@@ -31,22 +31,27 @@
 package com.gmail.fattazzo.meteo.widget.providers.previsione.locale.horizontal
 
 import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.AppWidgetTarget
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.domain.json.previsione.Giorno
 import com.gmail.fattazzo.meteo.domain.json.previsione.PrevisioneLocalita
-import com.gmail.fattazzo.meteo.manager.MeteoManager
-import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
-import com.gmail.fattazzo.meteo.utils.LoadBitmapTask
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider
+import com.gmail.fattazzo.meteo.manager.MeteoManager_
+import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager_
+import com.gmail.fattazzo.meteo.preferences.widget.bollettino.BollettinoWidgetsSettingsManager
+import com.gmail.fattazzo.meteo.utils.VectorUtils
+import com.gmail.fattazzo.meteo.utils.icons.WeatherIconsFactory
+import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider
 import com.gmail.fattazzo.meteo.widget.providers.previsione.LoadPrevisioneLocalitaTask
-import org.androidannotations.annotations.Bean
-import org.androidannotations.annotations.EReceiver
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 /**
  * @author Fattazzo
@@ -54,69 +59,69 @@ import java.util.*
  *
  * Date 04/ago/2014
  */
-@EReceiver
-open class BullettinPrevisioneLocalitaHorizontalProvider4x1 : MeteoWidgetProvider() {
+open class BullettinPrevisioneLocalitaHorizontalProvider4x1 : MeteoAppWidgetProvider() {
 
-    @Bean
-    lateinit var meteoManager: MeteoManager
+    override fun onReceive(context: Context, intent: Intent) {
 
-    @Bean
-    lateinit var preferencesManager: ApplicationPreferencesManager
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisAppWidget = ComponentName(context.packageName, BullettinPrevisioneLocalitaHorizontalProvider4x1::class.java.name)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
 
-    override fun getOpenAppResourceView(): IntArray? = intArrayOf(R.id.icona1Image, R.id.icona2Image, R.id.icona3Image, R.id.icona4Image, R.id.errorPrevisionHorizontalTV)
-
-    override fun getRemoteViewsLayoutResource(): Int = R.layout.widget_prevision_horizontal_4x1
-
-    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        Log.d("BB", "onUpdate horizontal 4x1")
-        super.onUpdate(context, appWidgetManager, appWidgetIds)
+        onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
-    override fun doUpdate(remoteViews: RemoteViews, context: Context,
-                          appWidgetManager: AppWidgetManager, appWidgetIds: IntArray?, forRevalidate: Boolean) {
+    override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
+        Log.d("Widget", "onUpdate: BullettinPrevisioneLocalitaHorizontalProvider4x1")
 
+        var previsione: PrevisioneLocalita? = null
         if (appWidgetIds != null && appWidgetIds.isNotEmpty()) {
-            for (widgetId in appWidgetIds) {
-
-                val previsione: PrevisioneLocalita? = try {
-                    LoadPrevisioneLocalitaTask(meteoManager, preferencesManager).execute().get()
-                } catch (e: Exception) {
-                    null
-                }
-                remoteViews.setViewVisibility(R.id.errorPrevisionHorizontalTV, if (previsione != null) View.GONE else View.VISIBLE)
-
-                val giorni = previsione?.previsioni?.firstOrNull()?.giorni.orEmpty()
-
-                remoteViews.setViewVisibility(R.id.prev1, View.GONE)
-                remoteViews.setViewVisibility(R.id.prev2, View.GONE)
-                remoteViews.setViewVisibility(R.id.prev3, View.GONE)
-                remoteViews.setViewVisibility(R.id.prev4, View.GONE)
-
-                val textColor = getWidgetsSettingsManager(context).textColor
-                if (giorni.isNotEmpty()) {
-                    fillGiorno(giorni[0], remoteViews, R.id.prev1, R.id.giorno1TV, R.id.temp1TV, R.id.icona1Image, textColor)
-                }
-                if (giorni.size > 1) {
-                    fillGiorno(giorni[1], remoteViews, R.id.prev2, R.id.giorno2TV, R.id.temp2TV, R.id.icona2Image, textColor)
-                }
-                if (giorni.size > 2) {
-                    fillGiorno(giorni[2], remoteViews, R.id.prev3, R.id.giorno3TV, R.id.temp3TV, R.id.icona3Image, textColor)
-                }
-                if (giorni.size > 3) {
-                    fillGiorno(giorni[3], remoteViews, R.id.prev4, R.id.giorno4TV, R.id.temp4TV, R.id.icona4Image, textColor)
-                }
-
-                appWidgetManager.updateAppWidget(widgetId, remoteViews)
+            previsione = try {
+                LoadPrevisioneLocalitaTask(MeteoManager_.getInstance_(context), ApplicationPreferencesManager_.getInstance_(context)).execute().get()
+            } catch (e: Exception) {
+                null
             }
         }
+
+        appWidgetIds?.forEach { appWidgetId ->
+
+            val textColor = BollettinoWidgetsSettingsManager(context!!).textColor
+
+            val remoteViews = RemoteViews(context.packageName, R.layout.widget_prevision_horizontal_4x1)
+            remoteViews.setViewVisibility(R.id.errorPrevisionHorizontalTV, if (previsione != null) View.GONE else View.VISIBLE)
+            remoteViews.setTextColor(R.id.errorPrevisionHorizontalTV, textColor)
+            registerOpenAppIntent(context,remoteViews,R.id.errorPrevisionHorizontalTV)
+
+            remoteViews.setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context, R.drawable.sync))
+
+            val giorni = previsione?.previsioni?.firstOrNull()?.giorni.orEmpty()
+
+            remoteViews.setViewVisibility(R.id.prev1, View.GONE)
+            remoteViews.setViewVisibility(R.id.prev2, View.GONE)
+            remoteViews.setViewVisibility(R.id.prev3, View.GONE)
+            remoteViews.setViewVisibility(R.id.prev4, View.GONE)
+
+            if (giorni.isNotEmpty()) {
+                fillGiorno(giorni[0], remoteViews, R.id.prev1, R.id.giorno1TV, R.id.temp1TV, R.id.icona1Image, textColor, context, appWidgetId)
+            }
+            if (giorni.size > 1) {
+                fillGiorno(giorni[1], remoteViews, R.id.prev2, R.id.giorno2TV, R.id.temp2TV, R.id.icona2Image, textColor, context, appWidgetId)
+            }
+            if (giorni.size > 2) {
+                fillGiorno(giorni[2], remoteViews, R.id.prev3, R.id.giorno3TV, R.id.temp3TV, R.id.icona3Image, textColor, context, appWidgetId)
+            }
+            if (giorni.size > 3) {
+                fillGiorno(giorni[3], remoteViews, R.id.prev4, R.id.giorno4TV, R.id.temp4TV, R.id.icona4Image, textColor, context, appWidgetId)
+            }
+
+            registerRefreshIntent(context, remoteViews, appWidgetId)
+
+            appWidgetManager?.updateAppWidget(appWidgetId, remoteViews)
+        }
+
     }
 
-    override fun updateTextColor(remoteViews: RemoteViews, textColor: Int) {
-
-    }
-
-    private fun fillGiorno(giorno: Giorno, remoteViews: RemoteViews, layoutId: Int, giornoTV: Int, temperaturaTV: Int, iconaImage: Int, textColor: Int) {
-        remoteViews.setViewVisibility(layoutId, View.VISIBLE);
+    private fun fillGiorno(giorno: Giorno, remoteViews: RemoteViews, layoutId: Int, giornoTV: Int, temperaturaTV: Int, iconaImage: Int, textColor: Int, context: Context, appWidgetId: Int) {
+        remoteViews.setViewVisibility(layoutId, View.VISIBLE)
 
         if (giorno.data != null) {
             remoteViews.setTextViewText(giornoTV, DAY_FORMAT.format(giorno.data).capitalize())
@@ -135,11 +140,24 @@ open class BullettinPrevisioneLocalitaHorizontalProvider4x1 : MeteoWidgetProvide
         remoteViews.setTextViewText(temperaturaTV, temperatura)
         remoteViews.setTextColor(temperaturaTV, textColor)
 
+        remoteViews.setInt(iconaImage, "setColorFilter", 0)
         try {
-            remoteViews.setBitmap(iconaImage, "setImageBitmap", LoadBitmapTask().execute(giorno.icona).get())
+            val iconsRetriever = WeatherIconsFactory.getIconsRetriever(context)
+            val icona = iconsRetriever.getIcon(giorno.idIcona)
+
+            if (icona == null) {
+                val appWidgetTarget = AppWidgetTarget(context, iconaImage, remoteViews, appWidgetId)
+                Glide.with(context.applicationContext).asBitmap().load(giorno.icona).into(appWidgetTarget)
+            } else {
+                remoteViews.setImageViewResource(iconaImage, icona)
+                if (iconsRetriever.overrideColorForWidget()) {
+                    remoteViews.setInt(iconaImage, "setColorFilter", textColor)
+                }
+            }
         } catch (e: Exception) {
             remoteViews.setBitmap(iconaImage, "setImageBitmap", null)
         }
+        registerOpenAppIntent(context, remoteViews, iconaImage)
     }
 
     companion object {

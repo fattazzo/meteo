@@ -96,4 +96,12 @@ open class Fascia : Serializable {
     var iconaVentoQuota: String? = null
 
     var zeroTermico: Int? = null
+
+    fun getIdIcona(): Int? {
+        if(icona.isNullOrBlank()) {
+            return null
+        }
+
+        return icona?.substringAfterLast('/')?.substringAfter('_')?.substringBefore('.')?.toIntOrNull()
+    }
 }

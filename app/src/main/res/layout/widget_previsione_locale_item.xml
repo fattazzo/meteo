@@ -38,11 +38,11 @@
     <ImageView
         android:id="@+id/iconaImageView"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="4dp"
         android:contentDescription="@string/map_of_tentino"
-        android:scaleType="fitXY" />
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/giornoTV"
@@ -66,19 +66,6 @@
         android:layout_below="@+id/giornoTV"
         android:layout_toEndOf="@+id/iconaImageView"
         android:layout_toRightOf="@+id/iconaImageView"
-        android:textSize="11sp"
-        tools:ignore="SmallSp"/>
-
-    <TextView
-        android:id="@+id/oraTV"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/iconaImageView"
-        android:layout_alignStart="@+id/iconaImageView"
-        android:layout_below="@+id/iconaImageView"
-        android:layout_toLeftOf="@+id/testoTV"
-        android:layout_toStartOf="@+id/testoTV"
-        android:textAlignment="center"
         android:textSize="11sp"
         tools:ignore="SmallSp"/>
 

@@ -1,0 +1,34 @@
+<!--
+  ~ Project: meteo
+  ~ File: ic_w_line_coperto_neve_leggera.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="42"
+    android:viewportWidth="42" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#000000"
+        android:pathData="m28.7801,6.3505c-4.8908,0 -9.2906,3.0913 -10.9802,7.6265 -0.768,-0.2343 -1.5607,-0.3521 -2.3691,-0.3521 -3.2902,0 -6.2566,2.0255 -7.4773,5.0246 -0.4608,-0.1213 -0.9254,-0.1729 -1.4024,-0.1729 -3.1204,0 -5.6632,2.5368 -5.6632,5.6572 0,3.1204 2.5428,5.6572 5.6632,5.6572l1.6112,0c0.4446,0 0.8116,-0.361 0.8116,-0.8056 0,-0.4446 -0.367,-0.8116 -0.8116,-0.8116L6.5513,28.1737c-2.2312,0 -4.046,-1.8088 -4.046,-4.04 0,-2.2312 1.8148,-4.0459 4.046,-4.0459 0.5497,0 1.0802,0.1179 1.5814,0.3282 0.2102,0.088 0.4522,0.0852 0.6624,-0.0122 0.2103,-0.1051 0.3649,-0.2808 0.4297,-0.5072 0.8003,-2.7405 3.3525,-4.6606 6.2062,-4.6606 0.8812,0 1.7397,0.1836 2.5481,0.5311 0.2183,0.0898 0.4581,0.0871 0.6684,-0.0183 0.2103,-0.0972 0.3649,-0.2832 0.4297,-0.5013 1.2449,-4.2926 5.2408,-7.2863 9.7031,-7.2863 5.5699,0 10.1029,4.5391 10.1029,10.1089 0,5.4567 -4.2728,9.895 -9.6972,10.097l-1.6172,0l0,0.0061c-0.4446,0 -0.8116,0.3669 -0.8116,0.8116 0,0.4446 0.367,0.8056 0.8116,0.8056 0.0159,0 0.0266,-0.0061 0.0358,-0.0061l1.6112,0c6.3297,-0.2343 11.2845,-5.3844 11.2845,-11.7142 0,-6.4672 -5.261,-11.7201 -11.7201,-11.7201z" android:strokeWidth="0.26458332"/>
+    <path android:fillColor="#000000"
+        android:pathData="m22.0953,28.8291c0,0.4643 -0.3816,0.829 -0.829,0.829h-1.8901l0.945,1.6248c0.2321,0.3979 0.0995,0.9118 -0.2981,1.1274 -0.3979,0.2318 -0.9118,0.0995 -1.1273,-0.2984l-0.9285,-1.6081c-0.0184,0 -0.0325,0.0184 -0.0325,0.0184l-0.9285,1.5916c-0.2318,0.3979 -0.7295,0.5307 -1.1274,0.2984 -0.3979,-0.2155 -0.5308,-0.7295 -0.2981,-1.1274l0.9118,-1.5916v-0.0313h-1.8568c-0.4643,0 -0.829,-0.3647 -0.829,-0.829 0,-0.4643 0.3647,-0.829 0.829,-0.829h1.8735l-0.9285,-1.6248c-0.2318,-0.3979 -0.0995,-0.9119 0.2981,-1.144 0.3979,-0.2155 0.8953,-0.0825 1.1274,0.3152l0.945,1.6248 0.9451,-1.6248c0.2155,-0.3979 0.7295,-0.5308 1.1274,-0.3152 0.3979,0.2318 0.5307,0.7461 0.2981,1.144l-0.945,1.6248h1.8901c0.4474,0 0.8289,0.3647 0.8289,0.829z" android:strokeWidth="1.65792"/>
+</vector>

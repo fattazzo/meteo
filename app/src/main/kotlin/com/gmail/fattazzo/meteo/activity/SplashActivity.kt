@@ -29,6 +29,7 @@ package com.gmail.fattazzo.meteo.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
@@ -45,7 +46,6 @@ import com.gmail.fattazzo.meteo.fragment.home.PrevisioneCorrente
 import com.gmail.fattazzo.meteo.manager.MeteoManager
 import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
 import com.gmail.fattazzo.meteo.utils.Utils
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider
 import org.androidannotations.annotations.*
 
 
@@ -80,7 +80,7 @@ open class SplashActivity : Activity() {
     @AfterViews
     fun initViews() {
         Glide.with(this)
-                .load(if(this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) R.drawable.splash_v else R.drawable.splash_h)
+                .load(if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) R.drawable.splash_v else R.drawable.splash_h)
                 .into(gifImageView)
 
         val myTypeface = Typeface.createFromAsset(assets, "fonts/anarchistic.ttf")
@@ -99,8 +99,10 @@ open class SplashActivity : Activity() {
             Handler().postDelayed({ loadPrevisione() }, 2000)
         }
 
-        val intent = Intent(MeteoWidgetProvider.UPDATE_SETTINGS)
-        sendBroadcast(intent)
+        // Update all widgets
+        sendBroadcast(Intent().apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        })
     }
 
     @Background

@@ -73,7 +73,7 @@ public class LoadBitmapTask extends AsyncTask<String, Void, Bitmap> {
         try {
             newurl = new URL(params[0]);
             bitmap = BitmapFactory.decodeStream(newurl.openConnection().getInputStream(), null, options);
-            Log.e("TASK", "Load " + newurl);
+            Log.d("TASK", "Load " + newurl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

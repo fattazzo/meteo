@@ -1,0 +1,49 @@
+<!--
+  ~ Project: meteo
+  ~ File: ic_w_flatcolor_coperto_pioggia_leggera.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="42"
+    android:viewportWidth="42" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="1" android:fillColor="#6699ff"
+        android:fillType="nonZero"
+        android:pathData="m23.2152,4.334c-4.8977,-0 -9.0431,3.1946 -10.482,7.6112 -2.7537,0.6121 -4.999,2.5566 -6.0289,5.1262 -3.723,0.1268 -6.7044,3.1761 -6.7044,6.9292 0,3.7484 2.9712,6.7923 6.6849,6.9297l0,0.013L23.3443,30.9433L23.3443,4.34C23.3013,4.3382 23.2592,4.334 23.2152,4.334" android:strokeColor="#00000000"/>
+    <path android:fillAlpha="1" android:fillColor="#3366cc"
+        android:fillType="nonZero"
+        android:pathData="m34.1532,14.0087c-0.6635,-5.408 -5.2359,-9.6048 -10.8086,-9.6686l0,26.6033l10.5005,-0l0,-0.0199c4.5128,-0.1957 8.1122,-3.9048 8.1122,-8.4648C41.9573,18.0023 38.5193,14.3561 34.1532,14.0087" android:strokeColor="#00000000"/>
+    <path android:fillAlpha="1" android:fillColor="#00e1ff"
+        android:fillType="nonZero"
+        android:pathData="m24.3171,25.6216 l-6.7048,1.8007 -0.5681,0.1527c-0.6653,0.2179 -1.2917,0.588 -1.8206,1.1169 -1.8062,1.8058 -1.8071,4.7339 0,6.5401L24.7604,25.6952C24.666,25.6022 24.5119,25.5698 24.3171,25.6216" android:strokeColor="#00000000"/>
+    <path android:fillAlpha="1" android:fillColor="#00c6f4"
+        android:fillType="nonZero"
+        android:pathData="m22.8799,33.4141 l0.1536,-0.5732 1.8007,-6.7039c0.0518,-0.1925 0.0199,-0.3479 -0.074,-0.4418L15.2239,35.2319c1.8053,1.8044 4.7334,1.8044 6.5392,-0C22.291,34.704 22.6597,34.0794 22.8799,33.4141" android:strokeColor="#00000000"/>
+    <group>
+        <clip-path android:pathData="m23.5436,25.6928l6.4633,-0l0,5.2512l-6.4633,-0z M 0,0"/>
+        <path android:fillAlpha="0.19999701" android:fillColor="#122c3d"
+            android:fillType="nonZero"
+            android:pathData="M24.8342,26.1367 L23.5434,30.9427L30.0077,30.9427L24.7607,25.6948C24.8541,25.7887 24.8865,25.9442 24.8342,26.1367"
+            android:strokeAlpha="0.19999701" android:strokeColor="#00000000"/>
+    </group>
+</vector>

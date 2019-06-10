@@ -27,6 +27,7 @@
 
 package com.gmail.fattazzo.meteo.fragment
 
+import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.content.SharedPreferences
 import android.preference.EditTextPreference
@@ -38,7 +39,8 @@ import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.preferences.imagewidget.ZoneWidgetPreference
 import com.gmail.fattazzo.meteo.preferences.numberpicker.NumberPickerDialogPreference
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider
+import com.gmail.fattazzo.meteo.utils.dialog.DialogBuilder
+import com.gmail.fattazzo.meteo.utils.dialog.DialogType
 import org.androidannotations.annotations.AfterPreferences
 import org.androidannotations.annotations.EFragment
 import org.androidannotations.annotations.PreferenceByKey
@@ -90,9 +92,24 @@ open class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPr
     }
 
     private fun checkAndThrowWidgetSettingsChange(key: String) {
-        if (activity != null && PREF_WIDGETS.contains(key)) {
-            val intent = Intent(MeteoWidgetProvider.UPDATE_SETTINGS)
-            activity.sendBroadcast(intent)
+        if (activity != null) {
+            when {
+                key == activity.resources.getString(R.string.pref_key_iconsTheme) -> {
+                    DialogBuilder(activity, DialogType.BUTTONS).apply {
+                        titleResId = R.string.pref_icons_title
+                        messageResId = R.string.pref_icons_message
+                        positiveText = android.R.string.ok
+                    }.build().show()
+                    activity.sendBroadcast(Intent().apply {
+                        action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    })
+                }
+                PREF_WIDGETS.contains(key) -> {
+                    activity.sendBroadcast(Intent().apply {
+                        action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                    })
+                }
+            }
         }
     }
 

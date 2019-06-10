@@ -29,16 +29,16 @@ package com.gmail.fattazzo.meteo.widget.providers.previsione.fascia.corrente
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.RemoteViews
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.SplashActivity_
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider
-import org.androidannotations.annotations.EReceiver
-import java.text.SimpleDateFormat
-import java.util.*
+import com.gmail.fattazzo.meteo.utils.VectorUtils
+import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider
 
 
 /**
@@ -46,57 +46,43 @@ import java.util.*
  *         <p/>
  *         date: 02/11/17
  */
-@EReceiver
-open class FasceProvider : MeteoWidgetProvider() {
-
-    override fun doUpdate(remoteViews: RemoteViews, context: Context?, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray?, forRevalidate: Boolean) {
-
-        val calendar = Calendar.getInstance()
-
-        if (appWidgetIds != null && appWidgetIds.isNotEmpty()) {
-
-            val dateFormatter = SimpleDateFormat("HH:mm", Locale.ITALIAN)
-            for (widgetId in appWidgetIds) {
-
-                val intent = Intent(context, FasceListWidgetService::class.java)
-                intent.putExtra(FasceListRemoteViewsFactory.EXTRA_DATA, dateFormatter.format(calendar.time))
-                intent.data = Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME))
-                remoteViews.setRemoteAdapter(R.id.fasceListView, intent)
-                remoteViews.setEmptyView(R.id.fasceListView, R.id.errorTV)
-
-                val showResultIntent = Intent(context, this.javaClass)
-                showResultIntent.action = OPEN_APP_ACTION
-                val showResultPendingIntent = PendingIntent.getBroadcast(context, 0, showResultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
-                remoteViews.setPendingIntentTemplate(R.id.fasceListView, showResultPendingIntent)
-
-                appWidgetManager.updateAppWidget(widgetId, remoteViews)
-            }
-        }
-    }
+class FasceProvider : MeteoAppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == OPEN_APP_ACTION) {
-            val intentActivity = Intent(context, SplashActivity_::class.java)
-            intentActivity.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(intentActivity)
-        }
-        super.onReceive(context, intent)
-    }
+        Log.d("Widget", "onReceive: FasceProvider - ${intent.action}")
 
-    override fun getOpenAppResourceView(): IntArray? = intArrayOf(R.id.errorTV)
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisAppWidget = ComponentName(context.packageName, FasceProvider::class.java.name)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
 
-    override fun getRemoteViewsLayoutResource(): Int = R.layout.widget_fasce
-
-    override fun updateTextColor(remoteViews: RemoteViews?, textColor: Int) {
-
+        onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
     override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
-        println("FasceProvider onUpdate")
-        super.onUpdate(context, appWidgetManager, appWidgetIds)
-    }
+        Log.d("Widget", "onUpdate: FasceProvider")
 
-    companion object {
-        const val OPEN_APP_ACTION = "openAppAction"
+        appWidgetIds?.forEach { appWidgetId ->
+            val intent = Intent(context, FasceListWidgetService::class.java).apply {
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                data = Uri.parse(toUri(Intent.URI_INTENT_SCHEME))
+            }
+
+            val rv = RemoteViews(context?.packageName, R.layout.widget_fasce).apply {
+                setRemoteAdapter(R.id.fasceListView, intent)
+                setEmptyView(R.id.fasceListView, R.id.errorTV)
+                setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context!!, R.drawable.sync))
+                registerRefreshIntent(context, this, appWidgetId)
+                registerOpenAppIntent(context, this, R.id.errorTV)
+
+                val templateIntent = Intent(context, SplashActivity_::class.java)
+                templateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                val templatePendingIntent = PendingIntent.getActivity(
+                        context, 0, templateIntent, 0)
+                setPendingIntentTemplate(R.id.fasceListView, templatePendingIntent)
+            }
+            appWidgetManager?.updateAppWidget(appWidgetId, rv)
+        }
+
+        appWidgetManager?.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.fasceListView)
     }
 }

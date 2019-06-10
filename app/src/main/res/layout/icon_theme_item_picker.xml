@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/icon_theme_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <RadioButton
+        android:id="@+id/icon_theme_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/icon_theme_name"
+        android:focusable="false"
+        android:clickable="false" />
+
+    <ImageView
+        android:id="@+id/icon_theme_image1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/icon_theme_name"
+        android:layout_below="@+id/icon_theme_name"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/icon_theme_image2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon_theme_name"
+        android:layout_toRightOf="@+id/icon_theme_image1"
+        android:layout_toEndOf="@+id/icon_theme_image1"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/icon_theme_image3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon_theme_name"
+        android:layout_toRightOf="@+id/icon_theme_image2"
+        android:layout_toEndOf="@+id/icon_theme_image2"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

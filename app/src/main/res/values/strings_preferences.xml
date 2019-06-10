@@ -5,6 +5,7 @@
     <string name="pref_key_stazMeteoGraphPointRadius">stazMeteoGraphPointRadius</string>
     <string name="pref_key_widgetsUpdateInterval">widgetsUpdateInterval</string>
     <string name="pref_key_widgetsWebcamUpdateInterval">widgetsWebcamUpdateInterval</string>
+    <string name="pref_key_iconsTheme">iconsTheme</string>
 
     <string name="weather_stations_pref">Stazioni meteo</string>
     <string name="weather_stations_pref_graph_show_series_bg">Sfondo delle serie</string>
@@ -24,5 +25,20 @@
     <string name="widgets_pref_zone">Zona widgets</string>
     <string name="widgets_pref_zone_text"><![CDATA[I widget contrassegnati con la lettera <b>"Z"</b>, a differenza di quelli generali, forniscono informazioni specifiche relative alla zona scelta dall\'utente. Le zone disponibili sono:<br><br><i>Nord-Ovest</i> <b>(NW)</b><br><i>Nord-Est</i> <b>(NE)</b><br><i>Sud</i> <b>(S)</b><br><br>Selezionare dalla mappa sottostante quella desiderata.]]></string>
     <string name="widgets_pref_zone_summary">Zona selezionata:</string>
+    <string name="pref_icons_title">Cambio icone</string>
+    <string name="pref_icons_message">Per aggiornare le icone icone già utilizzate si consiglia di chiudere e riaprire l\'applicazione o ricaricare le previsioni</string>
+
+    <string-array name="iconThemeName">
+        <item>Meteo Trentino</item>
+        <item>Flat color</item>
+        <item>Linea</item>
+    </string-array>
+
+    <string-array name="iconThemeKey">
+        <item>meteo_trentino</item>
+        <item>flat_color</item>
+        <item>line</item>
+    </string-array>
+
 
 </resources>

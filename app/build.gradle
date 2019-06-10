@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     signingConfigs {
@@ -10,7 +11,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.gmail.fattazzo.meteo"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 28
         multiDexEnabled true
         versionCode 40
@@ -32,14 +33,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     applicationVariants.all { variant ->
         variant.outputs.all {
             def version = variant.versionName
             def date = new Date()
-            def formattedDate = date.format('ddMMyy')
+            def formattedDate = date.format('ddMMyy_hhmmss')
             outputFileName = "${archivesBaseName}-${version}_${formattedDate}.apk"
         }
     }
@@ -59,6 +60,7 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "org.androidannotations:androidannotations:$aa_version"
     implementation "org.androidannotations:androidannotations-api:$aa_version"
 
@@ -66,7 +68,7 @@ dependencies {
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.0.0-alpha01'
 
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
@@ -76,37 +78,42 @@ dependencies {
         exclude module: 'xpp3'
     }
 
+    implementation 'org.jsoup:jsoup:1.12.1'
+
+
+    implementation 'com.github.vipulasri:timelineview:1.1.0'
+
     implementation 'com.google.code.gson:gson:2.8.5'
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
 
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
     implementation "androidx.cardview:cardview:1.0.0"
-    implementation "com.google.android.material:material:1.1.0-alpha05"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 
     implementation "com.github.fattazzo:android-about-library:0.5.2"
     // Test ------------------------------------------------------------------
-    testImplementation 'junit:junit:4.13-beta-2'
+    testImplementation 'junit:junit:4.13-beta-3'
     testImplementation 'org.mockito:mockito-core:2.27.0'
 
     testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     // Android test ----------------------------------------------------------------
-    androidTestImplementation 'androidx.test:core:1.1.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation('androidx.test:runner:1.2.0-alpha04') {
+    androidTestImplementation 'androidx.test:core:1.2.0-beta01'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1-beta01'
+    androidTestImplementation('androidx.test:runner:1.2.0-beta01') {
         exclude module: 'support-annotations'
     }
-    androidTestImplementation('androidx.test:rules:1.2.0-alpha04') {
+    androidTestImplementation('androidx.test:rules:1.2.0-beta01') {
         exclude module: 'support-annotations'
     }
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0-alpha04') {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0-beta01') {
         exclude module: 'support-annotations'
     }
     // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
-    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.2.0-alpha04') {
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.2.0-beta01') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'support-v13'

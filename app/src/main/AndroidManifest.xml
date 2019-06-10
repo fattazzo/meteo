@@ -9,12 +9,13 @@
     <application
         android:name=".MeteoApplication"
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
-        android:supportsRtl="false"
-        android:usesCleartextTraffic="true"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:usesCleartextTraffic="true">
+
         <meta-data
             android:name="AA_DB_NAME"
             android:value="meteodb" />
@@ -23,9 +24,7 @@
             android:value="1" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.gmail.fattazzo.meteo.db.StazioneMeteo,
-                           com.gmail.fattazzo.meteo.db.StazioneValanghe,
-                           com.gmail.fattazzo.meteo.db.Localita" />
+            android:value="com.gmail.fattazzo.meteo.db.StazioneMeteo,                            com.gmail.fattazzo.meteo.db.StazioneValanghe,                            com.gmail.fattazzo.meteo.db.Localita,                            com.gmail.fattazzo.meteo.db.News" />
 
         <provider
             android:name="com.activeandroid.content.ContentProvider"
@@ -38,6 +37,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -47,9 +47,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
                     android:host="github.com"
-                    android:path="/fattazzo/meteo" />
+                    android:path="/fattazzo/meteo"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
@@ -65,74 +65,56 @@
             android:name=".activity.SettingsActivity_"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.DettaglioGiornoActivity_" />
-
         <activity android:name=".activity.AnagraficaStazioniValangheActivity_" />
-
-        <activity android:name=".activity.AnagraficaStazioniMeteoActivity_" />
-
-        <!-- WIDGETS____________________________________________________________________________________________________________________ -->
-
-
+        <activity android:name=".activity.AnagraficaStazioniMeteoActivity_" /> <!-- WIDGETS____________________________________________________________________________________________________________________ -->
         <!-- Today general -->
         <service
             android:name=".widget.providers.previsione.locale.PrevisioneLocaleGridWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver
-            android:name=".widget.providers.previsione.locale.BullettinPrevisioneLocalitaTodayProvider4x1_"
+            android:name=".widget.providers.previsione.locale.BullettinPrevisioneLocalitaTodayProvider4x1"
             android:exported="true"
             android:label="@string/widget_prevision_today_4x1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.AUTO_UPDATE" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE_SETTINGS" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.WIDGET_REVALIDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_prevision_today_info_4x1" />
-        </receiver>
-
-        <!-- Today general horizontal -->
+        </receiver> <!-- Today general horizontal -->
         <receiver
-            android:name=".widget.providers.previsione.locale.horizontal.BullettinPrevisioneLocalitaHorizontalProvider4x1_"
+            android:name=".widget.providers.previsione.locale.horizontal.BullettinPrevisioneLocalitaHorizontalProvider4x1"
             android:exported="true"
             android:label="@string/widget_prevision_horizontal_4x1">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.AUTO_UPDATE" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE_SETTINGS" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.WIDGET_REVALIDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_prevision_horizontal_4x1" />
-        </receiver>
-
-        <!-- Fasce -->
+        </receiver> <!-- Fasce -->
         <service
             android:name=".widget.providers.previsione.fascia.corrente.FasceListWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver
-            android:name=".widget.providers.previsione.fascia.corrente.FasceProvider_"
+            android:name=".widget.providers.previsione.fascia.corrente.FasceProvider"
             android:exported="true"
             android:label="@string/widget_fasce">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.AUTO_UPDATE" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE_SETTINGS" />
-                <action android:name="com.gmail.fattazzo.meteo.widget.WIDGET_REVALIDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_fasce" />
-        </receiver>
-
-        <!-- Webcam -->
+        </receiver> <!-- Webcam -->
         <receiver
             android:name=".widget.providers.webcam.WebcamWidgetProvider"
             android:exported="true"
@@ -147,9 +129,7 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_webcam_4x4" />
-        </receiver>
-
-        <!-- Stazione meteo -->
+        </receiver> <!-- Stazione meteo -->
         <receiver
             android:name=".widget.providers.stazioni.meteo.StazioneMeteoWidgetProvider_"
             android:exported="true"

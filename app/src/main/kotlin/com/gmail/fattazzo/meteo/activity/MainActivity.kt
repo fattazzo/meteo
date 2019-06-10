@@ -44,6 +44,7 @@ import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.fragment.BaseFragment
 import com.gmail.fattazzo.meteo.fragment.bollettino.probabilistico.BollettinoProbabilisticoFragment_
 import com.gmail.fattazzo.meteo.fragment.home.HomeFragment_
+import com.gmail.fattazzo.meteo.fragment.news.NewsFragment_
 import com.gmail.fattazzo.meteo.fragment.radar.RadarFragment_
 import com.gmail.fattazzo.meteo.fragment.stazioni.meteo.StazioniFragment_
 import com.gmail.fattazzo.meteo.fragment.stazioni.valanghe.ValangheFragment_
@@ -117,6 +118,7 @@ open class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
         when (menuItem.itemId) {
             R.id.nav_home -> FragmentUtils.replace(this, HomeFragment_.builder().build())
             R.id.nav_boll_prob -> FragmentUtils.replace(this, BollettinoProbabilisticoFragment_.builder().build())
+            R.id.nav_news_e_allerte -> FragmentUtils.replace(this, NewsFragment_.builder().build())
             R.id.nav_stazioni_meteo -> FragmentUtils.replace(this, StazioniFragment_.builder().build())
             R.id.nav_stazioni_neve -> FragmentUtils.replace(this, ValangheFragment_.builder().build())
             R.id.nav_radar -> FragmentUtils.replace(this, RadarFragment_.builder().build())

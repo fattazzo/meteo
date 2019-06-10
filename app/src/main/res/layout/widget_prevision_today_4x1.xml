@@ -36,15 +36,14 @@
 
     <ImageView
         android:id="@+id/widget_sync"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:adjustViewBounds="true"
         android:elevation="24dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sinchronize" />
+        android:scaleType="centerCrop" />
 
     <ListView
         android:id="@+id/evoluzioneListView"

@@ -125,11 +125,11 @@
 
             <ImageView
                 android:id="@+id/iconaImageView"
-                android:layout_width="@dimen/default_icon_size"
-                android:layout_height="@dimen/default_icon_size"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@id/descrizioneTV"
+                app:layout_constraintDimensionRatio="h,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

@@ -36,6 +36,7 @@ import com.bumptech.glide.Glide
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.domain.json.previsione.Fascia
 import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
+import com.gmail.fattazzo.meteo.utils.icons.WeatherIconsFactory
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
 
@@ -58,11 +59,19 @@ open class FasciaHeaderView @JvmOverloads constructor(
     fun bind(fascia: Fascia) {
         descriptionTV.text = String.format("%s",fascia.descrizione.orEmpty().capitalize())
 
-        if (!fascia.icona.isNullOrBlank()) {
-            Glide.with(context)
-                    .load(fascia.icona)
-                    .apply(GlideHelper.createNoCacheOptions(context!!, false, addTimeOut = false))
-                    .into(iconaImageView)
+        val idIcona = fascia.getIdIcona()
+        if (idIcona != null) {
+            val iconsRetriever = WeatherIconsFactory.getIconsRetriever(context)
+            val icona = iconsRetriever.getIcon(idIcona)
+
+            if (icona == null) {
+                Glide.with(context)
+                        .load(idIcona)
+                        .apply(GlideHelper.createNoCacheOptions(context!!, false, addTimeOut = false))
+                        .into(iconaImageView)
+            } else {
+                iconaImageView.setImageResource(icona)
+            }
         }
     }
 

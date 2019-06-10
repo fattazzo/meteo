@@ -220,6 +220,7 @@ open class HomeFragment : BaseFragment(), MediaPlayer.OnCompletionListener {
                     positiveText = R.string.yes
                     positiveAction = object : DialogBuilder.OnClickListener {
                         override fun onClick(dialog: Dialog?) {
+                            dialog?.dismiss()
                             activity?.finish()
                         }
                     }

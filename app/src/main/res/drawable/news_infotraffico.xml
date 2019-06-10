@@ -1,0 +1,43 @@
+<!--
+  ~ Project: meteo
+  ~ File: news_infotraffico.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="512"
+    android:viewportWidth="512" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#EC5353" android:pathData="M256,256m-256,0a256,256 0,1 1,512 0a256,256 0,1 1,-512 0"/>
+    <path android:fillColor="#D13135" android:pathData="M507.078,306.138l-68.267,-68.267l-15.348,9.76l-86.036,-86.036L63.174,330.667L244.227,511.72c3.903,0.177 7.826,0.28 11.773,0.28C380.224,512 483.768,423.515 507.078,306.138z"/>
+    <path android:fillColor="#BCDEFA" android:pathData="M374.933,212.764L374.933,212.764c-23.189,-52.949 -75.515,-87.156 -133.319,-87.156h-5.471c-57.804,0 -110.129,34.207 -133.319,87.156l0,0h-6.766c-18.162,0 -32.885,14.723 -32.885,32.885v85.017h398.459v-36.13c0,-45.161 -36.611,-81.772 -81.772,-81.772H374.933z"/>
+    <path android:fillColor="#92CBF7" android:pathData="M461.632,294.536c0,-45.161 -36.611,-81.771 -81.772,-81.771h-4.927l0,0c-23.189,-52.948 -75.515,-87.156 -133.319,-87.156H239.5v205.058h222.132L461.632,294.536L461.632,294.536z"/>
+    <path android:fillColor="#92CBF7" android:pathData="M63.174,288.702v41.965h398.459v-36.13c0,-1.964 -0.094,-3.905 -0.23,-5.834L63.174,288.702L63.174,288.702z"/>
+    <path android:fillColor="#2789E1" android:pathData="M461.632,294.536c0,-1.964 -0.094,-3.905 -0.23,-5.834H239.5v41.965h222.132L461.632,294.536L461.632,294.536z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M226.972,143.981c-40.788,0 -77.711,24.138 -94.074,61.5l-3.824,8.733h97.898L226.972,143.981L226.972,143.981z"/>
+    <path android:fillColor="#EDF0F2" android:pathData="M355.03,208.721c-17.225,-39.33 -56.092,-64.74 -99.03,-64.74l0,0v70.233h101.435L355.03,208.721z"/>
+    <path android:fillColor="#595959" android:pathData="M131.32,324.59m-45.38,0a45.38,45.38 0,1 1,90.76 0a45.38,45.38 0,1 1,-90.76 0"/>
+    <path android:fillColor="#969696" android:pathData="M131.32,324.59m-20.648,0a20.648,20.648 0,1 1,41.296 0a20.648,20.648 0,1 1,-41.296 0"/>
+    <path android:fillColor="#303030" android:pathData="M393.43,324.59m-45.38,0a45.38,45.38 0,1 1,90.76 0a45.38,45.38 0,1 1,-90.76 0"/>
+    <path android:fillColor="#828282" android:pathData="M393.43,324.59m-20.648,0a20.648,20.648 0,1 1,41.296 0a20.648,20.648 0,1 1,-41.296 0"/>
+    <path android:fillColor="#E5E5E5" android:pathData="M446.537,247.228h-32.199c-5.799,0 -10.5,4.701 -10.5,10.5c0,5.799 4.701,10.5 10.5,10.5h42.944C454.714,260.669 451.074,253.61 446.537,247.228z"/>
+</vector>

@@ -1,30 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/home"
-            android:title="@string/nav_home" />
-        <item
-            android:id="@+id/nav_boll_prob"
-            android:icon="@drawable/format_list"
-            android:title="@string/nav_boll_prob" />
-        <item
-            android:id="@+id/nav_stazioni_meteo"
-            android:icon="@drawable/stazione"
-            android:title="@string/nav_stazioni_meteo" />
-        <item
-            android:id="@+id/nav_stazioni_neve"
-            android:icon="@drawable/stazione"
-            android:title="@string/nav_stazioni_neve" />
-        <item
-            android:id="@+id/nav_radar"
-            android:icon="@drawable/wifi"
-            android:title="@string/nav_radar" />
-        <item
-            android:id="@+id/nav_webcam"
-            android:icon="@drawable/videocam"
-            android:title="@string/nav_webcam" />
+    <group
+        android:id="@+id/menu1"
+        android:checkableBehavior="none">
+        <item android:title="Bollettino">
+            <menu>
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/home"
+                    android:title="Locale" />
+                <item
+                    android:id="@+id/nav_boll_prob"
+                    android:icon="@drawable/format_list"
+                    android:title="Probabilistico" />
+                <item
+                    android:id="@+id/nav_news_e_allerte"
+                    android:icon="@drawable/comment"
+                    android:title="@string/nav_news_e_allerte" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/menu2"
+        android:checkableBehavior="none">
+        <item android:title="Stazioni">
+            <menu>
+                <item
+                    android:id="@+id/nav_stazioni_meteo"
+                    android:icon="@drawable/stazione"
+                    android:title="Meteo" />
+                <item
+                    android:id="@+id/nav_stazioni_neve"
+                    android:icon="@drawable/stazione"
+                    android:title="@string/nav_stazioni_neve" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/menu3"
+        android:checkableBehavior="none">
+        <item android:title="Immagini">
+            <menu>
+                <item
+                    android:id="@+id/nav_radar"
+                    android:icon="@drawable/wifi"
+                    android:title="@string/nav_radar" />
+                <item
+                    android:id="@+id/nav_webcam"
+                    android:icon="@drawable/videocam"
+                    android:title="@string/nav_webcam" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/menu4"
+        android:checkableBehavior="none">
         <item
             android:id="@+id/nav_preferences"
             android:icon="@drawable/settings"

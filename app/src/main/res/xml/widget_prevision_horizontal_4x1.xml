@@ -5,4 +5,4 @@
     android:minWidth="294dp"
     android:previewImage="@drawable/widget_4x1_prevision_horizontal_preview"
     android:resizeMode="horizontal"
-    android:updatePeriodMillis="10800000" />
+    android:updatePeriodMillis="3600000"/>

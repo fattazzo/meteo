@@ -68,9 +68,6 @@ object Config {
     // git
     const val GIT_WIKI_LINK = "https://github.com/fattazzo/meteo/wiki"
 
-    // icons theme
-    const val ICONS_THEME = "iconsTheme"
-
     const val PROJECTS_INFO_URL = "https://gist.githubusercontent.com/fattazzo/d6aa41128c39b4882c0b6bd232984cfb/raw/projetcs.json"
 
     // radar
@@ -78,4 +75,9 @@ object Config {
     const val RADAR_INFRAROSSI = "http://api.sat24.com/animated/ALPS/infraPolair/1/Central%20European%20Standard%20Time/493234"
     const val RADAR_NEVE = "https://api.sat24.com/animated/EU/snow/1/Central%20European%20Standard%20Time"
     const val RADAR_EUROPA = "https://api.sat24.com/animated/EU/infraPolair/1/Central%20European%20Standard%20Time"
+
+    // news e avvisi
+    const val NEWS_URL = "http://www.protezionecivile.tn.it/news_comunicati_stampa"
+    const val AVVISI_URL = "http://avvisi.protezionecivile.tn.it/elencoavvisi.aspx"
+    const val INFOTRAFFICO_URL = "http://www.protezionecivile.tn.it/infotraffico"
 }

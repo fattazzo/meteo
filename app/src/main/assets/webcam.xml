@@ -33,17 +33,17 @@
     <webcam id="110" localita="Panarotta" zona="Pat sismica">
         <link>http://www.protezionecivile.tn.it/statico/webcam/panarotta/Panarotta.jpg</link>
     </webcam>
-    <webcam id="111" localita="Panarotta" zona="Fravort">
-        <link>http://www.protezionecivile.tn.it/statico/webcam/panarotta/Fravort.jpg</link>
+    <webcam id="111" localita="Daone" zona="Malga bissina">
+        <link>http://www.protezionecivile.tn.it/statico/webcam/malgabissina/malgabissina.jpg</link>
     </webcam>
-    <webcam id="112" localita="Panarotta" zona="Val dei Mocheni">
-        <link>http://www.protezionecivile.tn.it/statico/webcam/panarotta/ValdeiMocheni.jpg</link>
+    <webcam id="112" localita="Roncone" zona="Malga Avalina">
+        <link>http://www.protezionecivile.tn.it/statico/webcam/roncone/Roncone.jpg</link>
     </webcam>
     <webcam id="113" localita="Predazzo">
         <link>http://www.meteopredazzo.it/predazzo.jpg</link>
     </webcam>
-    <webcam id="114" localita="Canazei" zona="Piazza Marconi">
-        <link>http://www.dolomitiwebcam.com/canazei-centro/mega.jpg</link>
+    <webcam id="114" localita="Torbole">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/torbole/torbole56.jpg</link>
     </webcam>
     <webcam id="115" localita="Cavalese">
         <link>http://www.meteocavalese.it/cavalese.jpg</link>

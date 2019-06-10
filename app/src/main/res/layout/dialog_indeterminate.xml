@@ -42,6 +42,8 @@
         android:id="@+id/topPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:background="@drawable/alert_border_top">
 
         <ImageView
@@ -58,6 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:background="@android:color/white"
         android:orientation="vertical">
 
