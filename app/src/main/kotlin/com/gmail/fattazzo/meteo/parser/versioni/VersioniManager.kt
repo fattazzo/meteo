@@ -27,12 +27,17 @@
 
 package com.gmail.fattazzo.meteo.parser.versioni
 
+import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager.NameNotFoundException
 import android.preference.PreferenceManager
 import android.text.Html
 import android.util.Log
+import com.gmail.fattazzo.meteo.BuildConfig
 import com.gmail.fattazzo.meteo.Config
+import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.activity.ChangeLogActivity
 import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
 import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager_
 import com.gmail.fattazzo.meteo.utils.dialog.DialogBuilder
@@ -69,7 +74,7 @@ class VersioniManager(private val context: Context) {
     /**
      * @return restituisce la lista del changelog delle versioni
      */
-    private fun caricaVersioni(): String {
+    fun caricaVersioni(): String {
 
         var result: String
 
@@ -150,6 +155,27 @@ class VersioniManager(private val context: Context) {
         }
 
         return result.toString()
+    }
+
+    fun showVersionInfo() {
+
+        DialogBuilder(context, DialogType.CUSTOM)
+                .apply {
+                    title = "Versione ${BuildConfig.VERSION_NAME}"
+                    headerIcon = R.drawable.info_white
+                    customLayout = R.layout.dialog_version_info
+                    positiveText = android.R.string.ok
+
+                    neutralText = R.string.versioni_precedenti
+                    neutralAction = object : DialogBuilder.OnClickListener {
+                        override fun onClick(dialog: Dialog?) {
+                            dialog?.dismiss()
+                            context.startActivity(Intent(context, ChangeLogActivity::class.java))
+                        }
+                    }
+                }
+                .build()
+                .show()
     }
 
     /**

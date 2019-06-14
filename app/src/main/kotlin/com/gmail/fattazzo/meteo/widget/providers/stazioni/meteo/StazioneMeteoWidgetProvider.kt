@@ -29,11 +29,12 @@ package com.gmail.fattazzo.meteo.widget.providers.stazioni.meteo
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.os.Handler
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
@@ -45,15 +46,14 @@ import com.github.mikephil.charting.data.LineData
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.db.StazioneMeteo
 import com.gmail.fattazzo.meteo.domain.xml.stazioni.meteo.datistazione.IDatoStazione
-import com.gmail.fattazzo.meteo.fragment.stazioni.meteo.rilevazioni.dati.grafico.DataSetBuilder
+import com.gmail.fattazzo.meteo.fragment.stazioni.meteo.rilevazioni.dati.grafico.DataSetBuilder_
 import com.gmail.fattazzo.meteo.fragment.stazioni.meteo.rilevazioni.dati.grafico.DateXAxisValueFormatter
 import com.gmail.fattazzo.meteo.fragment.stazioni.meteo.rilevazioni.dati.grafico.UMValueFormatter
-import com.gmail.fattazzo.meteo.manager.MeteoManager
-import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider
-import org.androidannotations.annotations.Bean
-import org.androidannotations.annotations.EReceiver
-import java.lang.Exception
+import com.gmail.fattazzo.meteo.manager.MeteoManager_
+import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager_
+import com.gmail.fattazzo.meteo.preferences.widget.bollettino.BollettinoWidgetsSettingsManager
+import com.gmail.fattazzo.meteo.utils.VectorUtils
+import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider
 
 
 /**
@@ -61,98 +61,116 @@ import java.lang.Exception
  *         <p/>
  *         date: 06/12/17
  */
-@EReceiver
-open class StazioneMeteoWidgetProvider : MeteoWidgetProvider() {
-
-    @Bean
-    lateinit var meteoManager: MeteoManager
-
-    @Bean
-    lateinit var preferencesManager: ApplicationPreferencesManager
-
-    @Bean
-    lateinit var datasetBuilder: DataSetBuilder
-
-    override fun doUpdate(remoteViews: RemoteViews, context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray?, forRevalidate: Boolean) {
-
-        if (appWidgetIds != null && appWidgetIds.isNotEmpty()) {
-            val handleTimer = Handler()
-            handleTimer.postDelayed({
-                for (widgetId in appWidgetIds) {
-
-                    val datiStazione = if (forRevalidate && StazioneMeteoWidgetCache.datiStazione != null) {
-                        StazioneMeteoWidgetCache.datiStazione
-                    } else {
-                        try {
-                            LoadDatiStazioneMeteoTask(meteoManager, preferencesManager).execute().get()
-                        } catch (e: Exception) {
-                            null
-                        }
-                    }
-
-                    StazioneMeteoWidgetCache.datiStazione = datiStazione
-
-                    remoteViews.setViewVisibility(R.id.errorStazioneMeteoTV, if (datiStazione != null) View.GONE else View.VISIBLE)
-                    remoteViews.setViewVisibility(R.id.titleTV, if (datiStazione == null) View.GONE else View.VISIBLE)
-                    remoteViews.setViewVisibility(R.id.chartImage, if (datiStazione == null) View.GONE else View.VISIBLE)
-                    remoteViews.setViewVisibility(R.id.tipoDatoTV, if (datiStazione == null) View.GONE else View.VISIBLE)
-
-                    remoteViews.setTextColor(R.id.errorStazioneMeteoTV, getWidgetsSettingsManager(context).textColor)
-                    remoteViews.setTextColor(R.id.titleTV, getWidgetsSettingsManager(context).textColor)
-                    remoteViews.setTextColor(R.id.tipoDatoTV, getWidgetsSettingsManager(context).textColor)
-
-                    if (datiStazione != null) {
-                        val stazioneMeteo = Select().from(StazioneMeteo::class.java).where("codice = ?", preferencesManager.getCodiceStazioneMeteoWidget()).executeSingle<StazioneMeteo>()
-                        remoteViews.setTextViewText(R.id.titleTV, if (stazioneMeteo != null) stazioneMeteo.nome else datiStazione.codiceStazione)
-
-                        val prefs = context.getSharedPreferences(XML_CONFIG, 0)
-                        var dati: List<IDatoStazione>?
+open class StazioneMeteoWidgetProvider : MeteoAppWidgetProvider() {
 
 
-                        val deviceTypeId = prefs.getInt("widget_" + widgetId + "_tipoDato", 0)
-                        if (forRevalidate) {
-                            dati = when (deviceTypeId) {
-                                0 -> datiStazione.temperature
-                                1 -> datiStazione.precipitazioni
-                                2 -> datiStazione.venti
-                                3 -> datiStazione.radiazioni
-                                4 -> datiStazione.umidita
-                                5 -> datiStazione.neve
-                                else -> datiStazione.temperature
-                            }
-                            remoteViews.setTextViewText(R.id.tipoDatoTV, context.resources.getStringArray(R.array.tipo_dato_stazione)[deviceTypeId])
-                            prefs.edit().putInt("widget_" + widgetId + "_tipoDato", if (deviceTypeId < 5) deviceTypeId + 1 else 0).commit()
-                        } else {
-                            dati = datiStazione.temperature
-                            prefs.edit().putInt("widget_" + widgetId + "_tipoDato", 1).commit()
-                            remoteViews.setTextViewText(R.id.tipoDatoTV, context.resources.getStringArray(R.array.tipo_dato_stazione)[0])
-                        }
+    override fun onReceive(context: Context, intent: Intent) {
 
-                        val chart = createChart(dati, context)
+        if (intent.action === AppWidgetManager.ACTION_APPWIDGET_OPTIONS_CHANGED) {
+            return
+        }
 
-                        val b = Bitmap.createBitmap(chart.measuredWidth, chart.measuredHeight, Bitmap.Config.ARGB_8888)
-                        val c = Canvas(b)
-                        chart.layout(0, 0, chart.measuredWidth, chart.measuredHeight)
-                        chart.draw(c)
+        if (intent.action != ACTION_CHANGE_TIPO_DATO) {
 
-                        remoteViews.setBitmap(R.id.chartImage, "setImageBitmap", b)
+        }
+
+        if (intent.action === AppWidgetManager.ACTION_APPWIDGET_UPDATE) {
+            val prefs = context.getSharedPreferences(XML_CONFIG, 0)
+            prefs.edit().putInt("widget_" + intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1) + "_tipoDato", 0).commit()
+            StazioneMeteoWidgetCache.datiStazione = null
+        }
+
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisAppWidget = ComponentName(context.packageName, StazioneMeteoWidgetProvider::class.java.name)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
+
+        onUpdate(context, appWidgetManager, appWidgetIds)
+    }
+
+    override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
+        Log.d("Widget", "onUpdate: StazioneMeteoWidgetProvider")
+
+        val preferenceManager = ApplicationPreferencesManager_.getInstance_(context)
+
+        val datiStazione = if (StazioneMeteoWidgetCache.datiStazione != null) StazioneMeteoWidgetCache.datiStazione else
+            try {
+                LoadDatiStazioneMeteoTask(MeteoManager_.getInstance_(context), preferenceManager).execute().get()
+            } catch (e: Exception) {
+                null
+            }
+
+        if (datiStazione?.codiceStazione == null) {
+            return
+        }
+
+        StazioneMeteoWidgetCache.datiStazione = datiStazione
+
+        appWidgetIds?.forEach { appWidgetId ->
 
 
-                        val intent = Intent(context, this.javaClass)
-                        intent.action = MeteoWidgetProvider.WIDGET_REVALIDATE
-                        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
-                        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-                        remoteViews.setOnClickPendingIntent(R.id.chartImage, pendingIntent)
-                    }
 
-                    appWidgetManager.updateAppWidget(widgetId, remoteViews)
+            val remoteViews = RemoteViews(context?.packageName, R.layout.widget_stazione_meteo)
+            remoteViews.setViewVisibility(R.id.errorStazioneMeteoTV, if (datiStazione != null) View.GONE else View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.titleTV, if (datiStazione == null) View.GONE else View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.chartImage, if (datiStazione == null) View.GONE else View.VISIBLE)
+            remoteViews.setViewVisibility(R.id.tipoDatoTV, if (datiStazione == null) View.GONE else View.VISIBLE)
+            registerOpenAppIntent(context!!, remoteViews, R.id.errorStazioneMeteoTV)
+            registerOpenAppIntent(context, remoteViews, R.id.openAppImage)
+
+            remoteViews.setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context, R.drawable.sync))
+
+            val widgetSettingsManager = BollettinoWidgetsSettingsManager(context)
+            remoteViews.setTextColor(R.id.errorStazioneMeteoTV, widgetSettingsManager.textColor)
+            remoteViews.setTextColor(R.id.titleTV, widgetSettingsManager.textColor)
+            remoteViews.setTextColor(R.id.tipoDatoTV, widgetSettingsManager.textColor)
+            updateBackground(remoteViews, widgetSettingsManager.background)
+
+            if (datiStazione != null) {
+                val stazioneMeteo = Select().from(StazioneMeteo::class.java).where("codice = ?", preferenceManager.getCodiceStazioneMeteoWidget()).executeSingle<StazioneMeteo>()
+                remoteViews.setTextViewText(R.id.titleTV, if (stazioneMeteo != null) stazioneMeteo.nome else datiStazione.codiceStazione)
+
+                val prefs = context.getSharedPreferences(XML_CONFIG, 0)
+                var dati: List<IDatoStazione>?
+
+
+                val deviceTypeId = prefs.getInt("widget_" + appWidgetId + "_tipoDato", 0)
+                dati = when (deviceTypeId) {
+                    0 -> datiStazione.temperature
+                    1 -> datiStazione.precipitazioni
+                    2 -> datiStazione.venti
+                    3 -> datiStazione.radiazioni
+                    4 -> datiStazione.umidita
+                    5 -> datiStazione.neve
+                    else -> datiStazione.temperature
                 }
-            }, 1000)
+                remoteViews.setTextViewText(R.id.tipoDatoTV, context.resources.getStringArray(R.array.tipo_dato_stazione)[deviceTypeId])
+                prefs.edit().putInt("widget_" + appWidgetId + "_tipoDato", if (deviceTypeId < 5) deviceTypeId + 1 else 0).commit()
+
+                val chart = createChart(dati, context, widgetSettingsManager)
+
+                val b = Bitmap.createBitmap(chart.measuredWidth, chart.measuredHeight, Bitmap.Config.ARGB_8888)
+                val c = Canvas(b)
+                chart.layout(0, 0, chart.measuredWidth, chart.measuredHeight)
+                chart.draw(c)
+
+                remoteViews.setBitmap(R.id.chartImage, "setImageBitmap", b)
+
+
+                val intent = Intent(context, this.javaClass)
+                intent.action = ACTION_CHANGE_TIPO_DATO
+                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
+                val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                remoteViews.setOnClickPendingIntent(R.id.chartImage, pendingIntent)
+            }
+
+            registerRefreshIntent(context, remoteViews, appWidgetId)
+
+            appWidgetManager?.updateAppWidget(appWidgetId, remoteViews)
         }
     }
 
-    private fun createChart(datiParam: List<IDatoStazione>?, context: Context): LineChart {
-        val dataSetList = datasetBuilder.buildDataset(datiParam,false)
+    private fun createChart(datiParam: List<IDatoStazione>?, context: Context, widgetSettingsManager: BollettinoWidgetsSettingsManager): LineChart {
+        val dataSetList = DataSetBuilder_.getInstance_(context).buildDataset(datiParam, false)
 
         val lineChart = LineChart(context)
         lineChart.minimumWidth = 600
@@ -170,27 +188,27 @@ open class StazioneMeteoWidgetProvider : MeteoWidgetProvider() {
         l.formSize = 5f
         l.form = Legend.LegendForm.CIRCLE
         l.textSize = textSize
-        l.textColor = getWidgetsSettingsManager(context).textColor
+        l.textColor = widgetSettingsManager.textColor
 
         val xAxis = lineChart.xAxis
         xAxis.valueFormatter = DateXAxisValueFormatter()
         xAxis.granularity = 1f
         xAxis.textSize = textSize
-        xAxis.textColor = getWidgetsSettingsManager(context).textColor
+        xAxis.textColor = widgetSettingsManager.textColor
 
         lineChart.axisRight.isEnabled = false
         lineChart.axisLeft.valueFormatter = UMValueFormatter(datiParam?.firstOrNull()?.unitaMisura.orEmpty())
         lineChart.axisLeft.textSize = textSize
-        lineChart.axisLeft.textColor = getWidgetsSettingsManager(context).textColor
+        lineChart.axisLeft.textColor = widgetSettingsManager.textColor
 
         lineChart.setNoDataText("Nessun dato presente")
-        lineChart.setNoDataTextColor(getWidgetsSettingsManager(context).textColor)
+        lineChart.setNoDataTextColor(widgetSettingsManager.textColor)
 
         val charDescription = Description()
         charDescription.text = ""
         lineChart.description = charDescription
 
-        if(dataSetList.size > 0) {
+        if (dataSetList.size > 0) {
             val data = LineData(dataSetList)
             lineChart.data = data
         }
@@ -199,28 +217,10 @@ open class StazioneMeteoWidgetProvider : MeteoWidgetProvider() {
         return lineChart
     }
 
-    override fun getOpenAppResourceView(): IntArray? = intArrayOf(R.id.errorStazioneMeteoTV, R.id.openAppImage)
-
-    override fun getRemoteViewsLayoutResource(): Int = R.layout.widget_stazione_meteo
-
-    override fun updateTextColor(remoteViews: RemoteViews, textColor: Int) {
-        // Update text color not supported, click on refresh icon
-    }
-
-    override fun onDeleted(context: Context, appWidgetIds: IntArray?) {
-        val prefs = context.getSharedPreferences(XML_CONFIG, 0)
-
-        if (appWidgetIds != null) {
-            for(id in appWidgetIds) {
-                prefs.edit().remove("widget_" + id + "_tipoDato").commit()
-            }
-        }
-
-        super.onDeleted(context, appWidgetIds)
-    }
-
     companion object {
 
         const val XML_CONFIG = "stazioni.meteo.widget.config"
+
+        const val ACTION_CHANGE_TIPO_DATO = "com.gmail.fattazzo.meteo.widget.WIDGET_CHANGE_TIPO_DATO_ACTION"
     }
 }

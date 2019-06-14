@@ -60,22 +60,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:tint="@color/webcam_favorite"
-                app:srcCompat="@drawable/favorite"
-                fab:ignore="ContentDescription" />
-
-            <RadioButton
-                android:id="@+id/favoriteWebcamButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/favorite" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitEnd"
                 android:tint="@color/webcam_widget"
                 app:srcCompat="@drawable/star"
                 fab:ignore="ContentDescription" />

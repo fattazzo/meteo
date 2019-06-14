@@ -49,20 +49,6 @@
                 android:key="widgetsTextColor"
                 android:title="@string/widgets_text_color"
                 customColor:alphaSlider="true" />
-            <ListPreference
-                android:defaultValue="21600000"
-                android:entries="@array/widget_interval_entries"
-                android:entryValues="@array/widget_interval_entries_values"
-                android:key="@string/pref_key_widgetsUpdateInterval"
-                android:summary=""
-                android:title="@string/widgets_update_interval" />
-            <ListPreference
-                android:defaultValue="1800000"
-                android:entries="@array/widget_interval_entries"
-                android:entryValues="@array/widget_interval_entries_values"
-                android:key="@string/pref_key_widgetsWebcamUpdateInterval"
-                android:summary=""
-                android:title="@string/widgets_update_interval_webcam" />
     </PreferenceCategory>
 
 

@@ -33,7 +33,7 @@ import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
 import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager_
 import com.gmail.fattazzo.meteo.preferences.widget.WidgetSettingsManager
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider
+import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider
 import java.util.*
 
 /**
@@ -83,17 +83,6 @@ class WebcamWidgetsSettingsManager(private val context: Context) : WidgetSetting
                     .mapTo(ArrayList()) { Integer.valueOf(it) }
         }
 
-    val webcamFavoriteIds: MutableList<Int>
-        get() {
-
-            val stringIds = preferencesManager.getPrefs().getString(Config.FAVORITE_WEBCAM_IDS, "")
-            val splittedIds = stringIds!!.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
-            return splittedIds
-                    .filter { "" != it }
-                    .mapTo(ArrayList()) { Integer.valueOf(it) }
-        }
-
     init {
         preferencesManager = ApplicationPreferencesManager_.getInstance_(context)
     }
@@ -106,14 +95,25 @@ class WebcamWidgetsSettingsManager(private val context: Context) : WidgetSetting
      */
     fun updateWebcamWidgetIds(idUpdate: Int) {
 
-        val ids = webcamWidgetIds
+        var ids = webcamWidgetIds
+        /**
         val idx = ids.indexOf(idUpdate)
         if (idx == -1) {
             ids.add(idUpdate)
         } else {
             ids.removeAt(idx)
         }
+        **/
 
+        if(idUpdate !in ids) {
+            ids.add(idUpdate)
+        } else {
+            ids.remove(idUpdate)
+        }
+
+        preferencesManager.getPrefs().edit().putString(Config.WIDGETS_WEBCAM_IDS, ids.distinct().joinToString(separator = ",")).commit()
+
+        /**
         var stringIds = ""
         var separator = ""
 
@@ -123,28 +123,8 @@ class WebcamWidgetsSettingsManager(private val context: Context) : WidgetSetting
         }
 
         preferencesManager.getPrefs().edit().putString(Config.WIDGETS_WEBCAM_IDS, stringIds).commit()
-        val intent = Intent(MeteoWidgetProvider.UPDATE_SETTINGS)
+        **/
+        val intent = Intent(MeteoAppWidgetProvider.UPDATE)
         context.sendBroadcast(intent)
-    }
-
-    fun updateWebcamFavoriteIds(idUpdate: Int) {
-
-        val ids = webcamFavoriteIds
-        val idx = ids.indexOf(idUpdate)
-        if (idx == -1) {
-            ids.add(idUpdate)
-        } else {
-            ids.removeAt(idx)
-        }
-
-        var stringIds = ""
-        var separator = ""
-
-        for (id in ids) {
-            stringIds = stringIds + separator + id.toString()
-            separator = ","
-        }
-
-        preferencesManager.getPrefs().edit().putString(Config.FAVORITE_WEBCAM_IDS, stringIds).commit()
     }
 }

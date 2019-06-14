@@ -67,9 +67,7 @@ open class WebcamXmlParser {
 
             val webcamWidgetsSettingsManager = WebcamWidgetsSettingsManager(context)
             val webcamWidgetIds = webcamWidgetsSettingsManager.webcamWidgetIds
-            val webcamFavoriteIds = webcamWidgetsSettingsManager.webcamFavoriteIds
             webcams.webcams.forEach { webcam -> webcam.showInWidget = webcamWidgetIds.indexOf(webcam.id) != -1 }
-            webcams.webcams.forEach { webcam -> webcam.favorite = webcamFavoriteIds.indexOf(webcam.id) != -1 }
         } catch (e: Exception) {
             Log.e(TAG, "Errore durante la letture del file delle webcam")
             webcams = Webcams()

@@ -60,12 +60,6 @@ open class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPr
     @PreferenceByKey(R.string.pref_key_stazMeteoGraphPointRadius)
     internal lateinit var stazMeteoGraphPointRadiusPref: Preference
 
-    @PreferenceByKey(R.string.pref_key_widgetsUpdateInterval)
-    internal lateinit var widgetsUpdateIntervalPref: Preference
-
-    @PreferenceByKey(R.string.pref_key_widgetsWebcamUpdateInterval)
-    internal lateinit var widgetWebcamUpdateIntervalPref: Preference
-
     @AfterPreferences
     fun initPrefs() {
         updateAllPrefsSummary()
@@ -115,8 +109,6 @@ open class SettingsFragment : PreferenceFragment(), SharedPreferences.OnSharedPr
 
     private fun updateAllPrefsSummary() {
         updatePreferenceSummary(stazMeteoGraphPointRadiusPref)
-        updatePreferenceSummary(widgetsUpdateIntervalPref)
-        updatePreferenceSummary(widgetWebcamUpdateIntervalPref)
     }
 
     /**

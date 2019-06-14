@@ -60,9 +60,9 @@
             android:icon="@drawable/settings"
             android:title="@string/nav_preferences" />
         <item
-            android:id="@+id/nav_guida"
-            android:icon="@drawable/info"
-            android:title="@string/nav_guida" />
+            android:id="@+id/nav_version_info"
+            android:icon="@drawable/comment"
+            android:title="@string/nav_version_info" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/info"

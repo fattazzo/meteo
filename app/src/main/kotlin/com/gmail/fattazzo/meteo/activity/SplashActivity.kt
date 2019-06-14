@@ -29,8 +29,6 @@ package com.gmail.fattazzo.meteo.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.appwidget.AppWidgetManager
-import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
@@ -100,9 +98,9 @@ open class SplashActivity : Activity() {
         }
 
         // Update all widgets
-        sendBroadcast(Intent().apply {
-            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-        })
+        //sendBroadcast(Intent().apply {
+        //    action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        //})
     }
 
     @Background

@@ -54,9 +54,6 @@ open class WebcamFragment : BaseFragment() {
     internal lateinit var webcamRecyclerView: RecyclerView
 
     @ViewById
-    internal lateinit var favoriteWebcamButton: RadioButton
-
-    @ViewById
     internal lateinit var widgetWebcamButton: RadioButton
 
     @ViewById
@@ -93,10 +90,6 @@ open class WebcamFragment : BaseFragment() {
 
     private fun filtraWebcam(webcams: List<Webcam>): List<Webcam> {
 
-        if (favoriteWebcamButton.isChecked) {
-            return webcams.filter { it.favorite }
-        }
-
         if (widgetWebcamButton.isChecked) {
             return webcams.filter { it.showInWidget }
         }
@@ -104,7 +97,7 @@ open class WebcamFragment : BaseFragment() {
         return webcams
     }
 
-    @Click(value = [(R.id.allWebcamButton), (R.id.favoriteWebcamButton), (R.id.widgetWebcamButton)])
+    @Click(value = [(R.id.allWebcamButton), (R.id.widgetWebcamButton)])
     fun radioWebcamButton() {
         refreshUI()
     }

@@ -34,5 +34,5 @@ package com.gmail.fattazzo.meteo.utils.dialog
  */
 enum class DialogType {
 
-    BUTTONS, INDETERMINATE_PROGRESS
+    BUTTONS, INDETERMINATE_PROGRESS, CUSTOM
 }

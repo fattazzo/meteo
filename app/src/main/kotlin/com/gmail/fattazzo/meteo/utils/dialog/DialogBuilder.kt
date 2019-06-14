@@ -91,17 +91,21 @@ class DialogBuilder(val context: Context, val type: DialogType) {
     var headerIcon: Int = R.drawable.help_white
     var headerIconColor: Int = android.R.color.white
 
+    // layout
+    var customLayout: Int = 0
+
     fun build(): Dialog {
         return when (type) {
             DialogType.BUTTONS -> buildButtonDialog()
             DialogType.INDETERMINATE_PROGRESS -> buildIndeterminateDialog()
+            DialogType.CUSTOM -> buildButtonDialog(customLayout)
         }
     }
 
     private fun buildIndeterminateDialog(): Dialog = buildBaseDialog(R.layout.dialog_indeterminate)
 
-    private fun buildButtonDialog(): Dialog {
-        val dialog = buildBaseDialog(R.layout.dialog_buttons)
+    private fun buildButtonDialog(layoutId: Int = R.layout.dialog_buttons): Dialog {
+        val dialog = buildBaseDialog(layoutId)
 
         if (positiveText != 0) {
             val okButton = dialog.findViewById<Button>(R.id.button1)

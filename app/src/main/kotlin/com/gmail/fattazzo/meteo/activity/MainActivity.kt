@@ -53,8 +53,9 @@ import com.gmail.fattazzo.meteo.parser.versioni.VersioniManager
 import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
 import com.gmail.fattazzo.meteo.utils.AppRater
 import com.gmail.fattazzo.meteo.utils.FragmentUtils
-import com.gmail.fattazzo.meteo.utils.IssueReporter
 import com.gmail.fattazzo.meteo.utils.Utils
+import com.gmail.fattazzo.meteo.utils.dialog.DialogBuilder
+import com.gmail.fattazzo.meteo.utils.dialog.DialogType
 import com.google.android.material.navigation.NavigationView
 import org.androidannotations.annotations.AfterViews
 import org.androidannotations.annotations.Bean
@@ -124,7 +125,7 @@ open class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_radar -> FragmentUtils.replace(this, RadarFragment_.builder().build())
             R.id.nav_webcam -> FragmentUtils.replace(this, WebcamFragment_.builder().build())
             R.id.nav_preferences -> SettingsActivity_.intent(this).start()
-            R.id.nav_guida -> utils.openLink(Config.GIT_WIKI_LINK)
+            R.id.nav_version_info -> VersioniManager(this).showVersionInfo()
             R.id.nav_about -> openAboutActivity()
         }
 
@@ -137,7 +138,7 @@ open class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
 
         val versioniManager = VersioniManager(this)
         if (versioniManager.checkShowVersionChangelog()) {
-            versioniManager.showVersionChangelog()
+            versioniManager.showVersionInfo()
         }
     }
 
@@ -166,7 +167,11 @@ open class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
                 .withFlatStyle(true)
                 .withAction(object : Action {
                     override fun run(context: Context) {
-                        IssueReporter.openReportIssue(context, null, null, true)
+                        DialogBuilder(context,DialogType.BUTTONS).apply {
+                            headerIcon = R.drawable.info_white
+                            message = "Per segnalare un errore o richiedere nuove funzionalità puoi contattarmi usando il modo che preferisci tra quelli presenti nella sezione 'Autore' di questa pagina."
+                            positiveText = android.R.string.ok
+                        }.build().show()
                     }
                 })
                 .withTextColor(android.R.color.holo_red_dark)

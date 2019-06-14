@@ -44,7 +44,6 @@ class LoadPrevisioneLocalitaTask(
 
     override fun doInBackground(vararg p0: Void?): PrevisioneLocalita? {
         return try {
-            Thread.sleep(3000)
             meteoManager.caricaPrevisioneLocalita(preferencesManager.getLocalita(), true)
         } catch (e: Exception) {
             null

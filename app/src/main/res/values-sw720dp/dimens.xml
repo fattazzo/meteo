@@ -3,6 +3,7 @@
 
     <dimen name="margin">12dp</dimen>
 
+    <dimen name="font_size_micro">16sp</dimen>
     <dimen name="font_size_small">18sp</dimen>
     <dimen name="font_size_medium">22sp</dimen>
     <dimen name="font_size_large">32sp</dimen>

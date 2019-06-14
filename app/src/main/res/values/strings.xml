@@ -13,6 +13,7 @@
     <string name="app_title">Meteo del Trentino</string>
 
     <string name="changelog">Versioni</string>
+    <string name="changelog_activity_title">Elenco delle versioni</string>
 
     <string name="other_apps">Altre applicazioni</string>
 
@@ -65,4 +66,6 @@
     <string name="street_view">Street view</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="versioni_precedenti">Versioni precedenti</string>
 </resources>

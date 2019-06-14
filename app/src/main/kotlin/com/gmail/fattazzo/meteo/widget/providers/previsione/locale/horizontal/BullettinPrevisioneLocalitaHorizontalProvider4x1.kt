@@ -82,13 +82,20 @@ open class BullettinPrevisioneLocalitaHorizontalProvider4x1 : MeteoAppWidgetProv
             }
         }
 
+        if(previsione == null) {
+            return
+        }
+
         appWidgetIds?.forEach { appWidgetId ->
 
-            val textColor = BollettinoWidgetsSettingsManager(context!!).textColor
+            val widgetSettingsManager = BollettinoWidgetsSettingsManager(context!!)
+
+            val textColor = widgetSettingsManager.textColor
 
             val remoteViews = RemoteViews(context.packageName, R.layout.widget_prevision_horizontal_4x1)
             remoteViews.setViewVisibility(R.id.errorPrevisionHorizontalTV, if (previsione != null) View.GONE else View.VISIBLE)
             remoteViews.setTextColor(R.id.errorPrevisionHorizontalTV, textColor)
+            updateBackground(remoteViews,widgetSettingsManager.background)
             registerOpenAppIntent(context,remoteViews,R.id.errorPrevisionHorizontalTV)
 
             remoteViews.setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context, R.drawable.sync))

@@ -1,9 +1,9 @@
 /*
  * Project: meteo
- * File: LoadDatiStazioneMeteoTask.kt
+ * File: ChangeLogActivity.kt
  *
  * Created by fattazzo
- * Copyright © 2018 Gianluca Fattarsi. All rights reserved.
+ * Copyright © 2019 Gianluca Fattarsi. All rights reserved.
  *
  * MIT License
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,31 +25,23 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.widget.providers.stazioni.meteo
+package com.gmail.fattazzo.meteo.activity
 
-import android.os.AsyncTask
-import com.gmail.fattazzo.meteo.domain.xml.stazioni.meteo.datistazione.DatiStazione
-import com.gmail.fattazzo.meteo.manager.MeteoManager
-import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
+import android.os.Bundle
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
+import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.parser.versioni.VersioniManager
 
-/**
- * @author fattazzo
- *         <p/>
- *         date: 02/11/17
- */
-class LoadDatiStazioneMeteoTask(private val meteoManager: MeteoManager, private val preferencesManager: ApplicationPreferencesManager) : AsyncTask<Void, Void, DatiStazione>() {
+class ChangeLogActivity : AppCompatActivity() {
 
-    override fun doInBackground(vararg p0: Void?): DatiStazione? {
-        return try {
-            val codiceStazione = preferencesManager.getCodiceStazioneMeteoWidget()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_change_log)
 
-            if (codiceStazione.isNotBlank()) {
-                meteoManager.caricaDatiStazione(codiceStazione,true)
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            null
-        }
+        val content = VersioniManager(this).caricaVersioni()
+
+        findViewById<TextView>(R.id.changelogTV).text = HtmlCompat.fromHtml(content, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }

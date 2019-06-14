@@ -105,11 +105,13 @@ open class MeteoManager {
         }
     }
 
-    fun caricaDatiStazione(codiceStazione: String): DatiStazione {
+    fun caricaDatiStazione(codiceStazione: String, suppressException: Boolean = false): DatiStazione {
         return try {
             stazioniMeteoXmlParser.caricaDatiStazione(codiceStazione)
         } catch (e: Exception) {
-            showErrorException(e)
+            if (!suppressException) {
+                showErrorException(e)
+            }
             DatiStazione()
         }
     }

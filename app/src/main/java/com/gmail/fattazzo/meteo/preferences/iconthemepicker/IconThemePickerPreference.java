@@ -70,12 +70,12 @@ public class IconThemePickerPreference extends ListPreference {
         selectedIconPath = preferences.getString(
                 context.getResources().getString(R.string.pref_key_iconsTheme), defaultIconFile);
 
-        icon1 = (ImageView) view.findViewById(R.id.iconSelected1);
-        icon2 = (ImageView) view.findViewById(R.id.iconSelected2);
-        icon3 = (ImageView) view.findViewById(R.id.iconSelected3);
+        icon1 = view.findViewById(R.id.iconSelected1);
+        icon2 = view.findViewById(R.id.iconSelected2);
+        icon3 = view.findViewById(R.id.iconSelected3);
         updateIcon();
 
-        summary = (TextView) view.findViewById(R.id.icon_theme_pref_summary);
+        summary = view.findViewById(R.id.icon_theme_pref_summary);
         summary.setText(getEntry(selectedIconPath));
 
     }

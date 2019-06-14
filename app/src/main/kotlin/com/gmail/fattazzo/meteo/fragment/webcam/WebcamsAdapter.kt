@@ -52,34 +52,25 @@ class WebcamsAdapter(private val context: Context, private val webcams: List<Web
 
     private val webcamWidgetsSettingsManager: WebcamWidgetsSettingsManager = WebcamWidgetsSettingsManager(context)
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): WebcamsAdapter.ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_webcam, viewGroup, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(viewHolder: WebcamsAdapter.ViewHolder, i: Int) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
         val webcam = webcams[i]
 
         viewHolder.localitaTV.text = webcam.localita
         viewHolder.descrizioneTV.text = webcam.descrizione
 
-        val color = if (webcam.showInWidget) R.color.webcam_widget else android.R.color.black
+        val color = if (webcam.id in webcamWidgetsSettingsManager.webcamWidgetIds) R.color.webcam_widget else android.R.color.black
         changeTint(viewHolder.widgetImageButton, R.drawable.star, color)
         viewHolder.widgetImageButton.setOnClickListener { _ ->
             webcamWidgetsSettingsManager.updateWebcamWidgetIds(webcam.id)
-            webcam.showInWidget = !webcam.showInWidget
+            webcam.showInWidget = webcam.id in webcamWidgetsSettingsManager.webcamWidgetIds
             val colorW = if (webcam.showInWidget) R.color.webcam_widget else android.R.color.black
             changeTint(viewHolder.widgetImageButton, R.drawable.star, colorW)
-        }
-
-        val colorF = if (webcam.favorite) R.color.webcam_favorite else android.R.color.black
-        changeTint(viewHolder.favoriteImageButton, R.drawable.favorite, colorF)
-        viewHolder.favoriteImageButton.setOnClickListener { _ ->
-            webcamWidgetsSettingsManager.updateWebcamFavoriteIds(webcam.id)
-            webcam.favorite = !webcam.favorite
-            val colorFa = if (webcam.favorite) R.color.webcam_favorite else android.R.color.black
-            changeTint(viewHolder.favoriteImageButton, R.drawable.favorite, colorFa)
         }
 
         val circularProgressDrawable = CircularProgressDrawable(context)
@@ -113,15 +104,16 @@ class WebcamsAdapter(private val context: Context, private val webcams: List<Web
     }
 
     private fun changeTint(image: ImageView, drawableResId: Int, tintResId: Int) {
-        val drawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, drawableResId)!!)
-        image.setImageDrawable(drawable)
+
 
         val color = ContextCompat.getColor(context, tintResId)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            DrawableCompat.setTint(drawable, color)
-
+            image.setImageResource(drawableResId)
+            image.setColorFilter(ContextCompat.getColor(context, tintResId), PorterDuff.Mode.SRC_IN)
         } else {
+            val drawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, drawableResId)!!)
             drawable.mutate().setColorFilter(color, PorterDuff.Mode.SRC_IN)
+            image.setImageDrawable(drawable)
         }
     }
 
@@ -130,8 +122,6 @@ class WebcamsAdapter(private val context: Context, private val webcams: List<Web
         internal val descrizioneTV: TextView = view.findViewById(R.id.descrizioneTV)
         internal val thumbImageView: ImageView = view.findViewById(R.id.thumbImageView)
         internal val widgetImageButton: ImageView = view.findViewById(R.id.widgetImageButton)
-        internal val favoriteImageButton: ImageView = view.findViewById(R.id.favoriteImageButton)
         internal val rootLayout: ConstraintLayout = view.findViewById(R.id.rootLayout)
     }
-
 }

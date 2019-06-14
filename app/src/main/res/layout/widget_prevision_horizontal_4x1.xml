@@ -42,6 +42,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
+        android:elevation="24dp"
         android:scaleType="centerCrop" />
 
     <LinearLayout

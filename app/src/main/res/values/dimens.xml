@@ -5,6 +5,7 @@
 
     <dimen name="title_text_size">50sp</dimen>
 
+    <dimen name="font_size_micro">11sp</dimen>
     <dimen name="font_size_small">12sp</dimen>
     <dimen name="font_size_medium">16sp</dimen>
     <dimen name="font_size_large">20sp</dimen>

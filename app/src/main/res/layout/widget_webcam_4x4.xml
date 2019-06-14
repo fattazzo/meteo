@@ -33,16 +33,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/widget_webcam_next_button"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/play_32"
-        tools:ignore="ContentDescription" />
-
     <ImageView
         android:id="@+id/widget_sync"
         android:layout_width="25dp"
@@ -60,9 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/widget_sync"
         android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/widget_sync"
-        android:layout_toRightOf="@+id/widget_webcam_next_button"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true">
 
         <TextView
             android:id="@+id/widget_webcam_title_text"

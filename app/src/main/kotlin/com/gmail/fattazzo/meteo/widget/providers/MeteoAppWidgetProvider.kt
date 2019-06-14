@@ -43,7 +43,7 @@ import com.gmail.fattazzo.meteo.activity.SplashActivity_
  */
 abstract class MeteoAppWidgetProvider: AppWidgetProvider() {
 
-    protected fun registerRefreshIntent(context: Context, remoteViews: RemoteViews, appWidgetId: Int) {
+    protected fun registerRefreshIntent(context: Context, remoteViews: RemoteViews, appWidgetId: Int, refreshViewId: Int = R.id.widget_sync) {
 
         val intent = Intent(context, this::class.java)
 
@@ -51,13 +51,17 @@ abstract class MeteoAppWidgetProvider: AppWidgetProvider() {
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
 
         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        remoteViews.setOnClickPendingIntent(R.id.widget_sync, pendingIntent)
+        remoteViews.setOnClickPendingIntent(refreshViewId, pendingIntent)
     }
 
     protected fun registerOpenAppIntent(context: Context, remoteViews: RemoteViews, viewId: Int) {
         val intent = Intent(context, SplashActivity_::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
         remoteViews.setOnClickPendingIntent(viewId, pendingIntent)
+    }
+
+    protected fun updateBackground(remoteViews: RemoteViews, backgroundColor: Int, backgroundResId : Int = R.id.widget_background_layout) {
+        remoteViews.setInt(backgroundResId, "setBackgroundResource", backgroundColor)
     }
 
     companion object {

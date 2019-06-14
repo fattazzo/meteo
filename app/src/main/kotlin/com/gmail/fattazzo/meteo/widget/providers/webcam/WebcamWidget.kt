@@ -1,9 +1,9 @@
 /*
  * Project: meteo
- * File: LoadDatiStazioneMeteoTask.kt
+ * File: WebcamWidget.kt
  *
  * Created by fattazzo
- * Copyright © 2018 Gianluca Fattarsi. All rights reserved.
+ * Copyright © 2019 Gianluca Fattarsi. All rights reserved.
  *
  * MIT License
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,31 +25,28 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.widget.providers.stazioni.meteo
+package com.gmail.fattazzo.meteo.widget.providers.webcam
 
-import android.os.AsyncTask
-import com.gmail.fattazzo.meteo.domain.xml.stazioni.meteo.datistazione.DatiStazione
-import com.gmail.fattazzo.meteo.manager.MeteoManager
-import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager
+import com.gmail.fattazzo.meteo.domain.xml.webcam.Webcam
 
 /**
+ *
  * @author fattazzo
- *         <p/>
- *         date: 02/11/17
+ *
+ * date: 24/lug/2015
  */
-class LoadDatiStazioneMeteoTask(private val meteoManager: MeteoManager, private val preferencesManager: ApplicationPreferencesManager) : AsyncTask<Void, Void, DatiStazione>() {
+class WebcamWidget(webcam: Webcam) {
 
-    override fun doInBackground(vararg p0: Void?): DatiStazione? {
-        return try {
-            val codiceStazione = preferencesManager.getCodiceStazioneMeteoWidget()
+    val id: Int
 
-            if (codiceStazione.isNotBlank()) {
-                meteoManager.caricaDatiStazione(codiceStazione,true)
-            } else {
-                null
-            }
-        } catch (e: Exception) {
-            null
-        }
+    val descrizione: String?
+
+    var idLink: Int = 0
+
+    var link: String? = null
+
+    init {
+        this.id = webcam.id
+        this.descrizione = webcam.localita + if (webcam.descrizione != null) " - ${webcam.descrizione}" else ""
     }
 }

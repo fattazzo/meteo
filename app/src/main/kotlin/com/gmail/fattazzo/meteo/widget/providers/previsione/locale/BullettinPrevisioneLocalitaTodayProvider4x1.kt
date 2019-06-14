@@ -40,8 +40,12 @@ import android.util.Log
 import android.widget.RemoteViews
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.SplashActivity_
+import com.gmail.fattazzo.meteo.manager.MeteoManager_
+import com.gmail.fattazzo.meteo.preferences.ApplicationPreferencesManager_
+import com.gmail.fattazzo.meteo.preferences.widget.bollettino.BollettinoWidgetsSettingsManager
 import com.gmail.fattazzo.meteo.utils.VectorUtils
 import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider
+import com.gmail.fattazzo.meteo.widget.providers.previsione.LoadPrevisioneLocalitaTask
 
 
 /**
@@ -55,15 +59,21 @@ class BullettinPrevisioneLocalitaTodayProvider4x1 : MeteoAppWidgetProvider() {
     override fun onReceive(context: Context, intent: Intent) {
         Log.d("Widget", "onReceive: BullettinPrevisioneLocalitaTodayProvider4x1 - ${intent.action}")
 
-            val appWidgetManager = AppWidgetManager.getInstance(context)
-            val thisAppWidget = ComponentName(context.packageName, BullettinPrevisioneLocalitaTodayProvider4x1::class.java.name)
-            val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
+        val appWidgetManager = AppWidgetManager.getInstance(context)
+        val thisAppWidget = ComponentName(context.packageName, BullettinPrevisioneLocalitaTodayProvider4x1::class.java.name)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget)
 
-            onUpdate(context, appWidgetManager, appWidgetIds)
+        onUpdate(context, appWidgetManager, appWidgetIds)
     }
 
     override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
         Log.d("Widget", "onUpdate: BullettinPrevisioneLocalitaTodayProvider4x1")
+
+        try {
+            LoadPrevisioneLocalitaTask(MeteoManager_.getInstance_(context), ApplicationPreferencesManager_.getInstance_(context)!!).execute().get()
+        } catch (e: Exception) {
+            null
+        } ?: return
 
         appWidgetIds?.forEach { appWidgetId ->
             val intent = Intent(context, PrevisioneLocaleGridWidgetService::class.java).apply {
@@ -77,6 +87,8 @@ class BullettinPrevisioneLocalitaTodayProvider4x1 : MeteoAppWidgetProvider() {
                 setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context!!, R.drawable.sync))
                 registerRefreshIntent(context, this, appWidgetId)
                 registerOpenAppIntent(context, this, R.id.errorTV)
+                val widgetSettingsManager = BollettinoWidgetsSettingsManager(context!!)
+                updateBackground(this, widgetSettingsManager.background)
 
                 val templateIntent = Intent(context, SplashActivity_::class.java)
                 templateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)

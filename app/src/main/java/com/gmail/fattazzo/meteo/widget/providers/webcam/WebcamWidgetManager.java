@@ -31,15 +31,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.gmail.fattazzo.meteo.domain.xml.webcam.Webcam;
 import com.gmail.fattazzo.meteo.domain.xml.webcam.Webcams;
 import com.gmail.fattazzo.meteo.preferences.widget.webcam.WebcamWidgetsSettingsManager;
 import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * @author fattazzo
