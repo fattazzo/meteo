@@ -87,7 +87,7 @@ class BullettinPrevisioneLocalitaTodayProvider4x1 : MeteoAppWidgetProvider() {
                 setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context!!, R.drawable.sync))
                 registerRefreshIntent(context, this, appWidgetId)
                 registerOpenAppIntent(context, this, R.id.errorTV)
-                val widgetSettingsManager = BollettinoWidgetsSettingsManager(context!!)
+                val widgetSettingsManager = BollettinoWidgetsSettingsManager(context)
                 updateBackground(this, widgetSettingsManager.background)
 
                 val templateIntent = Intent(context, SplashActivity_::class.java)

@@ -8,11 +8,11 @@
                 <item
                     android:id="@+id/nav_home"
                     android:icon="@drawable/home"
-                    android:title="Locale" />
+                    android:title="@string/nav_home" />
                 <item
                     android:id="@+id/nav_boll_prob"
                     android:icon="@drawable/format_list"
-                    android:title="Probabilistico" />
+                    android:title="@string/nav_boll_prob" />
                 <item
                     android:id="@+id/nav_news_e_allerte"
                     android:icon="@drawable/comment"

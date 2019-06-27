@@ -70,8 +70,7 @@ class Webcam : Serializable {
         if (javaClass != other.javaClass) {
             return false
         }
-        val other = other as Webcam?
-        return id == other!!.id
+        return id == (other as Webcam).id
     }
 
     override fun hashCode(): Int {

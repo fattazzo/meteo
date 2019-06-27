@@ -31,6 +31,8 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.github.vipulasri.timelineview.TimelineView
@@ -71,24 +73,24 @@ class NewsAdapter(private val context: Context, private val mFeedList: List<News
                 context.startActivity(i)
             }
         }
-        val newsDrawableResId = when(NewsAvvisiType.values()[timeLineModel.type!!]) {
+        val newsDrawableResId = when (NewsAvvisiType.values()[timeLineModel.type!!]) {
             NewsAvvisiType.NEWS -> R.drawable.news_news
             NewsAvvisiType.AVVISI_ALLERTE -> R.drawable.news_allerta
             NewsAvvisiType.INFO_TRAFFICO -> R.drawable.news_infotraffico
         }
 
-        holder.timeline.marker = ContextCompat.getDrawable(context,newsDrawableResId)
+        holder.timeline.marker = ContextCompat.getDrawable(context, newsDrawableResId)
     }
 
     override fun getItemCount() = mFeedList.size
 
     inner class TimeLineViewHolder(itemView: View, viewType: Int) : RecyclerView.ViewHolder(itemView) {
 
-        val date = itemView.dateTV
-        val category = itemView.categoryTV
-        val message = itemView.titleTV
-        val timeline = itemView.timeline
-        val newsContainerLayout = itemView.newsContainerLayout
+        val date: TextView = itemView.dateTV
+        val category: TextView = itemView.categoryTV
+        val message: TextView = itemView.titleTV
+        val timeline: TimelineView = itemView.timeline
+        val newsContainerLayout: LinearLayout = itemView.newsContainerLayout
 
         init {
             timeline.initLine(viewType)

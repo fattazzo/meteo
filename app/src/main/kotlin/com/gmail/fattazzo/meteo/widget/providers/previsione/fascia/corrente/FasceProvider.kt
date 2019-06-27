@@ -81,7 +81,7 @@ class FasceProvider : MeteoAppWidgetProvider() {
                 setRemoteAdapter(R.id.fasceListView, intent)
                 setEmptyView(R.id.fasceListView, R.id.errorTV)
                 setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context!!, R.drawable.sync))
-                val widgetSettingsManager = BollettinoWidgetsSettingsManager(context!!)
+                val widgetSettingsManager = BollettinoWidgetsSettingsManager(context)
                 updateBackground(this,widgetSettingsManager.background)
                 registerRefreshIntent(context, this, appWidgetId)
                 registerOpenAppIntent(context, this, R.id.errorTV)

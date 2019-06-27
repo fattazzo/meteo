@@ -58,10 +58,6 @@ open class NewsFragment : BaseFragment() {
     @InstanceState
     var avvisiType: Boolean = true
 
-    @JvmField
-    @InstanceState
-    var infotrafficoType: Boolean = false
-
     @ViewById
     protected lateinit var newsRV: RecyclerView
 
@@ -69,15 +65,12 @@ open class NewsFragment : BaseFragment() {
     protected lateinit var newsSwitch: Switch
     @ViewById
     protected lateinit var avvisiSwitch: Switch
-    @ViewById
-    protected lateinit var infotrafficoSwitch: Switch
 
     @AfterViews
     protected fun afterView() {
 
         newsSwitch.isChecked = newsType
         avvisiSwitch.isChecked = avvisiType
-        infotrafficoSwitch.isChecked = infotrafficoType
 
         if (!newsLoaded) {
             NewsLoader(context!!, false) {
@@ -95,7 +88,6 @@ open class NewsFragment : BaseFragment() {
 
         if(newsSwitch.isChecked) types.add(NewsAvvisiType.NEWS)
         if(avvisiSwitch.isChecked) types.add(NewsAvvisiType.AVVISI_ALLERTE)
-        if(infotrafficoSwitch.isChecked) types.add(NewsAvvisiType.INFO_TRAFFICO)
 
         refreshViewData(News.loadAll(types))
     }
@@ -106,11 +98,10 @@ open class NewsFragment : BaseFragment() {
         newsRV.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }
 
-    @Click(value = [R.id.newsSwitch, R.id.avvisiSwitch, R.id.infotrafficoSwitch])
+    @Click(value = [R.id.newsSwitch, R.id.avvisiSwitch])
     fun switchClicked() {
         newsType = newsSwitch.isChecked
         avvisiType = avvisiSwitch.isChecked
-        infotrafficoType = infotrafficoSwitch.isChecked
 
         loadData()
     }

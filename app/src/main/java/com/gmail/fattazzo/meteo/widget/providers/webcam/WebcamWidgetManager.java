@@ -37,7 +37,7 @@ import androidx.annotation.Nullable;
 import com.gmail.fattazzo.meteo.domain.xml.webcam.Webcam;
 import com.gmail.fattazzo.meteo.domain.xml.webcam.Webcams;
 import com.gmail.fattazzo.meteo.preferences.widget.webcam.WebcamWidgetsSettingsManager;
-import com.gmail.fattazzo.meteo.widget.providers.MeteoWidgetProvider;
+import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider;
 
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class WebcamWidgetManager {
      * @return webcam visualizzata
      */
     public static WebcamWidget getCurrentWebcam(Context context, List<Webcam> webcams) {
-        SharedPreferences prefs = context.getSharedPreferences(MeteoWidgetProvider.WIDGETS_PREF, 0);
+        SharedPreferences prefs = context.getSharedPreferences(MeteoAppWidgetProvider.WIDGETS_PREF, 0);
         int idWebcam = prefs.getInt(WebcamWidgetProvider.WEBCAM_CURRENT_ID, 0);
 
         WebcamWidget webcamWidget = null;
@@ -198,7 +198,7 @@ public class WebcamWidgetManager {
      * @param context      context
      */
     private static void saveWebcam(WebcamWidget webcamWidget, Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(MeteoWidgetProvider.WIDGETS_PREF, 0);
+        SharedPreferences prefs = context.getSharedPreferences(MeteoAppWidgetProvider.WIDGETS_PREF, 0);
         Editor edit = prefs.edit();
         edit.putInt(WebcamWidgetProvider.WEBCAM_CURRENT_ID, webcamWidget.getId());
         edit.putInt(WebcamWidgetProvider.WEBCAM_CURRENT_LINK_INDEX, webcamWidget.getIdLink());

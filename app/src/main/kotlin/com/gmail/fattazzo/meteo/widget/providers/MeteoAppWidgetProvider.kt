@@ -67,5 +67,7 @@ abstract class MeteoAppWidgetProvider: AppWidgetProvider() {
     companion object {
 
         const val UPDATE = "com.gmail.fattazzo.meteo.widget.UPDATE"
+
+        const val WIDGETS_PREF = "WIDGETS_PREF"
     }
 }

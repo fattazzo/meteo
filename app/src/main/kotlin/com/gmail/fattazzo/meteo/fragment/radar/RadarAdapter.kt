@@ -25,15 +25,12 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.fragment.home.dettaglio
+package com.gmail.fattazzo.meteo.fragment.radar
 
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gmail.fattazzo.meteo.fragment.radar.RadarModel
-import com.gmail.fattazzo.meteo.fragment.radar.RadarView
-import com.gmail.fattazzo.meteo.fragment.radar.RadarView_
 
 
 /**

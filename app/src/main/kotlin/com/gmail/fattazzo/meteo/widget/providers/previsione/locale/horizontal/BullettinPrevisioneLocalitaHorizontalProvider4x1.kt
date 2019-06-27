@@ -100,7 +100,7 @@ open class BullettinPrevisioneLocalitaHorizontalProvider4x1 : MeteoAppWidgetProv
 
             remoteViews.setImageViewBitmap(R.id.widget_sync, VectorUtils.vectorToBitmap(context, R.drawable.sync))
 
-            val giorni = previsione?.previsioni?.firstOrNull()?.giorni.orEmpty()
+            val giorni = previsione.previsioni?.firstOrNull()?.giorni.orEmpty()
 
             remoteViews.setViewVisibility(R.id.prev1, View.GONE)
             remoteViews.setViewVisibility(R.id.prev2, View.GONE)

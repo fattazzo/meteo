@@ -69,12 +69,6 @@ class BollettinoWidgetsSettingsManager
         get() = preferencesManager.getPrefs().getInt(Config.WIDGETS_TEXT_COLOR, -0x1)
 
     /**
-     * @return widget update interval
-     */
-    override val updateInterval: Int
-        get() = Integer.parseInt(preferencesManager.getPrefs().getString(Config.WIDGETS_UPDATE_INTERVAL, "21600000"))
-
-    /**
      * @return widget text color
      */
     val zone: String

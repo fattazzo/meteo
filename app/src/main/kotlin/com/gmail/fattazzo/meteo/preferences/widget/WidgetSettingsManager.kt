@@ -44,9 +44,4 @@ interface WidgetSettingsManager {
      * @return widget text color
      */
     val textColor: Int
-
-    /**
-     * @return widget update interval
-     */
-    val updateInterval: Int
 }

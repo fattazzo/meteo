@@ -1,7 +1,7 @@
-versione 5.4.2
+versione 5.5
 <b>►</b> Nuovi set icone
 <b>►</b> Widget rinnovati
-<b>►</b> Nuova sezione "Comunicati stampa, atterte meteo e infotraffico"
+<b>►</b> Nuova sezione "Comunicati stampa e atterte meteo"
 
 versione 5.4
 <b>►</b> Nuova interfaccia per "webcam", "stazioni meteo"

@@ -1,6 +1,6 @@
 /*
  * Project: meteo
- * File: MeteoApplication.kt
+ * File: AppMenu.kt
  *
  * Created by fattazzo
  * Copyright © 2019 Gianluca Fattarsi. All rights reserved.
@@ -27,30 +27,20 @@
 
 package com.gmail.fattazzo.meteo
 
-import android.content.Context
-import androidx.multidex.MultiDex
-import com.activeandroid.ActiveAndroid
-import com.activeandroid.Cache
-import com.activeandroid.app.Application
-import com.activeandroid.util.SQLiteUtils
-
 /**
  * @author fattazzo
  *         <p/>
- *         date: 04/11/17
+ *         date: 24/06/19
  */
-class MeteoApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-        for (tableInfo in Cache.getTableInfos()) {
-            ActiveAndroid.execSQL(SQLiteUtils.createTableDefinition(tableInfo))
-        }
-    }
-
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
-    }
+enum class AppMenuConfig(val resTextId: Int, val resId: Int) {
+    HOME(R.string.nav_home,R.id.nav_home),
+    BOLL_PROB(R.string.nav_boll_prob,R.id.nav_boll_prob),
+    NEWS(R.string.nav_news_e_allerte,R.id.nav_news_e_allerte),
+    STAZIONI(R.string.nav_stazioni_meteo,R.id.nav_stazioni_meteo),
+    NEVE_VALANGHE(R.string.nav_stazioni_neve,R.id.nav_stazioni_neve),
+    RADAR(R.string.nav_radar,R.id.nav_radar),
+    WEBCAM(R.string.nav_webcam,R.id.nav_webcam),
+    IMPOSTAZIONI(R.string.nav_preferences,R.id.nav_preferences),
+    VERSION_INFO(R.string.nav_version_info,R.id.nav_version_info),
+    ABOUT(R.string.nav_about,R.id.nav_about)
 }

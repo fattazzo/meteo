@@ -132,7 +132,7 @@ open class MeteoManager {
             stazioniValangheXmlParser.caricaDatiStazioneNeve()
         } catch (e: Exception) {
             showErrorException(e)
-            mutableListOf<DatoStazione>()
+            mutableListOf()
         }
     }
 

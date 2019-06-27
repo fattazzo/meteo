@@ -77,12 +77,6 @@
                     android:checked="true"
                     android:text="Avvisi e allerte" />
 
-                <Switch
-                    android:id="@+id/infotrafficoSwitch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Infotraffico" />
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>

@@ -176,6 +176,11 @@ class VersioniManager(private val context: Context) {
                 }
                 .build()
                 .show()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val editor = prefs.edit()
+        editor.putString(Config.KEY_LAST_RUN_VERSION_NAME, lastAppVersion)
+        editor.apply()
     }
 
     /**

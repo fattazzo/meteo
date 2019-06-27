@@ -180,7 +180,7 @@
                     style="?android:attr/textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tutti i widgets già utilizzati dovranno essere rimossi e riaggiunti per poter funzionare."
+                    android:text="Tutti i widgets già utilizzati dovranno essere rimossi e riaggiunti per poter funzionare nuovamente."
                     android:textStyle="bold" />
 
                 <View
@@ -197,7 +197,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="Avvisi, comunicati e infotraffico"
+                    android:text="Avvisi e comunicati stampa"
                     android:textAllCaps="true"
                     android:textStyle="bold|italic" />
 
@@ -206,7 +206,7 @@
                     style="?android:attr/textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nella nuova sezione 'News' potrai trovare tutte le informazioni di avvisi meteo, infotraffico e comunicati stampa diramati dalla protezione civile." />
+                    android:text="Nella nuova sezione 'News' potrai trovare tutte le informazioni di avvisi meteo e comunicati stampa diramati dalla protezione civile." />
 
             </LinearLayout>
         </ScrollView>

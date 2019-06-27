@@ -147,7 +147,7 @@ open class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
 
         val fragments = fragmentManager.fragments
 
-        for (fragment in fragments.orEmpty()) {
+        for (fragment in fragments) {
             if (fragment != null) {
                 var done = false
                 if (fragment is BaseFragment) {
@@ -167,7 +167,7 @@ open class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
                 .withFlatStyle(true)
                 .withAction(object : Action {
                     override fun run(context: Context) {
-                        DialogBuilder(context,DialogType.BUTTONS).apply {
+                        DialogBuilder(context, DialogType.BUTTONS).apply {
                             headerIcon = R.drawable.info_white
                             message = "Per segnalare un errore o richiedere nuove funzionalità puoi contattarmi usando il modo che preferisci tra quelli presenti nella sezione 'Autore' di questa pagina."
                             positiveText = android.R.string.ok

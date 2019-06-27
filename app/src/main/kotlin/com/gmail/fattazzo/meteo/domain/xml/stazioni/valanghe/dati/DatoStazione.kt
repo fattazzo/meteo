@@ -102,7 +102,7 @@ class DatoStazione {
     companion object {
 
         const val XML_BEAN_NAME = "rilievo_neve"
-        val XMLPROP: List<String> = ArrayList(Arrays.asList(*arrayOf("dataMis", "codStaz", "ww", "n", "v", "vq1", "vq2", "ta", "tmin", "tmax", "hs", "hn", "fi", "t10", "t30", "pr", "cs", "s", "b")))
+        val XMLPROP: List<String> = ArrayList(Arrays.asList("dataMis", "codStaz", "ww", "n", "v", "vq1", "vq2", "ta", "tmin", "tmax", "hs", "hn", "fi", "t10", "t30", "pr", "cs", "s", "b"))
 
         val DATA_FORMAT: DateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.getDefault())
     }

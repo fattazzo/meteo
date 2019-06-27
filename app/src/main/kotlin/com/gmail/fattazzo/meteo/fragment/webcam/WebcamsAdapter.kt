@@ -66,7 +66,7 @@ class WebcamsAdapter(private val context: Context, private val webcams: List<Web
 
         val color = if (webcam.id in webcamWidgetsSettingsManager.webcamWidgetIds) R.color.webcam_widget else android.R.color.black
         changeTint(viewHolder.widgetImageButton, R.drawable.star, color)
-        viewHolder.widgetImageButton.setOnClickListener { _ ->
+        viewHolder.widgetImageButton.setOnClickListener {
             webcamWidgetsSettingsManager.updateWebcamWidgetIds(webcam.id)
             webcam.showInWidget = webcam.id in webcamWidgetsSettingsManager.webcamWidgetIds
             val colorW = if (webcam.showInWidget) R.color.webcam_widget else android.R.color.black

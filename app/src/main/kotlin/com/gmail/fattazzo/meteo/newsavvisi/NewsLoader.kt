@@ -31,7 +31,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.AsyncTask
 import android.util.Log
-import androidx.appcompat.widget.DialogTitle
+import android.widget.TextView
 import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.db.News
@@ -66,12 +66,14 @@ class NewsLoader(context: Context,
 
         try {
             loadNews()
-            loadAvvisi()
-            loadInfotraffico()
-
         } catch (e: Exception) {
-            Log.d("aaa", e.printStackTrace().toString())
-            return -1
+            Log.d(TAG, "Errore durante il caricamento delle news")
+        }
+
+        try {
+            loadAvvisi()
+        } catch (e: Exception) {
+            Log.d(TAG, "Errore durante il caricamento degli avvisi")
         }
 
         return 0
@@ -89,7 +91,9 @@ class NewsLoader(context: Context,
 
         val newsNuove = mutableListOf<News>()
 
-        val doc = Jsoup.connect(Config.NEWS_URL).get()
+        val response = Jsoup.connect(Config.NEWS_URL).execute()
+
+        val doc = Jsoup.parse(response.body())
 
         val elements = doc.getElementsByClass("elenco_img")
 
@@ -192,8 +196,13 @@ class NewsLoader(context: Context,
     override fun onProgressUpdate(vararg values: String?) {
         super.onProgressUpdate(*values)
 
-        if(values.isNotEmpty()) {
-            dialog.findViewById<DialogTitle>(R.id.alertTitle).text = values[0]
+        if (values.isNotEmpty()) {
+            dialog.findViewById<TextView>(R.id.alertTitle).text = values[0]
         }
+    }
+
+    companion object {
+
+        private val TAG = NewsLoader::class.java.simpleName
     }
 }

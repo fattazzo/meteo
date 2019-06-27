@@ -28,15 +28,11 @@
 package com.gmail.fattazzo.meteo.utils.glide
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.gmail.fattazzo.meteo.R
 import java.util.*
 
 

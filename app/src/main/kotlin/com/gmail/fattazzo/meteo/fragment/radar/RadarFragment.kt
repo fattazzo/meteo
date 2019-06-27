@@ -36,7 +36,6 @@ import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.fragment.BaseFragment
 import com.gmail.fattazzo.meteo.fragment.home.HomeFragment_
-import com.gmail.fattazzo.meteo.fragment.home.dettaglio.RadarAdapter
 import com.gmail.fattazzo.meteo.utils.FragmentUtils
 import com.gmail.fattazzo.meteo.utils.ItemOffsetDecoration
 import com.gmail.fattazzo.meteo.utils.glide.GlideHelper

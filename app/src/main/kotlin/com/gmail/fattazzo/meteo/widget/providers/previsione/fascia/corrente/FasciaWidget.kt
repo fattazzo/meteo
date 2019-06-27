@@ -35,5 +35,4 @@ import java.util.*
  *         <p/>
  *         date: 02/11/17
  */
-class FasciaWidget(var localita: String, var data: Date?, var fascia: Fascia, var temperaturaMin: Int?, var temperaturaMax: Int?) {
-}
+class FasciaWidget(var localita: String, var data: Date?, var fascia: Fascia, var temperaturaMin: Int?, var temperaturaMax: Int?)

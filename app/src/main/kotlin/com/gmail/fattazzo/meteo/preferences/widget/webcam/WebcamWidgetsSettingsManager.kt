@@ -64,12 +64,6 @@ class WebcamWidgetsSettingsManager(private val context: Context) : WidgetSetting
         get() = preferencesManager.getPrefs().getInt(Config.WIDGETS_TEXT_COLOR, -0x1)
 
     /**
-     * @return widget update interval
-     */
-    override val updateInterval: Int
-        get() = Integer.parseInt(preferencesManager.getPrefs().getString(Config.WIDGETS_WEBCAM_UPDATE_INTERVAL, "1800000"))
-
-    /**
      * @return id delle webcam da visualizzare nel widget
      */
     val webcamWidgetIds: MutableList<Int>

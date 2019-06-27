@@ -106,7 +106,7 @@ class ColorPickerPreference : Preference, Preference.OnPreferenceClickListener, 
          * @param superState
          * state
          */
-        constructor(superState: Parcelable) : super(superState) {}
+        constructor(superState: Parcelable) : super(superState)
 
         override fun writeToParcel(dest: Parcel, flags: Int) {
             super.writeToParcel(dest, flags)
@@ -115,6 +115,7 @@ class ColorPickerPreference : Preference, Preference.OnPreferenceClickListener, 
 
         companion object {
 
+            @JvmField
             val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
                 override fun createFromParcel(`in`: Parcel): SavedState = SavedState(`in`)
 
