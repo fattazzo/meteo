@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Project: meteo
+  ~ File: shortcuts.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="previsione_locale"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher"
+        android:shortcutShortLabel="@string/title_activity_main"
+        android:shortcutLongLabel="@string/title_activity_main">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.gmail.fattazzo.meteo"
+            android:targetClass="com.gmail.fattazzo.meteo.activity.main.MainActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="bollettino_probabilistico"
+        android:enabled="true"
+        android:icon="@drawable/format_list"
+        android:shortcutShortLabel="@string/title_activity_bollettino_probabilistico"
+        android:shortcutLongLabel="@string/title_activity_bollettino_probabilistico">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.gmail.fattazzo.meteo"
+            android:targetClass="com.gmail.fattazzo.meteo.activity.bollettino.probabilistico.BollettinoProbabilisticoActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="webcams"
+        android:enabled="true"
+        android:icon="@drawable/videocam"
+        android:shortcutShortLabel="@string/title_activity_webcams_viewer"
+        android:shortcutLongLabel="@string/title_activity_webcams_viewer">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.gmail.fattazzo.meteo"
+            android:targetClass="com.gmail.fattazzo.meteo.activity.webcam.WebcamActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>

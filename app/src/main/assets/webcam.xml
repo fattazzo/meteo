@@ -1,0 +1,101 @@
+<!--
+  ~ Project: meteo
+  ~ File: webcam.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<webcamList>
+    <webcam id="100" localita="Rovereto" zona="Maso Carpenè - Isera">
+        <link>http://www.meteotrentinoaltoadige.it/webcam/maso_carpene/webcam.jpg</link>
+    </webcam>
+    <webcam id="101" localita="Trento" zona="Vela - SS 12 Sud">
+        <link>http://ftp.vit.argentea.it/vit/images/cam34.jpg</link>
+    </webcam>
+    <webcam id="102" localita="Trento" zona="Laste">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/trento_laste/trentoLaste1_04.jpg</link>
+        <ratio>16:9</ratio>
+    </webcam>
+    <webcam id="103" localita="Malles" zona="Camping Mals">
+        <link>https://www.campingmals.it/webcam/webcam.jpg</link>
+    </webcam>
+    <webcam id="104" localita="Trento" zona="SS 12 Piedicastello Sud">
+        <link>http://ftp.vit.argentea.it/vit/images/cam35.jpg</link>
+    </webcam>
+    <webcam id="105" localita="Martignano" zona="Vista Trento">
+        <link>http://www.martignanometeo.it/webcam/cam.jpg</link>
+    </webcam>
+    <webcam id="106" localita="Coredo" zona="Pineta Hotel">
+        <link>https://webcam.pinetahotels.it/webcam/Image.aspx?tipo=2</link>
+    </webcam>
+    <webcam id="107" localita="Cis" zona="SS 43 Mostizzolo">
+        <link>http://ftp.vit.argentea.it/vit/images/cam32.jpg</link>
+    </webcam>
+    <webcam id="108" localita="Bolzano" zona="Piazza Walther">
+        <link>http://webcam.bolzano-bozen.it/webcam-bolzano.jpg</link>
+    </webcam>
+    <webcam id="109" localita="Borgo Valsugana" zona="SS 47">
+        <link>http://ftp.vit.argentea.it/vit/images/cam37.jpg</link>
+    </webcam>
+    <webcam id="110" localita="Panarotta" zona="Pat sismica">
+        <link>http://www.protezionecivile.tn.it/statico/webcam/panarotta/Panarotta.jpg</link>
+    </webcam>
+    <webcam id="111" localita="Daone" zona="Malga bissina">
+        <link>http://www.protezionecivile.tn.it/statico/webcam/malgabissina/malgabissina.jpg</link>
+    </webcam>
+    <webcam id="112" localita="Roncone" zona="Malga Avalina">
+        <link>http://www.protezionecivile.tn.it/statico/webcam/roncone/Roncone.jpg</link>
+    </webcam>
+    <webcam id="113" localita="Predazzo">
+        <link>http://www.meteopredazzo.it/predazzo.jpg</link>
+    </webcam>
+    <webcam id="114" localita="Torbole">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/torbole/torbole56.jpg</link>
+    </webcam>
+    <webcam id="115" localita="Cavalese">
+        <link>http://www.meteocavalese.it/cavalese.jpg</link>
+    </webcam>
+    <webcam id="116" localita="Transacqua">
+        <link>http://www.arifeltre.it/Cam7/webcam.jpg</link>
+    </webcam>
+    <webcam id="117" localita="Canal San Bovo">
+        <link>http://www.arifeltre.it/Cam5/webcam.jpg</link>
+    </webcam>
+    <webcam id="118" localita="Riva del Garda" zona="Varone">
+        <link>http://www.garda-meteo.com/matteo/webcam/varone/cam.jpg</link>
+    </webcam>
+    <webcam id="119" localita="Macaion" zona="Est">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/macaion/webcam1/macaion57.jpg</link>
+        <ratio>16:9</ratio>
+    </webcam>
+    <webcam id="120" localita="Col Rodella" zona="Sud">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/colrodella/colRodella2_39.jpg</link>
+        <ratio>16:9</ratio>
+    </webcam>
+    <webcam id="121" localita="Passo Costalunga" zona="Vista ENE">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/T094_last.jpg</link>
+    </webcam>
+    <webcam id="122" localita="Pejo">
+        <link>http://content.meteotrentino.it/dati-meteo/webcam/pejo/pejo_08_.jpg</link>
+    </webcam>
+</webcamList>

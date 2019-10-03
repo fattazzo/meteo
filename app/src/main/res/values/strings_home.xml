@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="audio">Audio</string>
+
+    <string name="forecast_of">Previsione del</string>
+
+    <string name="temperature">Temperature</string>
+
+    <string name="map_of_tentino">Mappa del trentino</string>
+
+    <!-- Previsione info -->
+    <string name="forecast_loading_dialog">Caricamento previsione in corso&#8230;</string>
+
+    <string name="precipitations">Precipitazioni</string>
+
+    <string name="winds">Venti</string>
+    <!-- Previsione info -->
+
+</resources>

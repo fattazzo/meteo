@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="stazioni_sezioni">
+        <item>Rilevazioni</item>
+        <item>Anagrafica</item>
+    </string-array>
+
+    <string-array name="valanghe_sezioni">
+        <item>Rilevazioni</item>
+        <item>Anagrafica</item>
+    </string-array>
+
+    <string-array name="tipo_dato_stazione">
+        <item>Temperatura</item>
+        <item>Precipitazioni</item>
+        <item>Vento</item>
+        <item>Radiazioni</item>
+        <item>Umidità</item>
+        <item>Neve</item>
+    </string-array>
+
+    <string-array name="widget_interval_entries">
+        <item>10 minuti</item>
+        <item>15 minuti</item>
+        <item>30 minuti</item>
+        <item>1 ora</item>
+        <item>3 ore</item>
+        <item>6 ore</item>
+        <item>12 ore</item>
+    </string-array>
+
+    <string-array name="widget_interval_entries_values">
+        <item>1200000</item>
+        <item>1800000</item>
+        <item>1800000</item>
+        <item>3600000</item>
+        <item>10800000</item>
+        <item>21600000</item>
+        <item>43200000</item>
+    </string-array>
+
+    <string-array name="widget_style_name">
+        <item>Trasparente</item>
+        <item>Trasparente con bordo bianco</item>
+        <item>40% trasparente nero</item>
+    </string-array>
+
+    <string-array name="widget_style_id">
+        <item>widget_shape_transparent</item>
+        <item>widget_shape_transparent_white_border</item>
+        <item>widget_shape_transparent_40_black</item>
+    </string-array>
+
+    <string-array name="snow_data_ww">
+        <item>00|Nessuno dei fenomeni sulla stazione al momento dell\'osservazione</item>
+        <item>14|Precipitazioni all\'orizzonte (pioggia,neve,grandine,temporali) ma non sulla stazione</item>
+        <item>36|Scaccianeve (tormenta) sulla stazione</item>
+        <item>44|Nebbia con cielo visibile</item>
+        <item>45|Nebbia con cielo non visibile</item>
+        <item>60|Pioggia debole intermittente</item>
+        <item>61|Pioggia debole continua (senza interruzione dopo l\'inizio</item>
+        <item>63|Pioggia moderata</item>
+        <item>65|Pioggia forte</item>
+        <item>67|Pioggia che gela</item>
+        <item>69|Pioggia mista a neve</item>
+        <item>81|Rovescio di pioggia</item>
+        <item>70|Nevicata debole intermittente</item>
+        <item>71|Nevicata debole continua (senza interruzione dopo l\'inizio</item>
+        <item>73|Nevicata moderata</item>
+        <item>75|Nevicata forte</item>
+        <item>84|Rovescio di neve mista a pioggia</item>
+        <item>88|Rovescio di grandine o neve pallottolare</item>
+        <item>95|Temporale con pioggia o neve</item>
+        <item>96|Temporale con grandine o neve pallottolare</item>
+    </string-array>
+
+    <string-array name="snow_data_n">
+        <item>0|Sereno</item>
+        <item>1|Quasi sereno</item>
+        <item>2|Quasi sereno</item>
+        <item>3|Poco nuvoloso</item>
+        <item>4|Nuvoloso</item>
+        <item>5|Nuvoloso</item>
+        <item>6|Molto nuvoloso</item>
+        <item>7|Quasi coperto</item>
+        <item>8|Completamente coperto</item>
+        <item>/|Nuvolosità non rilevabile</item>
+    </string-array>
+
+    <string-array name="snow_data_v">
+        <item>1|Cattiva (meno di 1000m)</item>
+        <item>2|Mediocre (da 1000 a 4000m)</item>
+        <item>3|Buona (da 4000 a 10.000m)</item>
+        <item>4|Ottima (oltre 10.000m)</item>
+        <item>/|Non rilevante</item>
+    </string-array>
+
+    <string-array name="snow_data_vq1">
+        <item>0|Attività eolica nulla</item>
+        <item>1|Fohn</item>
+        <item>2|Attività eolica con formazione di accumuli e cornici</item>
+        <item>3|Forte attività eolica (grandi accumuli e cornici)</item>
+        <item>4|Attività eolica senza trasporto</item>
+        <item>/|Non rilevabile</item>
+    </string-array>
+
+    <string-array name="snow_data_vq2">
+        <item>0|Nessun accumulo o cornice</item>
+        <item>1|Prevalentemente sui versanti settentrionali</item>
+        <item>2|Prevalentemente sui versanti orientali</item>
+        <item>3|Prevalentemente sui versanti meridionali</item>
+        <item>4|Prevalentemente sui versanti occidentali</item>
+        <item>5|Su tutti i versanti</item>
+        <item>/|Non rilevabile</item>
+    </string-array>
+
+    <string-array name="snow_data_cs">
+        <item>11|Neve asciutta: strato a debole coesione</item>
+        <item>12|Neve asciutta: crosta da fusione e rigelo portante</item>
+        <item>13|Neve asciutta: crosta da fusione e rigelo non portante</item>
+        <item>14|Neve asciutta: crosta da vento portante</item>
+        <item>15|Neve asciutta: crosta da vento non portante</item>
+        <item>21|Neve bagnata: strato a debole coesione</item>
+        <item>22|Neve bagnata: crosta da fusione e rigelo portante</item>
+        <item>23|Neve bagnata: crosta da fusione e rigelo non portante</item>
+        <item>24|Neve bagnata: crosta da vento portante</item>
+        <item>25|Neve bagnata: crosta da vento non portante</item>
+        <item>//|Non rilevato</item>
+    </string-array>
+
+    <string-array name="snow_data_s">
+        <item>1|Liscia</item>
+        <item>2|Ondulata</item>
+        <item>3|Solchi concavi</item>
+        <item>4|Solchi convessi</item>
+        <item>5|Solchi irregolari</item>
+        <item>/|Non rilevato</item>
+    </string-array>
+
+    <string-array name="snow_data_b">
+        <item>0|Assente</item>
+        <item>1|Brina di superficie di nuova formazione con spessore 2cm</item>
+        <item>2|Brina già segnalata ed in fase di sviluppo maggiore di 2cm</item>
+        <item>4|Strato di brina di superficie invariato</item>
+        <item>/|Non rilevato</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,67 @@
+versione 5.6
+<b>►</b> Privacy Policy link
+<b>►</b> Sistemazione errori minori
+
+versione 5.5
+<b>►</b> Nuovi set icone
+<b>►</b> Widget rinnovati
+<b>►</b> Nuova sezione "Comunicati stampa e atterte meteo"
+
+versione 5.4
+<b>►</b> Nuova interfaccia per "webcam", "stazioni meteo"
+<b>►</b> Ottimizzazione prestazioni
+<b>►</b> Sistemazione errori minori
+
+versione 5.3
+<b>►</b> Nuovi radar
+<b>►</b> Nuova interfaccia per la sezione "radar" e "neve e valanghe"
+
+versione 5.2
+<b>►</b> Nuova interfaccia per il bollettino locale e dettaglio
+<b>►</b> Correzione errori sul testo
+<b>►</b> Ottimizzazioni e sistemazione errori minori
+
+versione 5.1
+<b>►</b> Servizio radar più efficiente
+<b>►</b> Splash e Bollettino locale aggiornati
+<b>►</b> Sistemazione errori minori
+
+versione 5.0
+<b>►</b> Previsione audio
+<b>►</b> Aggiunto lo zoom nella sezione Radar
+<b>►</b> Sistemazioni varie
+
+versione 4.8
+<b>►</b> Miglioramento prestazioni
+<b>►</b> Restyle sezione About per schermi multipli
+
+versione 4.7
+<b>►</b> Sistemazione caricamento immagini del radar
+<b>►</b> Sistemazione colori testo dei widget
+
+versione 4.6
+<b>►</b> Bollettino locale ottimizzato per phablet e tablet
+<b>►</b> Nuovo widget <b>"Stazione meteo"</b>
+<b>►</b> Sistemazione errori minori
+
+versione 4.5
+<b>►</b> Sistemazione caricamento dati ( Android 7+ )
+<b>►</b> Sistemazione gestione database  ( Android 8 )
+
+versione 4.4
+<b>►</b> Selezione località della previsione
+<b>►</b> Widget previsione orizzontale
+
+versione 4.3
+<b>►</b> Sistemazione stazioni meteo con dati aggiuntivi
+<b>►</b> Aggiunto il dettaglio della stazione meteo con coordinate
+<b>►</b> Rivista la sezione delle webcam
+<b>►</b> Sistemazione vari errori
+
+versione 4.2
+<b>►</b> Il widget <b>"Generale"</b> visualizza la lista di tutte le previsioni disponibili
+<b>►</b> Nuovo widget <b>"Fasce del giorno"</b>
+
+versione 4.0
+Con il nuovo sito di MeteoTrentino sono cambiati i dati a disposizione quindi la nuova app verrà con il tempo <u>ridisegnata</u> e <u>sistemata</u>.
+<br><br>I vecchi widget ( ad eccezione delle webcam ) sono stati tolti e verranno <b>sostituiti</u> con il tempo da quelli nuovi

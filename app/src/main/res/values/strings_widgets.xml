@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="widget_service_error">Rete o servizio non disponibile.</string>
+
+    <string name="widget_prevision_today_4x1">MT Generale</string>
+    <string name="widget_prevision_horizontal_4x1">MT General orizzontale</string>
+    <string name="widget_fasce">MT Fasce del giorno</string>
+
+    <string name="widget_webcam_4x4">MT Webcam Trentino</string>
+
+    <string name="widget_stazione_meteo">MT Stazione meteo</string>
+    <string name="widget_stazione_meteo_error">Rete o servizio non disponibile o stazione meteo per widget non impostata</string>
+</resources>

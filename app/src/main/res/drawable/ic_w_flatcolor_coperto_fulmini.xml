@@ -1,0 +1,49 @@
+<!--
+  ~ Project: meteo
+  ~ File: ic_w_flatcolor_coperto_fulmini.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="42"
+    android:viewportWidth="42" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="1" android:fillColor="#6699ff"
+        android:fillType="nonZero"
+        android:pathData="m23.2604,0.0193c-4.684,-0 -8.6485,3.0552 -10.0245,7.279 -2.6336,0.5854 -4.7809,2.4451 -5.7658,4.903 -3.5605,0.1212 -6.4118,3.0371 -6.4118,6.6264 0,3.5849 2.8415,6.4963 6.3932,6.6277l0,0.0119L23.3839,25.4674l0,-25.4419C23.3427,0.0237 23.3025,0.0193 23.2604,0.0193" android:strokeColor="#00000000"/>
+    <path android:fillAlpha="1" android:fillColor="#3366cc"
+        android:fillType="nonZero"
+        android:pathData="m33.7211,9.2722c-0.6345,-5.1724 -5.0074,-9.1861 -10.3369,-9.2467l0,25.4419l10.0422,-0l0,-0.019c4.3158,-0.1872 7.7582,-3.7344 7.7582,-8.0954C41.1846,13.0916 37.8966,9.6041 33.7211,9.2722" android:strokeColor="#00000000"/>
+    <group>
+        <clip-path android:pathData="m34.7729,21.7776l2.9645,-0l0,3.4955l-2.9645,-0z M 0,0"/>
+        <path android:fillAlpha="0.19999701" android:fillColor="#122c3d"
+            android:fillType="nonZero"
+            android:pathData="m35.6003,22.2 l-0.8261,3.0716c1.0827,-0.2319 2.0862,-0.6748 2.961,-1.2893L35.53,21.7761C35.6189,21.8655 35.6499,22.0137 35.6003,22.2"
+            android:strokeAlpha="0.19999701" android:strokeColor="#00000000"/>
+    </group>
+    <path android:fillAlpha="1" android:fillColor="#ffda24"
+        android:fillType="nonZero"
+        android:pathData="m24.6315,25.4672l-7.264,-0l-3.1977,8.0188l5.1322,-0l-3.138,8.514 10.167,-11.4347L21.2307,30.5653Z" android:strokeColor="#00000000"/>
+    <path android:fillAlpha="1" android:fillColor="#ffa300"
+        android:fillType="nonZero"
+        android:pathData="m24.6315,25.4672l-7.264,-0l-0.0075,0.0186 4.3552,4.3548z" android:strokeColor="#00000000"/>
+</vector>

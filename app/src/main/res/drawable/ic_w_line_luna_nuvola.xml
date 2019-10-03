@@ -1,0 +1,32 @@
+<!--
+  ~ Project: meteo
+  ~ File: ic_w_line_luna_nuvola.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="42"
+    android:viewportWidth="42" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#000000"
+        android:pathData="m29.261,35.2972c-0.0319,0 -15.0977,0.008 -22.2927,0.008 -3.0688,-0 -5.5652,-2.4964 -5.5652,-5.5652 0,-1.8763 0.9302,-3.5299 2.3612,-4.5396 -0.8189,-0.6122 -1.5503,-1.3436 -2.1625,-2.1863 -0.183,-0.2544 -0.1986,-0.5804 -0.0478,-0.8507 0.1512,-0.2703 0.4373,-0.4214 0.7473,-0.4055l0.1352,0.008c0.143,0.008 0.2782,0.0239 0.4293,0.0239 4.8497,0 8.801,-3.9275 8.801,-8.7533 0,-1.8286 -0.5645,-3.5776 -1.6378,-5.0723 -0.183,-0.2544 -0.1986,-0.5804 -0.0556,-0.8507 0.1512,-0.2703 0.4452,-0.4293 0.7553,-0.4055 5.0961,0.318 9.1508,4.2852 9.6676,9.2383 2.1386,-2.2897 5.1757,-3.6969 8.4353,-3.6969 6.3523,0 11.528,5.1677 11.528,11.528 0,6.2251 -4.8735,11.2894 -11.0986,11.52zM18.87,17.0115c0,-4.0467 -2.8065,-7.5051 -6.6385,-8.4671 0.6837,1.3913 1.0415,2.9178 1.0415,4.4919 0,5.3267 -4.0785,9.7312 -9.3019,10.2798 0.4452,0.4214 0.9302,0.7712 1.439,1.0812 0.5008,-0.1431 1.0176,-0.2226 1.5582,-0.2226 0.469,0 0.9302,0.0556 1.3833,0.1749 1.2005,-2.9496 4.1183,-4.9451 7.3541,-4.9451 0.795,0 1.5741,0.1193 2.3294,0.3498 0.2067,-0.5645 0.4611,-1.113 0.7553,-1.6298 0.0478,-0.3657 0.0796,-0.7314 0.0796,-1.113zM28.8317,13.8393c-4.3886,0 -8.316,2.9416 -9.5404,7.1632 -0.0637,0.2147 -0.2146,0.3975 -0.4214,0.4929 -0.2067,0.1034 -0.4452,0.1034 -0.6599,0.0159 -0.7951,-0.3419 -1.6378,-0.5168 -2.5044,-0.5168 -2.8065,0 -5.3187,1.8842 -6.1058,4.5794 -0.0637,0.2226 -0.2146,0.3975 -0.4214,0.5009 -0.2067,0.0954 -0.4452,0.0954 -0.6519,0.008 -0.4929,-0.2067 -1.0176,-0.318 -1.5582,-0.318 -2.1943,0 -3.9752,1.7809 -3.9752,3.9752 0,2.1943 1.7809,3.9752 3.9752,3.9752 7.195,0 22.2609,-0.008 22.2609,-0.008 5.3347,-0.1988 9.5404,-4.5635 9.5404,-9.9299 0,-5.4778 -4.4601,-9.9379 -9.9379,-9.9379z" android:strokeWidth="0.79503119"/>
+</vector>

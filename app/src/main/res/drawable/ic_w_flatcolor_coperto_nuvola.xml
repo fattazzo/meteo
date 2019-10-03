@@ -1,0 +1,36 @@
+<!--
+  ~ Project: meteo
+  ~ File: ic_w_flatcolor_coperto_nuvola.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="42"
+    android:viewportWidth="42" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="1" android:fillColor="#6699ff"
+        android:fillType="nonZero"
+        android:pathData="m23.1831,7.1651c-4.8184,-0 -8.8966,3.1424 -10.3122,7.4874 -2.7091,0.6022 -4.918,2.5157 -5.9312,5.0437 -3.6627,0.1247 -6.5958,3.1247 -6.5958,6.817 0,3.6877 2.9231,6.6823 6.5767,6.8174l0,0.0127L23.3101,33.3433L23.3101,7.171C23.2677,7.1692 23.2263,7.1651 23.1831,7.1651" android:strokeColor="#00000000"/>
+    <path android:fillAlpha="1" android:fillColor="#3366cc"
+        android:fillType="nonZero"
+        android:pathData="m33.9439,16.683c-0.6527,-5.3204 -5.1511,-9.4496 -10.6335,-9.512l0,26.1723l10.3304,-0l0,-0.0196c4.4397,-0.1925 7.9808,-3.842 7.9808,-8.3281C41.6216,20.612 38.2392,17.0248 33.9439,16.683" android:strokeColor="#00000000"/>
+</vector>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Project: meteo
+  ~ File: activity_main_drawer.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/menu1"
+        android:checkableBehavior="none">
+        <item android:title="Bollettino">
+            <menu>
+                <item
+                    android:id="@+id/nav_boll_prob"
+                    android:icon="@drawable/format_list"
+                    android:title="@string/nav_boll_prob" />
+                <item
+                    android:id="@+id/nav_news_e_allerte"
+                    android:icon="@drawable/comment"
+                    android:title="@string/nav_news_e_allerte" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/menu2"
+        android:checkableBehavior="none">
+        <item android:title="Stazioni">
+            <menu>
+                <item
+                    android:id="@+id/nav_stazioni_meteo"
+                    android:icon="@drawable/stazione"
+                    android:title="Meteo" />
+                <item
+                    android:id="@+id/nav_stazioni_neve"
+                    android:icon="@drawable/stazione"
+                    android:title="@string/nav_stazioni_neve" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/menu3"
+        android:checkableBehavior="none">
+        <item android:title="Immagini">
+            <menu>
+                <item
+                    android:id="@+id/nav_radar"
+                    android:icon="@drawable/wifi"
+                    android:title="@string/nav_radar" />
+                <item
+                    android:id="@+id/nav_webcam"
+                    android:icon="@drawable/videocam"
+                    android:title="@string/nav_webcam" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/menu4"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_preferences"
+            android:icon="@drawable/settings"
+            android:title="@string/nav_preferences" />
+        <item
+            android:id="@+id/nav_version_info"
+            android:icon="@drawable/comment"
+            android:title="@string/nav_version_info" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/info"
+            android:title="@string/nav_about" />
+    </group>
+
+</menu>

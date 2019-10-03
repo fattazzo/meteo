@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Project: meteo
+  ~ File: AndroidManifest.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gmail.fattazzo.meteo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".app.MeteoApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="meteodb" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.gmail.fattazzo.meteo.db.StazioneMeteo,                            com.gmail.fattazzo.meteo.db.StazioneValanghe,                            com.gmail.fattazzo.meteo.db.Localita,                            com.gmail.fattazzo.meteo.db.News" />
+
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="${applicationId}"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.splash.SplashActivity"
+            android:label="@string/app_name">
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="github.com"
+                    android:path="/fattazzo/meteo"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.main.MainActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.main.dettaglio.DettaglioGiornoActivity" />
+        <activity
+            android:name=".activity.bollettino.probabilistico.BollettinoProbabilisticoActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_bollettino_probabilistico"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.news.NewsActivity"
+            android:configChanges="keyboardHidden|screenSize"
+            android:label="@string/title_activity_news"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.changelog.ChangeLogActivity"
+            android:label="@string/changelog_activity_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.radar.RadarActivity"
+            android:label="@string/title_activity_radar"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.webcam.WebcamActivity"
+            android:label="@string/title_activity_webcams_viewer"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.webcam.WebcamsViewerActivity"
+            android:label="@string/title_activity_webcams_viewer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.stazioni.meteo.StazioniMeteoActivity"
+            android:label="@string/title_activity_stazioni_meteo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoActivity_" />
+        <activity
+            android:name=".activity.settings.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.stazioni.valanghe.StazioniValangheActivity"
+            android:label="@string/title_activity_stazioni_valanghe"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity android:name=".activity.AnagraficaStazioniValangheActivity_" />
+
+
+        <!-- WIDGETS____________________________________________________________________________________________________________________ -->
+        <!-- Today general -->
+        <service
+            android:name=".widget.providers.previsione.locale.PrevisioneLocaleGridWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name=".widget.providers.previsione.locale.BullettinPrevisioneLocalitaTodayProvider4x1"
+            android:label="@string/widget_prevision_today_4x1">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_prevision_today_info_4x1" />
+        </receiver> <!-- Today general horizontal -->
+        <receiver
+            android:name=".widget.providers.previsione.locale.horizontal.BullettinPrevisioneLocalitaHorizontalProvider4x1"
+            android:exported="true"
+            android:label="@string/widget_prevision_horizontal_4x1">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_prevision_horizontal_4x1" />
+        </receiver> <!-- Fasce -->
+        <service
+            android:name=".widget.providers.previsione.fascia.corrente.FasceListWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name=".widget.providers.previsione.fascia.corrente.FasceProvider"
+            android:exported="true"
+            android:label="@string/widget_fasce">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_fasce" />
+        </receiver> <!-- Webcam -->
+        <receiver
+            android:name=".widget.providers.webcam.WebcamWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_webcam_4x4">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_webcam_4x4" />
+        </receiver> <!-- Stazione meteo -->
+        <receiver
+            android:name=".widget.providers.stazioni.meteo.StazioneMeteoWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_stazione_meteo">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.gmail.fattazzo.meteo.widget.UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_stazione_meteo" />
+        </receiver>
+    </application>
+
+</manifest>

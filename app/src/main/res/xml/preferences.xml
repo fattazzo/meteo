@@ -1,0 +1,100 @@
+<!--
+  ~ Project: meteo
+  ~ File: preferences.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="urn:oasis:names:tc:xliff:document:1.2"
+    xmlns:customIcon="http://schemas.android.com/tools"
+    xmlns:customColor="com.gmail.fattazzo.meteo.preferences.view.colorpicker.ColorPickerPreference">
+
+    <PreferenceCategory android:title="Generali">
+        <com.gmail.fattazzo.meteo.preferences.view.iconthemepicker.IconThemePickerPreference
+            android:entries="@array/iconThemeName"
+            android:entryValues="@array/iconThemeKey"
+            android:key="@string/pref_key_iconsTheme"
+            android:layout="@layout/icon_theme_item_preference"
+            android:summary="Select an icon"
+            android:title="Tema icone"
+            customIcon:iconFile="Default"
+            android:icon="@drawable/ic_color_lens"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/weather_stations_pref">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="stazMeteoGraphShowSeriesBg"
+            android:summary="@string/weather_stations_pref_graph_show_series_bg_desc"
+            android:title="@string/weather_stations_pref_graph_show_series_bg"
+            android:icon="@drawable/ic_colorize"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pref_key_stazMeteoGraphShowPoint"
+            android:summary="@string/weather_stations_pref_graph_show_points_desc"
+            android:title="@string/weather_stations_pref_graph_show_points"
+            android:icon="@drawable/ic_point"/>
+
+        <SeekBarPreference
+            android:dependency="@string/pref_key_stazMeteoGraphShowPoint"
+            android:defaultValue="5"
+            android:key="@string/pref_key_stazMeteoGraphPointRadius"
+            android:max="10"
+            android:title="@string/weather_stations_pref_graph_points_radius"
+            app:showSeekBarValue="true"
+            android:icon="@drawable/ic_linear_scale"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/widgets_pref">
+        <com.gmail.fattazzo.meteo.preferences.view.imagelist.ImageListPreference
+            android:defaultValue="widget_shape_transparent_40_black"
+            android:entries="@array/widget_style_name"
+            android:entryValues="@array/widget_style_id"
+            android:key="@string/pref_key_widgets_background"
+            android:layout="@layout/preferences_image_item"
+            android:summary="Seleziona un tema"
+            android:title="@string/widgets_theme"
+            android:icon="@drawable/ic_color_lens"/>
+
+        <com.gmail.fattazzo.meteo.preferences.view.colorpicker.ColorPickerPreference
+            customColor:alphaSlider="true"
+            android:defaultValue="0xFFFFFFFF"
+            android:key="@string/pref_key_widgets_text_color"
+            android:title="@string/widgets_text_color"
+            android:icon="@drawable/ic_colorize"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Altro">
+        <Preference
+            android:key="@string/pref_key_privacy_policy"
+            android:summary="Visiona la privacy policy dell'app"
+            android:title="Privacy Policy"
+            android:icon="@drawable/ic_security"/>
+        <Preference
+            android:key="@string/pref_key_app_version"
+            android:title="Versione App"
+            android:icon="@drawable/ic_sort"/>
+    </PreferenceCategory>
+</PreferenceScreen>

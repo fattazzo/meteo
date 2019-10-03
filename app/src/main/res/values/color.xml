@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#20b30d</color>
+    <color name="colorPrimaryDark">#077e12</color>
+    <color name="colorAccent">#4eea67</color>
+
+    <color name="temp_min">#0070ff</color>
+    <color name="temp_max">#C80815</color>
+    
+    <color name="table_header_background">#7b5348</color>
+    <color name="table_header_foreground">#ffffff</color>
+    
+    <color name="darkButtonBar_bg_color">#222222</color>
+
+    <color name="boll_prob_fenomeno_0">#00ff00</color>
+    <color name="boll_prob_fenomeno_1">#ffd700</color>
+    <color name="boll_prob_fenomeno_2">#ff8c00</color>
+    <color name="boll_prob_fenomeno_3">#ff0000</color>
+
+    <color name="webcam_widget">#33dc20</color>
+    <color name="webcam_favorite">#ff0000</color>
+
+    <color name="border_bg">#FFFFFF</color>
+    <color name="border_stroke">#C9C6C6</color>
+</resources>

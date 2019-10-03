@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bull_prob_loading_dialog">Caricamento bollettino in corso&#8230;</string>
+    <string name="legend_of_events">Legenda intensità dei fenomeni</string>
+    <string name="intensity_very_low">Molto bassa</string>
+    <string name="intensity_low">Bassa</string>
+    <string name="intensity_medium">Media</string>
+    <string name="intensity_high">Alta</string>
+    
+    <string name="legend_phenomenon">Legenda dei fenomeni</string>
+    <string name="legend_heavy_rainfall"><![CDATA[<b>Precipitazioni abbondanti:</b> precipitazioni intense e/o persistenti che raggiungono valori cumulati superiori a 40 mm/24 h su almeno la metà del territorio provinciale.]]></string>
+    <string name="legend_showers_or_storms"><![CDATA[<b>Rovesci o temporali:</b> fenomeni convettivi intensi con precipitazioni superiori a 20 mm/h. Spesso accompagnati da fulmini, grandine e forti raffiche di vento.]]></string>
+    <string name="legend_strong_winds_mountain"><![CDATA[<b>Venti forti in montagna:</b> Venti con velocità superiori a 15 m/s su gran parte delle montagne.]]></string>
+    <string name="legend_strong_winds_valley"><![CDATA[<b>Venti forti in valle:</b> Raffiche forti superiori a 15 m/s spesso associate a venti di foehn. Non è detto che si verifichino in tutte le valli.]]></string>
+    <string name="legend_snowfall"><![CDATA[<b>Nevicate:</b> nevicate superiori a 10 cm in 24 h oltre la quota indicata.]]></string>
+    <string name="legend_intense_warm"><![CDATA[<b>Caldo intenso:</b> temperature massime > 35°C in Val d’Adige.]]></string>
+    <string name="legend_intense_cold"><![CDATA[<b>Freddo intenso:</b> temperature minime < -10°C in Val d’Adige.]]></string>
+
+</resources>

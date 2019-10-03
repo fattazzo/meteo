@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin">12dp</dimen>
+
+    <dimen name="font_size_micro">16sp</dimen>
+    <dimen name="font_size_small">18sp</dimen>
+    <dimen name="font_size_medium">22sp</dimen>
+    <dimen name="font_size_large">32sp</dimen>
+    <dimen name="font_size_big">70sp</dimen>
+
+    <integer name="previsione_columns">1</integer>
+
+    <item name="widget_stazione_meteo_chart_font_size" type="dimen" format="float">10.0</item>
+
+    <dimen name="app_info_size">96dp</dimen>
+
+    <dimen name="about_image_height">320dp</dimen>
+
+    <dimen name="default_icon_size">90dp</dimen>
+
+    <dimen name="drawer_menu_item_height">80dp</dimen>
+</resources>
