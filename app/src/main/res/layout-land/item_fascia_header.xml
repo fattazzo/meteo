@@ -25,13 +25,15 @@
   ~ SOFTWARE.
   -->
 
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="com.gmail.fattazzo.meteo.databinding.converters.FasciaConverter" />
+
         <variable
-            name="descrizione"
-            type="String" />
+            name="fascia"
+            type="com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce" />
 
         <variable
             name="selected"
@@ -51,7 +53,8 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginBottom="4dp"
+            app:fasciaThemeIcon="@{fascia}" />
 
         <TextView
             android:id="@+id/descriptionTV"
@@ -62,7 +65,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginBottom="4dp"
             android:gravity="center_vertical"
-            android:text="@{descrizione}"
+            android:text="@{FasciaConverter.fasciaPer(fascia)}"
             android:textAppearance="@style/TextAppearance.Medium"
             android:textStyle="bold" />
     </LinearLayout>

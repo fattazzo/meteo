@@ -27,21 +27,21 @@
 
 package com.gmail.fattazzo.meteo.app
 
+import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.activeandroid.ActiveAndroid
-import com.activeandroid.Cache
-import com.activeandroid.app.Application
-import com.activeandroid.util.SQLiteUtils
 import com.gmail.fattazzo.meteo.app.component.AppComponent
 import com.gmail.fattazzo.meteo.app.component.DaggerAppComponent
 import com.gmail.fattazzo.meteo.app.module.AppModule
+import com.gmail.fattazzo.meteo.app.module.ServicesModule
+import com.gmail.fattazzo.meteo.utils.OpenForTesting
 
 /**
  * @author fattazzo
  *         <p/>
  *         date: 04/11/17
  */
+@OpenForTesting
 class MeteoApplication : Application() {
 
     lateinit var appComponent: AppComponent
@@ -49,13 +49,7 @@ class MeteoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        //FirebaseApp.initializeApp(this)
-
         initAppComponent()
-
-        for (tableInfo in Cache.getTableInfos()) {
-            ActiveAndroid.execSQL(SQLiteUtils.createTableDefinition(tableInfo))
-        }
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -64,6 +58,10 @@ class MeteoApplication : Application() {
     }
 
     private fun initAppComponent() {
-        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+        appComponent = DaggerAppComponent
+            .builder()
+            .appModule(AppModule(this))
+            .servicesModule(ServicesModule())
+            .build()
     }
 }

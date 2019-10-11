@@ -1,0 +1,51 @@
+<!--
+  ~ Project: meteo
+  ~ File: ic_webcam_color.xml
+  ~
+  ~ Created by fattazzo
+  ~ Copyright © 2019 Gianluca Fattarsi. All rights reserved.
+  ~
+  ~ MIT License
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <path
+      android:pathData="M384,388.267H128C89.6,418.133 55.467,459.733 30.933,512h450.133C456.533,459.733 422.4,418.133 384,388.267z"
+      android:fillColor="#344A5E"/>
+  <path
+      android:pathData="M256,225.067m-225.067,0a225.067,225.067 0,1 1,450.134 0a225.067,225.067 0,1 1,-450.134 0"
+      android:fillColor="#415A6B"/>
+  <path
+      android:pathData="M256,225.067m-126.933,0a126.933,126.933 0,1 1,253.866 0a126.933,126.933 0,1 1,-253.866 0"
+      android:fillColor="#F3F3F3"/>
+  <path
+      android:pathData="M256,225.067m-71.467,0a71.467,71.467 0,1 1,142.934 0a71.467,71.467 0,1 1,-142.934 0"
+      android:fillColor="#55C0EB"/>
+  <path
+      android:pathData="M308.267,179.2m-21.333,0a21.333,21.333 0,1 1,42.666 0a21.333,21.333 0,1 1,-42.666 0"
+      android:fillColor="#FFFFFF"/>
+  <path
+      android:pathData="M256,49.067m-14.933,0a14.933,14.933 0,1 1,29.866 0a14.933,14.933 0,1 1,-29.866 0"
+      android:fillColor="#F3705A"/>
+</vector>

@@ -28,7 +28,6 @@
 package com.gmail.fattazzo.meteo.activity.main
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -42,13 +41,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.gmail.fattazzo.aboutlibrary.activity.AboutActivity
-import com.gmail.fattazzo.aboutlibrary.builder.AboutButtonBuilder
-import com.gmail.fattazzo.aboutlibrary.builder.AboutViewBuilder
-import com.gmail.fattazzo.aboutlibrary.builder.Action
 import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.BaseActivity
+import com.gmail.fattazzo.meteo.activity.about.AboutActivityIntentBuilder
 import com.gmail.fattazzo.meteo.activity.bollettino.probabilistico.BollettinoProbabilisticoActivity
 import com.gmail.fattazzo.meteo.activity.news.NewsActivity
 import com.gmail.fattazzo.meteo.activity.radar.RadarActivity
@@ -59,15 +55,14 @@ import com.gmail.fattazzo.meteo.activity.webcam.WebcamActivity
 import com.gmail.fattazzo.meteo.app.MeteoApplication
 import com.gmail.fattazzo.meteo.app.module.viewmodel.DaggerViewModelFactory
 import com.gmail.fattazzo.meteo.data.VersioniService
+import com.gmail.fattazzo.meteo.data.db.entities.Localita
 import com.gmail.fattazzo.meteo.databinding.ActivityMainBinding
-import com.gmail.fattazzo.meteo.db.Localita
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import com.gmail.fattazzo.meteo.utils.AppRater
 import com.gmail.fattazzo.meteo.utils.dialog.DialogBuilder
 import com.gmail.fattazzo.meteo.utils.dialog.DialogType
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -95,7 +90,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(),
     override fun getLayoutResID(): Int = R.layout.activity_main
 
     companion object {
-        private var mediaPlayer: MediaPlayer = MediaPlayer()
+        var mediaPlayer: MediaPlayer = MediaPlayer()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,7 +126,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(),
         val layoutManager = StaggeredGridLayoutManager(columns, StaggeredGridLayoutManager.VERTICAL)
         binding.contentMain.containerLayout.layoutManager = layoutManager
         viewModel.previsioneLocalita.observe(this, androidx.lifecycle.Observer {
-            val data = mutableListOf<Any?>(it)
+            val data = mutableListOf<Any?>()
+            if (it != null) data.add(it)
             if (it?.previsione.orEmpty().isNotEmpty()) {
                 data.addAll(it?.previsione?.get(0)?.giorni.orEmpty())
             }
@@ -207,32 +203,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(),
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-        when (menuItem.itemId) {
-            R.id.nav_boll_prob -> startActivity(
-                Intent(
-                    this,
-                    BollettinoProbabilisticoActivity::class.java
-                )
-            )
-            R.id.nav_news_e_allerte -> startActivity(Intent(this, NewsActivity::class.java))
-            R.id.nav_stazioni_meteo -> startActivity(
-                Intent(
-                    this,
-                    StazioniMeteoActivity::class.java
-                )
-            )
-            R.id.nav_stazioni_neve -> startActivity(
-                Intent(
-                    this,
-                    StazioniValangheActivity::class.java
-                )
-            )
-            R.id.nav_radar -> startActivity(Intent(this, RadarActivity::class.java))
-            R.id.nav_webcam -> startActivity(Intent(this, WebcamActivity::class.java))
-            R.id.nav_preferences -> startActivity(Intent(this, SettingsActivity::class.java))
-            R.id.nav_version_info -> versioniService.showVersionInfo(this)
-            R.id.nav_about -> openAboutActivity()
+        val intent: Intent? = when (menuItem.itemId) {
+            R.id.nav_boll_prob -> Intent(this, BollettinoProbabilisticoActivity::class.java)
+            R.id.nav_news_e_allerte -> Intent(this, NewsActivity::class.java)
+            R.id.nav_stazioni_meteo -> Intent(this, StazioniMeteoActivity::class.java)
+            R.id.nav_stazioni_neve -> Intent(this, StazioniValangheActivity::class.java)
+            R.id.nav_radar -> Intent(this, RadarActivity::class.java)
+            R.id.nav_webcam -> Intent(this, WebcamActivity::class.java)
+            R.id.nav_preferences -> Intent(this, SettingsActivity::class.java)
+            R.id.nav_version_info -> {
+                versioniService.showVersionInfo(this)
+                null
+            }
+            R.id.nav_about -> AboutActivityIntentBuilder.build(this)
+            else -> null
         }
+
+        intent?.let { startActivity(it) }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
@@ -311,48 +298,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(),
             audioOptionMenu?.setIcon(R.drawable.stop_black)
         }
 
-    }
-
-    private fun openAboutActivity() {
-        val reportIssueButton = AboutButtonBuilder()
-            .withText(R.string.report_error)
-            .withDrawable(R.drawable.bug)
-            .withFlatStyle(true)
-            .withAction(object : Action {
-                override fun run(context: Context) {
-                    DialogBuilder(context, DialogType.BUTTONS).apply {
-                        headerIcon = R.drawable.info_white
-                        message =
-                            "Per segnalare un errore o richiedere nuove funzionalità puoi contattarmi usando il modo che preferisci tra quelli presenti nella sezione 'Autore' di questa pagina."
-                        positiveText = android.R.string.ok
-                    }.build().show()
-                }
-            })
-            .withTextColor(android.R.color.holo_red_dark)
-
-        val changelogButton = AboutButtonBuilder()
-            .withText(R.string.changelog)
-            .withDrawable(R.drawable.format_list)
-            .withFlatStyle(true)
-            .withAction(object : Action {
-                override fun run(context: Context) {
-                    // Usare VersioniService iniettato da dagger genera l'errore
-                    // java.io.NotSerializableException: com.gmail.fattazzo.meteo.activity.main.MainActivity
-                    // quindi devo crearne e utilizzarne uno nuovo
-                    VersioniService(context, PreferencesService(context)).showVersionChangelog()
-                }
-            })
-
-        val aboutViewBuilder = AboutViewBuilder()
-            .withInfoUrl(Config.PROJECTS_INFO_URL)
-            .withAppId(this.applicationContext.packageName)
-            .withFlatStyleButtons(true)
-            .withAdditionalAppButtons(listOf(reportIssueButton, changelogButton))
-            .withLang(Locale.getDefault().language)
-            .withExcludeThisAppFromProjects(true)
-
-        val intent = Intent(application, AboutActivity::class.java)
-            .apply { putExtra(AboutActivity.EXTRA_BUILDER, aboutViewBuilder) }
-        startActivity(intent)
     }
 }

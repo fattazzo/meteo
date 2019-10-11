@@ -27,20 +27,21 @@
 
 package com.gmail.fattazzo.meteo.activity.stazioni.valanghe
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.gmail.fattazzo.meteo.R
-import com.gmail.fattazzo.meteo.activity.AnagraficaStazioniValangheActivity_
 import com.gmail.fattazzo.meteo.activity.BaseActivity
+import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.anagrafica.AnagraficaStazioniValangheActivity
 import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.rilevazioni.StazioneNeveAdapter
 import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.rilevazioni.view.RilevazioniViewManager
 import com.gmail.fattazzo.meteo.app.MeteoApplication
 import com.gmail.fattazzo.meteo.app.module.viewmodel.DaggerViewModelFactory
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 import com.gmail.fattazzo.meteo.databinding.ActivityStazioniValangheBinding
-import com.gmail.fattazzo.meteo.db.StazioneValanghe
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import java.util.*
 import javax.inject.Inject
@@ -93,18 +94,15 @@ class StazioniValangheActivity : BaseActivity<ActivityStazioniValangheBinding>()
     }
 
     fun openAnagraficaStazioniActivity(view: View) {
-        AnagraficaStazioniValangheActivity_.intent(this).start()
+        val intent = Intent(this, AnagraficaStazioniValangheActivity::class.java)
+        startActivity(intent)
     }
 
     private fun initStazioneSelezionata() {
 
         viewModel.stazioniValanghe.observe(this, Observer {
-            val stazioneValanghe = StazioneValanghe()
-            stazioneValanghe.codice = null
-            stazioneValanghe.nome = ""
-
             val stazioniSpinner = ArrayList<StazioneValanghe>()
-            stazioniSpinner.add(stazioneValanghe)
+            stazioniSpinner.add(StazioneValanghe(null, ""))
             stazioniSpinner.addAll(viewModel.stazioniValanghe.value.orEmpty())
 
             val dataAdapter = StazioneNeveAdapter(this, stazioniSpinner)

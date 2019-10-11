@@ -38,24 +38,32 @@ import androidx.recyclerview.widget.RecyclerView
  *         <p/>
  *         date: 01/06/17
  */
-open class RadarAdapter(var data: List<RadarModel>, val context: Context, val clickListener: OnClickListener) : RecyclerView.Adapter<RadarAdapter.RadarViewHolder>() {
+open class RadarAdapter(
+    var data: List<RadarModel>,
+    val context: Context,
+    private val clickListener: OnClickListener
+) : RecyclerView.Adapter<RadarAdapter.RadarViewHolder>() {
 
-    private var oldPos = 0
+    var currentRadar: RadarModel = data[0]
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onBindViewHolder(holder: RadarViewHolder, position: Int) {
         holder.bind(data[position])
 
         holder.itemView.setOnClickListener {
-            oldPos = position
+            currentRadar = data[position]
             notifyDataSetChanged()
             clickListener.onClick(data[position])
         }
 
-        (holder.itemView as RadarView).setSelectedView(oldPos == position)
+        (holder.itemView as RadarView).setSelectedView(currentRadar.id == data[position].id)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadarViewHolder {
-        return RadarViewHolder(RadarView_.build(context))
+        return RadarViewHolder(RadarView(context))
     }
 
     override fun getItemCount(): Int = data.size

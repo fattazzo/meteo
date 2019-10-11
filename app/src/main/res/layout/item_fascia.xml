@@ -33,6 +33,10 @@
 
         <import type="android.view.View" />
 
+        <import type="com.gmail.fattazzo.meteo.databinding.converters.GiornoConverter" />
+
+        <import type="com.gmail.fattazzo.meteo.databinding.converters.FasciaConverter" />
+
         <variable
             name="section"
             type="com.gmail.fattazzo.meteo.activity.main.dettaglio.fasciasection.Sections" />
@@ -89,7 +93,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center_horizontal"
-                android:text="@{String.format(`(ore %s)`, fascia.fasciaOre)}"
+                android:text="@{FasciaConverter.fasciaOre(fascia)}"
                 android:textAppearance="@style/TextAppearance.Medium"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/descrizioneIconaTV"
@@ -127,6 +131,7 @@
                 android:paddingLeft="0dp"
                 android:paddingEnd="4dp"
                 android:paddingRight="4dp"
+                android:text="@{FasciaConverter.zeroTermico(fascia)}"
                 android:textAppearance="@style/TextAppearance.Medium"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -177,7 +182,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{(giorno != null &amp;&amp; giorno.tMaxGiorno != null ) ? String.format(`%d°C`,giorno.tMaxGiorno) : `-`}"
+                android:text="@{GiornoConverter.giornoTMax(giorno)}"
                 android:textAppearance="@style/TextAppearance.Medium"
                 android:textColor="@color/temp_max"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -199,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:text="@{(giorno != null &amp;&amp; giorno.tMinGiorno != null ) ? String.format(`%d°C`,giorno.tMinGiorno) : `-`}"
+                android:text="@{GiornoConverter.giornoTMin(giorno)}"
                 android:textAppearance="@style/TextAppearance.Medium"
                 android:textColor="@color/temp_min"
                 app:layout_constraintStart_toEndOf="@+id/textView9"

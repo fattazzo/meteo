@@ -32,7 +32,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.NameNotFoundException
 import android.preference.PreferenceManager
-import android.text.Html
 import android.util.Log
 import com.gmail.fattazzo.meteo.BuildConfig
 import com.gmail.fattazzo.meteo.Config
@@ -174,27 +173,6 @@ class VersioniService @Inject constructor(
                         context.startActivity(Intent(context, ChangeLogActivity::class.java))
                     }
                 }
-            }
-            .build()
-            .show()
-
-        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-        val editor = prefs.edit()
-        editor.putString(Config.KEY_LAST_RUN_VERSION_NAME, lastAppVersion)
-        editor.apply()
-    }
-
-    /**
-     * Visualizza il dialog contenente il changelog delle versioni.
-     */
-    fun showVersionChangelog() {
-
-        DialogBuilder(context, DialogType.BUTTONS)
-            .apply {
-                title = "Note di rilascio"
-                message = Html.fromHtml(caricaVersioni()).toString()
-
-                positiveText = android.R.string.ok
             }
             .build()
             .show()

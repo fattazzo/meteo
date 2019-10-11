@@ -30,10 +30,12 @@ package com.gmail.fattazzo.meteo.app.module
 import android.content.Context
 import com.gmail.fattazzo.meteo.data.*
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
+import com.gmail.fattazzo.meteo.utils.OpenForTesting
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+@OpenForTesting
 @Module
 class ServicesModule {
 
@@ -71,5 +73,11 @@ class ServicesModule {
     @Singleton
     fun stazioniService(context: Context): StazioniService {
         return StazioniService(context)
+    }
+
+    @Provides
+    @Singleton
+    fun radarService(): RadarService {
+        return RadarService()
     }
 }

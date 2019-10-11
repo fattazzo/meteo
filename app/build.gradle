@@ -31,6 +31,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
+apply plugin: 'kotlin-allopen'
 
 
 android {
@@ -43,7 +44,7 @@ android {
         versionCode 42
         versionName "5.6"
 
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'com.gmail.fattazzo.meteo.runner.CustomTestRunner'
 
         multiDexEnabled true
 
@@ -75,11 +76,23 @@ android {
         jvmTarget = "1.8"
     }
 
+    sourceSets {
+        test.resources.srcDirs += 'src/sharedTest/assets'
+        test.java.srcDirs += 'src/sharedTest/java'
+
+        androidTest.java.srcDirs += 'src/sharedTest/java'
+        androidTest.resources.srcDirs += 'src/sharedTest/assets'
+    }
+
     kapt {
         correctErrorTypes = true
     }
 
     buildToolsVersion = '29.0.0'
+}
+
+allOpen {
+    annotation("com.gmail.fattazzo.meteo.utils.OpenForTesting")
 }
 
 dependencies {
@@ -120,10 +133,14 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.24'
     kapt 'com.google.dagger:dagger-android-processor:2.24'
 
+    // Room
+    implementation 'androidx.room:room-runtime:2.2.0-rc01'
+    kapt 'androidx.room:room-compiler:2.2.0-rc01'
+
     kapt "org.androidannotations:androidannotations:$aa_version"
     implementation "org.androidannotations:androidannotations-api:$aa_version"
 
-    implementation 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    //implementation 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 
     implementation 'com.squareup.okio:okio:2.4.0'
 
@@ -144,7 +161,7 @@ dependencies {
 
     implementation 'com.github.vipulasri:timelineview:1.1.0'
 
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
@@ -152,16 +169,30 @@ dependencies {
     implementation "com.github.fattazzo:android-about-library:0.5.2"
     // Test ------------------------------------------------------------------
     testImplementation 'junit:junit:4.13-beta-3'
-    testImplementation 'org.mockito:mockito-core:3.0.0'
 
-    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
-    // Android test ----------------------------------------------------------------
-    androidTestImplementation 'androidx.test:core:1.2.1-alpha02'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2-alpha02'
+    testImplementation 'org.mockito:mockito-core:3.1.0'
+    testImplementation 'org.mockito:mockito-inline:3.1.0'
+
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+
+    // Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    // Instrumented Unit Tests
+    androidTestImplementation "androidx.test:rules:1.3.0-alpha02"
     androidTestImplementation 'androidx.test:runner:1.3.0-alpha02'
-    androidTestImplementation 'androidx.test:rules:1.3.0-alpha02'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
-    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-alpha02'
+
+    androidTestImplementation 'org.mockito:mockito-android:3.1.0'
+    androidTestImplementation "io.mockk:mockk-android:1.9.3"
+
+    androidTestImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+
+    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.24'
+    kaptAndroidTest 'com.google.dagger:dagger-android-processor:2.24'
+
 }

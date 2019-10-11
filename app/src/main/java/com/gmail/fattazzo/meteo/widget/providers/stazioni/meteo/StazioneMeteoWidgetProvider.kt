@@ -38,7 +38,6 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
-import com.activeandroid.query.Select
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
@@ -48,11 +47,16 @@ import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico.DateXAxisValueFormatter
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico.UMValueFormatter
 import com.gmail.fattazzo.meteo.app.MeteoApplication
+import com.gmail.fattazzo.meteo.data.StazioniService
+import com.gmail.fattazzo.meteo.data.db.AppDatabase
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.domain.datistazione.IDatoStazione
-import com.gmail.fattazzo.meteo.db.StazioneMeteo
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import com.gmail.fattazzo.meteo.utils.VectorUtils
 import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 
@@ -66,6 +70,9 @@ open class StazioneMeteoWidgetProvider : MeteoAppWidgetProvider() {
 
     @Inject
     lateinit var preferencesService: PreferencesService
+
+    @Inject
+    lateinit var stazioniService: StazioniService
 
     override fun onReceive(context: Context, intent: Intent) {
 
@@ -156,9 +163,12 @@ open class StazioneMeteoWidgetProvider : MeteoAppWidgetProvider() {
             updateBackground(remoteViews, preferencesService.getWidgetsBackground())
 
             if (datiStazione != null) {
-                val stazioneMeteo = Select().from(StazioneMeteo::class.java).where(
-                    "codice = ?", preferencesService.getCodiceStazioneMeteoWidget()
-                ).executeSingle<StazioneMeteo>()
+                val stazioneMeteo: StazioneMeteo = runBlocking {
+                    withContext(Dispatchers.IO) {
+                        AppDatabase(context).stazioniMeteoDao()
+                            .load(preferencesService.getCodiceStazioneMeteoWidget())
+                    }
+                }
                 remoteViews.setTextViewText(
                     R.id.titleTV,
                     if (stazioneMeteo != null) stazioneMeteo.nome else datiStazione.codiceStazione

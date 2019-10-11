@@ -27,17 +27,108 @@
 
 package com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica
 
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.gmail.fattazzo.meteo.R
-import com.gmail.fattazzo.meteo.utils.FragmentUtils
-import org.androidannotations.annotations.AfterViews
-import org.androidannotations.annotations.EActivity
+import com.gmail.fattazzo.meteo.activity.BaseActivity
+import com.gmail.fattazzo.meteo.app.MeteoApplication
+import com.gmail.fattazzo.meteo.app.module.viewmodel.DaggerViewModelFactory
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
+import com.gmail.fattazzo.meteo.databinding.ActivityStazioniMeteoAnagraficaBinding
+import com.gmail.fattazzo.meteo.preferences.PreferencesService
+import com.gmail.fattazzo.meteo.utils.dialog.DialogBuilder
+import com.gmail.fattazzo.meteo.utils.dialog.DialogType
+import kotlinx.android.synthetic.main.app_bar_main.view.*
+import javax.inject.Inject
 
-@EActivity(R.layout.activity_fragment)
-open class AnagraficaStazioniMeteoActivity : AppCompatActivity() {
+class AnagraficaStazioniMeteoActivity : BaseActivity<ActivityStazioniMeteoAnagraficaBinding>() {
 
-    @AfterViews
-    fun initViews() {
-        FragmentUtils.replace(this, AnagraficaFragment_.builder().build())
+    @Inject
+    lateinit var preferencesService: PreferencesService
+
+    @Inject
+    lateinit var viewModelFactory: DaggerViewModelFactory
+
+    lateinit var viewModel: AnagraficaStazioniMeteoViewModel
+
+    override fun getLayoutResID(): Int = R.layout.activity_stazioni_meteo_anagrafica
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        (application as MeteoApplication).appComponent.inject(this)
+
+        initToolbar(binding.appBarMain.toolbar)
+
+        viewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        ).get(AnagraficaStazioniMeteoViewModel::class.java)
+        binding.model = viewModel
+
+        viewModel.stazioniMeteo.observe(this, Observer {
+
+            val adapter = StazioneMeteoListAdapter(
+                this,
+                it,
+                preferencesService.getCodiceStazioneMeteoWidget()
+            )
+            binding.contentLayout.anagStazioniList.adapter = adapter
+        })
+
+        binding.contentLayout.anagStazioniList.setOnItemLongClickListener { parent, _, position, _ ->
+
+            val stazioneMeteo = parent.adapter.getItem(position) as StazioneMeteo
+
+            preferencesService.setCodiceStazioneMeteoWidget(stazioneMeteo.codice.orEmpty())
+
+            Toast.makeText(
+                this,
+                this.getString(R.string.station_configured_for_widget).format(stazioneMeteo.codice.orEmpty()),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            viewModel.caricaStazioni(true)
+            true
+        }
+        binding.contentLayout.anagStazioniList.setOnItemClickListener { parent, _, position, _ ->
+            val stazioneMeteo = parent.adapter.getItem(position) as StazioneMeteo
+            DialogStazioneMeteoBuilder.build(this, stazioneMeteo).show()
+        }
+
+        viewModel.caricaStazioni(false)
+    }
+
+    fun openInfo(view: View) {
+        DialogBuilder(this, DialogType.BUTTONS)
+            .apply {
+                headerIcon = R.drawable.info_white
+                titleResId = R.string.station_widget_info_title
+                messageResId = R.string.station_widget_info_message
+                positiveText = android.R.string.ok
+            }
+            .build()
+            .show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.anagrafica_stazioni_meteo_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.refreshAction -> {
+                viewModel.caricaStazioni(true)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -27,15 +27,15 @@
   -->
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
-        android:shortcutId="previsione_locale"
+        android:shortcutId="webcams"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher"
-        android:shortcutShortLabel="@string/title_activity_main"
-        android:shortcutLongLabel="@string/title_activity_main">
+        android:icon="@drawable/ic_webcam_color"
+        android:shortcutShortLabel="@string/title_activity_webcams_viewer"
+        android:shortcutLongLabel="@string/title_activity_webcams_viewer">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.gmail.fattazzo.meteo"
-            android:targetClass="com.gmail.fattazzo.meteo.activity.main.MainActivity" />
+            android:targetClass="com.gmail.fattazzo.meteo.activity.webcam.WebcamActivity" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut. -->
@@ -44,7 +44,7 @@
     <shortcut
         android:shortcutId="bollettino_probabilistico"
         android:enabled="true"
-        android:icon="@drawable/format_list"
+        android:icon="@drawable/ic_boll_prob"
         android:shortcutShortLabel="@string/title_activity_bollettino_probabilistico"
         android:shortcutLongLabel="@string/title_activity_bollettino_probabilistico">
         <intent
@@ -57,15 +57,15 @@
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
     <shortcut
-        android:shortcutId="webcams"
+        android:shortcutId="previsione_locale"
         android:enabled="true"
-        android:icon="@drawable/videocam"
-        android:shortcutShortLabel="@string/title_activity_webcams_viewer"
-        android:shortcutLongLabel="@string/title_activity_webcams_viewer">
+        android:icon="@drawable/ic_previsione"
+        android:shortcutShortLabel="@string/title_activity_main"
+        android:shortcutLongLabel="@string/title_activity_main">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.gmail.fattazzo.meteo"
-            android:targetClass="com.gmail.fattazzo.meteo.activity.webcam.WebcamActivity" />
+            android:targetClass="com.gmail.fattazzo.meteo.activity.main.MainActivity" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when
              they launch this shortcut. -->

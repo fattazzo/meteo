@@ -24,19 +24,22 @@
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
   -->
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.gmail.fattazzo.meteo.databinding.converters.FasciaConverter"/>
 
         <variable
-            name="descrizione"
-            type="String" />
+            name="fascia"
+            type="com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce" />
+
         <variable
             name="selected"
             type="Boolean" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/header_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@{selected ? @drawable/border_line_round_selected : @drawable/border_line_round}"
@@ -54,7 +57,8 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginRight="4dp"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp"
+                app:fasciaThemeIcon="@{fascia}" />
 
             <TextView
                 android:id="@+id/descriptionTV"
@@ -65,7 +69,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="4dp"
                 android:gravity="center_vertical"
-                android:text="@{descrizione}"
+                android:text="@{FasciaConverter.fasciaPer(fascia)}"
                 android:textAppearance="@style/TextAppearance.Medium"
                 android:textStyle="bold" />
         </LinearLayout>

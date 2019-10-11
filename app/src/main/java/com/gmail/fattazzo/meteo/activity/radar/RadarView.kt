@@ -29,42 +29,35 @@ package com.gmail.fattazzo.meteo.activity.radar
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.ImageView
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
-import com.gmail.fattazzo.meteo.R
-import org.androidannotations.annotations.EViewGroup
-import org.androidannotations.annotations.ViewById
+import com.gmail.fattazzo.meteo.databinding.ItemRadarBinding
 
 /**
  * @author fattazzo
  *         <p/>
  *         date: 09/04/19
  */
-@EViewGroup(R.layout.item_radar)
-open class RadarView @JvmOverloads constructor(
+class RadarView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    @ViewById
-    internal lateinit var titleTV: TextView
+    val binding: ItemRadarBinding by lazy {
+        ItemRadarBinding.inflate(LayoutInflater.from(context), this, true).apply {
+            selezionata = false
+            radarModel = RadarModel()
+        }
+    }
 
-    @ViewById
-    internal lateinit var iconView: ImageView
+    override fun getRootView(): View = binding.root
 
-    @ViewById
-    internal lateinit var iconaImageView: ImageView
 
     fun bind(radarModel: RadarModel) {
-        titleTV.text = radarModel.title
-        iconView.setImageResource(radarModel.drawableResId)
+        binding.radarModel = radarModel
     }
 
     fun setSelectedView(selected: Boolean) {
-        if (selected) {
-            this.setBackgroundResource(R.drawable.border_line_round_selected)
-        } else {
-            this.setBackgroundResource(R.drawable.border_line_round)
-        }
+        binding.selezionata = selected
     }
 }

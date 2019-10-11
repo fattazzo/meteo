@@ -36,17 +36,13 @@ object StringConverter {
 
     @SuppressLint("DefaultLocale")
     @JvmStatic
-    fun capitalize(@Nullable value: String?): String = value.orEmpty().capitalize()
-
-    @SuppressLint("DefaultLocale")
-    @JvmStatic
-    fun dateToString(@Nullable value: Date?): String {
+    fun dateToString(@Nullable value: Date?, pattern: String): String {
 
         return if (value == null) {
             ""
         } else {
             try {
-                val dateFormat = SimpleDateFormat("EEEE dd/MM/yyyy", Locale.ITALIAN)
+                val dateFormat = SimpleDateFormat(pattern, Locale.ITALIAN)
                 dateFormat.format(value).capitalize()
             } catch (e: Exception) {
                 ""

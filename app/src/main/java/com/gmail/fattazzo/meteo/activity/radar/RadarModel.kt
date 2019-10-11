@@ -27,9 +27,15 @@
 
 package com.gmail.fattazzo.meteo.activity.radar
 
+import androidx.annotation.DrawableRes
+import com.gmail.fattazzo.meteo.R
+
 /**
  * @author fattazzo
  *         <p/>
  *         date: 14/04/19
  */
-class RadarModel(val title: String, val url: String, var drawableResId: Int )
+class RadarModel(val id: Int, val title: String, val url: String, @DrawableRes var drawableResId: Int) {
+
+    constructor() : this(-1, "", "", R.drawable.radar)
+}

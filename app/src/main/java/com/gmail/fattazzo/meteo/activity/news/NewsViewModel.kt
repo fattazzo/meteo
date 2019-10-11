@@ -32,8 +32,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gmail.fattazzo.meteo.data.NewsService
+import com.gmail.fattazzo.meteo.data.news.News
 import com.gmail.fattazzo.meteo.data.news.NewsAvvisiType
-import com.gmail.fattazzo.meteo.db.News
 import com.gmail.fattazzo.meteo.utils.ioJob
 import com.gmail.fattazzo.meteo.utils.uiJob
 import javax.inject.Inject
@@ -45,23 +45,17 @@ import javax.inject.Inject
  */
 class NewsViewModel @Inject constructor(private val newsService: NewsService) : ViewModel() {
 
-    private var newsDownloaded = false
-
     val newsAttive = MutableLiveData<Boolean>(true)
     val avvisiAttivi = MutableLiveData<Boolean>(true)
 
     val news = MediatorLiveData<List<News>>().apply {
-        addSource(newsAttive) { loadNews(false) }
-        addSource(avvisiAttivi) { loadNews(false) }
+        addSource(newsAttive) { loadNews() }
+        addSource(avvisiAttivi) { loadNews() }
     }
 
     val loadingData = ObservableBoolean(false)
 
-    fun init() {
-        loadNews(false)
-    }
-
-    fun loadNews(forceDownload: Boolean) {
+    fun loadNews() {
 
         loadingData.set(true)
 
@@ -71,14 +65,12 @@ class NewsViewModel @Inject constructor(private val newsService: NewsService) : 
             if (newsAttive.value == true) types.add(NewsAvvisiType.NEWS)
             if (avvisiAttivi.value == true) types.add(NewsAvvisiType.AVVISI_ALLERTE)
 
-            val newsLoaded = newsService.load(types, forceDownload || !newsDownloaded)
+            val newsLoaded = newsService.load(types)
 
             uiJob {
                 news.postValue(newsLoaded)
-                newsDownloaded = true
+                loadingData.set(false)
             }
-
-            loadingData.set(false)
         }
     }
 }

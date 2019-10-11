@@ -32,15 +32,15 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
-import com.activeandroid.query.Select
 import com.crashlytics.android.Crashlytics
 import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.data.db.AppDatabase
+import com.gmail.fattazzo.meteo.data.db.entities.Localita
 import com.gmail.fattazzo.meteo.data.opendata.json.api.BollettinoProbabilisticoService
 import com.gmail.fattazzo.meteo.data.opendata.json.api.LocalitaService
 import com.gmail.fattazzo.meteo.data.opendata.json.api.PrevisioneLocalitaService
 import com.gmail.fattazzo.meteo.data.opendata.json.model.bollettinoprobabilistico.BollettinoProbabilistico
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.PrevisioneLocalita
-import com.gmail.fattazzo.meteo.db.Localita
 
 /**
  * @author fattazzo
@@ -78,34 +78,27 @@ class MeteoService(private val context: Context) {
 
     fun caricaLocalita(forceDownload: Boolean = false): List<Localita> {
 
-        if (Select().from(Localita::class.java).count() == 0 || forceDownload) {
+        val localitaDao = AppDatabase(context).localitaDao()
+
+        if (localitaDao.count() == 0 || forceDownload) {
 
             val localitaCaricate: List<com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Localita> =
                 try {
                     LocalitaService.caricaLocalita().orEmpty()
                 } catch (e: Exception) {
-                    Log.e(Companion.TAG, "Errore durante il caricamento delle località", e)
+                    Log.e(TAG, "Errore durante il caricamento delle località", e)
                     Crashlytics.logException(e)
                     listOf()
                 }
 
             try {
-                Localita.recreateTable()
-                localitaCaricate.forEach {
-                    val localita = Localita()
-                    localita.nome = it.nome
-                    localita.comune = it.comune
-                    localita.quota = it.quota
-                    localita.latitudine = it.latitudine
-                    localita.longitudine = it.longitudine
-                    localita.save()
-                }
+                localitaDao.deleteAll()
+                localitaCaricate.map { Localita(it) }.forEach { localitaDao.insert(it) }
             } catch (e: Exception) {
                 showError(e)
             }
         }
-        return Select().from(Localita::class.java).orderBy("nome")
-            .execute()
+        return localitaDao.loadAll()
     }
 
     fun caricaBollettinoProbabilistico(): Result<BollettinoProbabilistico> {

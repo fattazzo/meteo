@@ -143,7 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="@{safeUnbox(model.loadingPrevisione) ? View.VISIBLE : View.GONE}"
+            android:visibility="@{safeUnbox(model.loadingPrevisione) || safeUnbox(model.loadingLocalita) ? View.VISIBLE : View.GONE}"
             app:SpinKit_Color="@color/colorPrimaryDark" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

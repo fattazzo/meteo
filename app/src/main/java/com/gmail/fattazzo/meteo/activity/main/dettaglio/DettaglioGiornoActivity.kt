@@ -35,9 +35,8 @@ import com.gmail.fattazzo.meteo.activity.main.dettaglio.fasciasection.FasceAdapt
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Giorni
 import com.gmail.fattazzo.meteo.databinding.ActivityDettaglioGiornoBinding
+import com.gmail.fattazzo.meteo.databinding.converters.GiornoConverter
 import com.gmail.fattazzo.meteo.utils.ItemOffsetDecoration
-import java.text.SimpleDateFormat
-import java.util.*
 
 open class DettaglioGiornoActivity : BaseActivity<ActivityDettaglioGiornoBinding>(),
     FasceHeaderAdapter.OnClickListener {
@@ -57,9 +56,7 @@ open class DettaglioGiornoActivity : BaseActivity<ActivityDettaglioGiornoBinding
         binding.model = viewModel
 
         viewModel.giorno.observe(this, androidx.lifecycle.Observer {
-            val dateFormat = SimpleDateFormat("EEEE dd/MM/yyyy", Locale.ITALIAN)
-
-            binding.dataTV.text = dateFormat.format(it.data).capitalize()
+            binding.dataTV.text = GiornoConverter.giornoData(it)
 
             binding.fasceHeaderRecyclerView.addItemDecoration(ItemOffsetDecoration(0, 0, 10, 10))
             binding.fasceHeaderRecyclerView.adapter =

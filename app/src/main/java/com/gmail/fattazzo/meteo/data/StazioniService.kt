@@ -34,11 +34,12 @@ import android.util.Log
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.data.db.AppDatabase
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.StazioniMeteoDownloader
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.domain.datistazione.DatiStazione
 import com.gmail.fattazzo.meteo.data.stazioni.valanghe.StazioniValangheDownloader
-import com.gmail.fattazzo.meteo.db.StazioneMeteo
-import com.gmail.fattazzo.meteo.db.StazioneValanghe
 
 
 /**
@@ -57,16 +58,22 @@ class StazioniService(private val context: Context) {
         forceDownload: Boolean
     ): Result<List<StazioneMeteo>> {
 
-        val stazioniDB = StazioneMeteo.laodAll(caricaDisabilitate)
+        val stazioniMeteoDao = AppDatabase(context).stazioniMeteoDao()
+
+        var stazioniDB =
+            if (caricaDisabilitate) stazioniMeteoDao.loadAll() else stazioniMeteoDao.loadAllAbilitate()
 
         return if (stazioniDB.isEmpty() || forceDownload) {
             return try {
                 val stazioneDownloaded = StazioniMeteoDownloader().downloadAnagrafica()
 
-                StazioneMeteo.recreateTable()
-                stazioneDownloaded.map { StazioneMeteo.fromStazioneXML(it) }.forEach { it.save() }
+                stazioniMeteoDao.deleteAll()
+                stazioneDownloaded.map { StazioneMeteo.fromStazioneXML(it) }
+                    .forEach { stazioniMeteoDao.insert(it) }
 
-                Result(StazioneMeteo.laodAll(caricaDisabilitate))
+                stazioniDB =
+                    if (caricaDisabilitate) stazioniMeteoDao.loadAll() else stazioniMeteoDao.loadAllAbilitate()
+                Result(stazioniDB)
             } catch (e: Exception) {
                 showError(e)
                 Result(null, true, e)
@@ -95,17 +102,20 @@ class StazioniService(private val context: Context) {
 
     fun caricaAnagraficaStazioniValanghe(forceDownload: Boolean): Result<List<StazioneValanghe>> {
 
-        val stazioniDB = StazioneValanghe.loadAll()
+        val stazioniValangheDao = AppDatabase(context).stazioniValangheDao()
+
+        var stazioniDB = stazioniValangheDao.loadAll()
 
         return if (stazioniDB.isEmpty() || forceDownload) {
             return try {
                 val stazioneDownloaded = StazioniValangheDownloader().downloadAnagrafica()
 
-                StazioneValanghe.recreateTable()
+                stazioniValangheDao.deleteAll()
                 stazioneDownloaded.map { StazioneValanghe.fromStazioneXML(it) }
-                    .forEach { it.save() }
+                    .forEach { stazioniValangheDao.insert(it) }
 
-                Result(StazioneValanghe.loadAll())
+                stazioniDB = stazioniValangheDao.loadAll()
+                Result(stazioniDB)
             } catch (e: Exception) {
                 showError(e)
                 Result(null, true, e)

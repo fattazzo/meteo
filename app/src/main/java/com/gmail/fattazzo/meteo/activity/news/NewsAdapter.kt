@@ -39,8 +39,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.github.vipulasri.timelineview.TimelineView
 import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.data.news.News
 import com.gmail.fattazzo.meteo.data.news.NewsAvvisiType
-import com.gmail.fattazzo.meteo.db.News
 import kotlinx.android.synthetic.main.item_news.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -49,7 +49,8 @@ import java.util.*
  * Created by Vipul Asri on 13-12-2018.
  */
 
-class NewsAdapter(private val context: Context, private val mFeedList: List<News>) : RecyclerView.Adapter<NewsAdapter.TimeLineViewHolder>() {
+class NewsAdapter(private val context: Context, private val mFeedList: List<News>) :
+    RecyclerView.Adapter<NewsAdapter.TimeLineViewHolder>() {
 
     override fun getItemViewType(position: Int): Int {
         return TimelineView.getTimeLineViewType(position, itemCount)
@@ -57,14 +58,18 @@ class NewsAdapter(private val context: Context, private val mFeedList: List<News
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeLineViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return TimeLineViewHolder(layoutInflater.inflate(R.layout.item_news, parent, false), viewType)
+        return TimeLineViewHolder(
+            layoutInflater.inflate(R.layout.item_news, parent, false),
+            viewType
+        )
     }
 
     override fun onBindViewHolder(holder: TimeLineViewHolder, position: Int) {
 
         val timeLineModel = mFeedList[position]
 
-        holder.date.text = SimpleDateFormat("dd MMMM yyyy", Locale.ITALIAN).format(timeLineModel.date)
+        holder.date.text =
+            SimpleDateFormat("dd MMMM yyyy", Locale.ITALIAN).format(timeLineModel.date)
         holder.category.text = timeLineModel.category
         holder.message.text = timeLineModel.title
         if (timeLineModel.url.orEmpty().isNotBlank()) {
@@ -85,7 +90,8 @@ class NewsAdapter(private val context: Context, private val mFeedList: List<News
 
     override fun getItemCount() = mFeedList.size
 
-    inner class TimeLineViewHolder(itemView: View, viewType: Int) : RecyclerView.ViewHolder(itemView) {
+    inner class TimeLineViewHolder(itemView: View, viewType: Int) :
+        RecyclerView.ViewHolder(itemView) {
 
         val date: TextView = itemView.dateTV
         val category: TextView = itemView.categoryTV

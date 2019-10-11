@@ -33,7 +33,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.gmail.fattazzo.meteo.R
-import com.gmail.fattazzo.meteo.db.StazioneMeteo
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
 

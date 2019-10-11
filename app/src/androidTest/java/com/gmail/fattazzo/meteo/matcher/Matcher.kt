@@ -30,9 +30,10 @@ package com.gmail.fattazzo.meteo.matcher
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
-
+import org.hamcrest.BaseMatcher
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
+
 
 /**
  * @author fattazzo
@@ -127,6 +128,21 @@ object Matcher {
 
             override fun describeTo(description: Description) {
                 description.appendText("ListView is not empty")
+            }
+        }
+    }
+
+    fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatcher =
+        RecyclerViewMatcher(recyclerViewId)
+
+    fun withToStringValue(value: String): org.hamcrest.Matcher<View> {
+        return object : BaseMatcher<View>() {
+            override fun matches(item: Any): Boolean {
+                return item.toString() == value
+            }
+
+            override fun describeTo(description: Description) {
+
             }
         }
     }

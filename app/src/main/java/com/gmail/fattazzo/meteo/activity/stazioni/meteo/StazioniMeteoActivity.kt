@@ -27,6 +27,7 @@
 
 package com.gmail.fattazzo.meteo.activity.stazioni.meteo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -38,15 +39,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.BaseActivity
-import com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoActivity_
+import com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoActivity
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.TipoDatoStazione
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.IDatoStazioneFragment
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico.GraficoDatiStazioneFragment_
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.tabella.TabellaDatiStazioneFragment_
 import com.gmail.fattazzo.meteo.app.MeteoApplication
 import com.gmail.fattazzo.meteo.app.module.viewmodel.DaggerViewModelFactory
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
 import com.gmail.fattazzo.meteo.databinding.ActivityStazioniMeteoBinding
-import com.gmail.fattazzo.meteo.db.StazioneMeteo
 import com.gmail.fattazzo.meteo.utils.FragmentUtils
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import java.util.*
@@ -93,9 +94,7 @@ class StazioniMeteoActivity : BaseActivity<ActivityStazioniMeteoBinding>() {
     private fun initStazioneSelezionata() {
 
         viewModel.stazioniMeteo.observe(this, Observer {
-            val stazioneMeteo = StazioneMeteo()
-            stazioneMeteo.codice = null
-            stazioneMeteo.nome = ""
+            val stazioneMeteo = StazioneMeteo(null, "")
 
             val stazioniSpinner = ArrayList<StazioneMeteo>()
             stazioniSpinner.add(stazioneMeteo)
@@ -193,7 +192,8 @@ class StazioniMeteoActivity : BaseActivity<ActivityStazioniMeteoBinding>() {
     }
 
     fun openAnagraficaStazioniActivity(view: View) {
-        AnagraficaStazioniMeteoActivity_.intent(this).start()
+        val intent = Intent(this, AnagraficaStazioniMeteoActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

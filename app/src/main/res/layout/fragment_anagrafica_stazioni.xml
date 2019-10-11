@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Project: meteo
   ~ File: fragment_anagrafica_stazioni.xml
   ~
@@ -25,133 +23,143 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/refreshButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_ring"
-        android:padding="4dp"
-        android:tint="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_popup_sync"
-        tools:ignore="ContentDescription" />
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="model"
+            type="com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/anag_stazioni_desc_label"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginRight="2dp"
-        android:background="@drawable/border_line_round"
-        android:gravity="center_vertical"
-        android:paddingLeft="12dp"
-        android:paddingTop="4dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="4dp"
-        android:text="@string/list_stations_description"
-        android:textAppearance="@style/TextAppearance.Small"
-        app:layout_constraintBottom_toBottomOf="@+id/refreshButton"
-        app:layout_constraintEnd_toStartOf="@+id/refreshButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <LinearLayout
-        android:id="@+id/switchLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/infoButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anag_stazioni_desc_label">
-
-        <Switch
-            android:id="@+id/stazioniTypeSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:switchPadding="8dp"
-            android:text="@string/all"
-            android:textAppearance="@style/TextAppearance.Small"
-            app:layout_constraintTop_toBottomOf="@+id/anag_stazioni_desc_label"
-            tools:layout_editor_absoluteX="88dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoActivity">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
+            android:id="@+id/anag_stazioni_desc_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
             android:gravity="center_vertical"
-            android:text="@string/only_working"
+            android:paddingLeft="12dp"
+            android:paddingTop="4dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="4dp"
+            android:text="@string/list_stations_description"
             android:textAppearance="@style/TextAppearance.Small"
-            app:layout_constraintBottom_toBottomOf="@+id/stazioniTypeSwitch"
-            app:layout_constraintStart_toEndOf="@+id/stazioniTypeSwitch"
-            app:layout_constraintTop_toTopOf="@+id/stazioniTypeSwitch" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/anag_stazione_nome_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/table_header_background"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/name"
-        android:textColor="@color/table_header_foreground"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/anag_stazione_codice_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchLayout" />
-
-    <TextView
-        android:id="@+id/anag_stazione_codice_label"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:background="@color/table_header_background"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/code"
-        android:textColor="@color/table_header_foreground"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/anag_stazione_nome_label"
-        app:layout_constraintTop_toTopOf="@+id/anag_stazione_nome_label" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ListView
-        android:id="@+id/anag_stazioni_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anag_stazione_nome_label" />
+        <LinearLayout
+            android:id="@+id/switchLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/infoButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/anag_stazioni_desc_label">
 
-    <ImageButton
-        android:id="@+id/infoButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@null"
-        android:padding="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/anag_stazione_codice_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/refreshButton"
-        app:layout_constraintTop_toBottomOf="@+id/refreshButton"
-        app:srcCompat="@drawable/info" />
+            <Switch
+                android:id="@+id/stazioniTypeSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={!model.caricaDisabilitate}"
+                android:switchPadding="8dp"
+                android:text="@string/all"
+                android:textAppearance="@style/TextAppearance.Small"
+                app:layout_constraintTop_toBottomOf="@+id/anag_stazioni_desc_label"
+                tools:layout_editor_absoluteX="88dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/only_working"
+                android:textAppearance="@style/TextAppearance.Small"
+                app:layout_constraintBottom_toBottomOf="@+id/stazioniTypeSwitch"
+                app:layout_constraintStart_toEndOf="@+id/stazioniTypeSwitch"
+                app:layout_constraintTop_toTopOf="@+id/stazioniTypeSwitch" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/anag_stazione_nome_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/table_header_background"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/name"
+            android:textColor="@color/table_header_foreground"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/anag_stazione_codice_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchLayout" />
+
+        <TextView
+            android:id="@+id/anag_stazione_codice_label"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:background="@color/table_header_background"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/code"
+            android:textColor="@color/table_header_foreground"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/anag_stazione_nome_label"
+            app:layout_constraintTop_toTopOf="@+id/anag_stazione_nome_label" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ListView
+            android:id="@+id/anag_stazioni_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/anag_stazione_nome_label" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/loading_spin"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{safeUnbox(model.loadingData) ? View.VISIBLE : View.GONE}"
+            app:SpinKit_Color="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/anag_stazione_nome_label"/>
+
+        <ImageButton
+            android:id="@+id/infoButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@null"
+            android:padding="4dp"
+            android:onClick="openInfo"
+            app:layout_constraintBottom_toTopOf="@+id/anag_stazione_codice_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/refreshButton"
+            app:layout_constraintTop_toBottomOf="@+id/refreshButton"
+            app:srcCompat="@drawable/info" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

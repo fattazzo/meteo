@@ -34,8 +34,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.gmail.fattazzo.meteo.R
-
-import com.gmail.fattazzo.meteo.db.StazioneValanghe
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 
 /**
  * @author fattazzo
@@ -50,7 +49,8 @@ class StazioneNeveAdapter
  * @param context  context
  * @param itemList lista delle stazioni neve
  */
-(context: Context, val itemList: List<StazioneValanghe>) : ArrayAdapter<StazioneValanghe>(context, R.layout.spinner_item) {
+    (context: Context, val itemList: List<StazioneValanghe>) :
+    ArrayAdapter<StazioneValanghe>(context, R.layout.spinner_item) {
 
     override fun getCount(): Int = this.itemList.size
 

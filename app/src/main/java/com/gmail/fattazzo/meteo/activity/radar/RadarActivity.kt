@@ -30,16 +30,19 @@ package com.gmail.fattazzo.meteo.activity.radar
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.gmail.fattazzo.meteo.Config
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.BaseActivity
+import com.gmail.fattazzo.meteo.app.MeteoApplication
+import com.gmail.fattazzo.meteo.app.module.viewmodel.DaggerViewModelFactory
 import com.gmail.fattazzo.meteo.databinding.ActivityRadarBinding
 import com.gmail.fattazzo.meteo.utils.ItemOffsetDecoration
 import com.gmail.fattazzo.meteo.utils.glide.GlideHelper
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.fragment_radar.view.*
+import javax.inject.Inject
 
 /**
  * @author fattazzo
@@ -48,37 +51,21 @@ import kotlinx.android.synthetic.main.fragment_radar.view.*
  */
 class RadarActivity : BaseActivity<ActivityRadarBinding>(), RadarAdapter.OnClickListener {
 
-    lateinit var currentRadar: RadarModel
+    @Inject
+    lateinit var viewModelFactory: DaggerViewModelFactory
+
+    lateinit var viewModel: RadarViewModel
 
     override fun getLayoutResID(): Int = R.layout.activity_radar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        (application as MeteoApplication).appComponent.inject(this)
+
         initToolbar(binding.appBarMain.toolbar)
 
-        val radarData = listOf(
-            RadarModel(
-                "Precipitazioni",
-                Config.RADAR_PRECIPITAZIONI,
-                R.drawable.drop
-            ),
-            RadarModel(
-                "Infrarossi",
-                Config.RADAR_INFRAROSSI,
-                R.drawable.infrared
-            ),
-            RadarModel(
-                "Neve",
-                Config.RADAR_NEVE,
-                R.drawable.snowflake
-            ),
-            RadarModel(
-                "Europa",
-                Config.RADAR_EUROPA,
-                R.drawable.europe
-            )
-        )
+        viewModel = ViewModelProvider(this, viewModelFactory).get(RadarViewModel::class.java)
 
         binding.contentLayout.radarRecyclerView.addItemDecoration(
             ItemOffsetDecoration(
@@ -88,28 +75,39 @@ class RadarActivity : BaseActivity<ActivityRadarBinding>(), RadarAdapter.OnClick
                 10
             )
         )
-        binding.contentLayout.radarRecyclerView.adapter =
-            RadarAdapter(radarData, this, this)
 
-        currentRadar = radarData[0]
-        loadCurrentRadar()
+        viewModel.radars.observe(this, Observer { radarModel ->
+            val adapter = RadarAdapter(radarModel.orEmpty(), this, this)
+            viewModel.currentRadar.value?.let { adapter.currentRadar = it }
+            binding.contentLayout.radarRecyclerView.adapter = adapter
+        })
+
+        viewModel.currentRadar.observe(this, Observer { radarModel ->
+            loadRadar(radarModel)
+
+            binding.contentLayout.radarRecyclerView.adapter?.let {
+                if (radarModel != null) {
+                    (it as RadarAdapter).currentRadar = radarModel
+                }
+            }
+        })
+
+        viewModel.caricaRadars()
     }
 
     override fun onClick(radarModel: RadarModel) {
-        currentRadar = radarModel
-        loadCurrentRadar()
+        viewModel.currentRadar.postValue(radarModel)
     }
 
-    private fun loadCurrentRadar() {
-        val circularProgressDrawable = CircularProgressDrawable(this)
-        circularProgressDrawable.strokeWidth = 5f
-        circularProgressDrawable.centerRadius = 30f
-        circularProgressDrawable.start()
+    private fun loadRadar(radar: RadarModel?) {
+        binding.contentLayout.radarView.setImageDrawable(null)
 
-        Glide.with(this)
-            .load(currentRadar.url)
-            .apply(GlideHelper.createNoCacheOptions(this, true, addTimeOut = true))
-            .into(binding.contentLayout.radarView)
+        radar?.let {
+            Glide.with(this)
+                .load(it.url)
+                .apply(GlideHelper.createNoCacheOptions(this, true, addTimeOut = true))
+                .into(binding.contentLayout.radarView)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -121,7 +119,7 @@ class RadarActivity : BaseActivity<ActivityRadarBinding>(), RadarAdapter.OnClick
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.refreshAction -> {
-                loadCurrentRadar()
+                loadRadar(viewModel.currentRadar.value)
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -31,7 +31,7 @@ import android.content.Context
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.gmail.fattazzo.meteo.R
-import com.gmail.fattazzo.meteo.db.StazioneValanghe
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
 

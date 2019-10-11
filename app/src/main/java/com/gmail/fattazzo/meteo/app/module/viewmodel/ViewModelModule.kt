@@ -32,8 +32,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.gmail.fattazzo.meteo.activity.bollettino.probabilistico.BollettinoProbabilisticoViewModel
 import com.gmail.fattazzo.meteo.activity.main.MainViewModel
 import com.gmail.fattazzo.meteo.activity.news.NewsViewModel
+import com.gmail.fattazzo.meteo.activity.radar.RadarViewModel
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.StazioniMeteoViewModel
+import com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoViewModel
 import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.StazioniValangheViewModel
+import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.anagrafica.AnagraficaStazioniValangheViewModel
 
 import dagger.Binds
 import dagger.Module
@@ -68,4 +71,19 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(StazioniValangheViewModel::class)
     internal abstract fun provideStazioniValangheViewModel(viewModel: StazioniValangheViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AnagraficaStazioniMeteoViewModel::class)
+    internal abstract fun provideAnagraficaStazioniMeteoViewModel(viewModel: AnagraficaStazioniMeteoViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AnagraficaStazioniValangheViewModel::class)
+    internal abstract fun provideAnagraficaStazioniValangheViewModel(viewModel: AnagraficaStazioniValangheViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RadarViewModel::class)
+    internal abstract fun provideRadarViewModel(viewModel: RadarViewModel): ViewModel
 }

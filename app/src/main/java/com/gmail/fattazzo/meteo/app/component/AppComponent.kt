@@ -31,11 +31,12 @@ import com.gmail.fattazzo.meteo.activity.bollettino.probabilistico.BollettinoPro
 import com.gmail.fattazzo.meteo.activity.changelog.ChangeLogActivity
 import com.gmail.fattazzo.meteo.activity.main.MainActivity
 import com.gmail.fattazzo.meteo.activity.news.NewsActivity
+import com.gmail.fattazzo.meteo.activity.radar.RadarActivity
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.StazioniMeteoActivity
-import com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica.AnagraficaFragment
+import com.gmail.fattazzo.meteo.activity.stazioni.meteo.anagrafica.AnagraficaStazioniMeteoActivity
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico.DataSetBuilder
 import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.StazioniValangheActivity
-import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.rilevazioni.RilevazioniFragment
+import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.anagrafica.AnagraficaStazioniValangheActivity
 import com.gmail.fattazzo.meteo.activity.webcam.WebcamActivity
 import com.gmail.fattazzo.meteo.activity.webcam.WebcamsAdapter
 import com.gmail.fattazzo.meteo.app.module.AppModule
@@ -64,10 +65,9 @@ interface AppComponent {
     fun inject(activity: WebcamActivity)
     fun inject(activity: StazioniMeteoActivity)
     fun inject(activity: StazioniValangheActivity)
-
-    fun inject(fragment: AnagraficaFragment)
-    fun inject(fragment: com.gmail.fattazzo.meteo.activity.stazioni.valanghe.anagrafica.AnagraficaFragment)
-    fun inject(fragment: RilevazioniFragment)
+    fun inject(activity: AnagraficaStazioniMeteoActivity)
+    fun inject(activity: AnagraficaStazioniValangheActivity)
+    fun inject(activity: RadarActivity)
 
     fun inject(task: LoadPrevisioneLocalitaTask)
     fun inject(task: LoadDatiStazioneMeteoTask)

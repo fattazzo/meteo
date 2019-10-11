@@ -29,7 +29,6 @@ package com.gmail.fattazzo.meteo.data.news
 
 import android.annotation.SuppressLint
 import com.gmail.fattazzo.meteo.Config
-import com.gmail.fattazzo.meteo.db.News
 import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
@@ -64,13 +63,13 @@ class NewsDownloader {
                     "http://avvisi.protezionecivile.tn.it" +
                     link[0].attr("onclick").substringAfter("'").substringBefore("'")
 
-            val news = News().apply {
-                date = SimpleDateFormat("dd MMMM yyyy", Locale.ITALIAN).parse(dateString)
-                category = "Avvisi e allerte"
-                title = link[0].text()
-                url = downloadUrl
-                type = NewsAvvisiType.AVVISI_ALLERTE.ordinal
-            }
+            val news = News(
+                SimpleDateFormat("dd MMMM yyyy", Locale.ITALIAN).parse(dateString),
+                "Avvisi e allerte",
+                link[0].text(),
+                downloadUrl,
+                NewsAvvisiType.AVVISI_ALLERTE.ordinal
+            )
 
             avvisi.add(news)
         }
@@ -94,13 +93,13 @@ class NewsDownloader {
             val link = it.select("a")
             val spanCategory = it.select("span[class=verde]")
 
-            val news = News().apply {
-                date = SimpleDateFormat("dd.M.yyyy").parse(spanData[0].text())
-                category = spanCategory[0].text().replace("(", "").replace(")", "")
-                title = link[0].text()
-                url = link[0].attr("href")
-                type = NewsAvvisiType.NEWS.ordinal
-            }
+            val news = News(
+                SimpleDateFormat("dd.M.yyyy").parse(spanData[0].text()),
+                spanCategory[0].text().replace("(", "").replace(")", ""),
+                link[0].text(),
+                link[0].attr("href"),
+                NewsAvvisiType.NEWS.ordinal
+            )
 
             newsNuove.add(news)
         }

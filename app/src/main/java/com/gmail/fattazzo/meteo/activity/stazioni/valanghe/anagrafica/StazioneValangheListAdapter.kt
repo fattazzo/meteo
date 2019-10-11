@@ -31,7 +31,7 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gmail.fattazzo.meteo.db.StazioneValanghe
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 
 /**
  *

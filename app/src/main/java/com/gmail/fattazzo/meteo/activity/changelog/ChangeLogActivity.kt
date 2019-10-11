@@ -34,6 +34,7 @@ import androidx.core.text.HtmlCompat
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.app.MeteoApplication
 import com.gmail.fattazzo.meteo.data.VersioniService
+import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
 class ChangeLogActivity : AppCompatActivity() {
@@ -44,6 +45,10 @@ class ChangeLogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_log)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
 
         (application as MeteoApplication).appComponent.inject(this)
 

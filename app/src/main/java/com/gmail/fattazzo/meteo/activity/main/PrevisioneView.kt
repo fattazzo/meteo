@@ -37,13 +37,12 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.PrevisioneLocalita
+import com.gmail.fattazzo.meteo.databinding.converters.PrevisioneConverter
 import com.gmail.fattazzo.meteo.utils.AnimationUtils
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EViewGroup
 import org.androidannotations.annotations.ViewById
 import org.androidannotations.annotations.res.BooleanRes
-import java.text.SimpleDateFormat
-import java.util.*
 
 /**
  * @author fattazzo
@@ -101,12 +100,9 @@ open class PrevisioneView : LinearLayout {
         infoImageView.setImageResource(R.drawable.arrow_down)
 
         if (previsione != null) {
-            dataTV.text = SimpleDateFormat("dd/MM/yyyy", Locale.ITALIAN).format(previsione.dataPubblicazione)
+            dataTV.text = PrevisioneConverter.dataToString(previsione)
 
-            val evoluzione = if (showFullEvolutionText)
-                previsione.evoluzioneBreve.orEmpty().capitalize() else
-                previsione.evoluzioneBreve.orEmpty().substringBefore('.').capitalize() + "..."
-            evoluzioneTempoTV.text = evoluzione
+            evoluzioneTempoTV.text = PrevisioneConverter.evoluzione(previsione,showFullEvolutionText)
 
             titolareTV.text = previsione.nomeTitolare
             editoreTV.text = previsione.nomeEditore

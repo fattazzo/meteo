@@ -29,6 +29,8 @@
 
     <data>
 
+        <import type="com.gmail.fattazzo.meteo.databinding.converters.GiornoConverter" />
+
         <variable
             name="giorno"
             type="com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Giorni" />
@@ -93,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{(giorno != null &amp;&amp; giorno.tMinGiorno != null) ? String.format(`%d°C`, giorno.tMinGiorno) : ``}"
+                    android:text="@{GiornoConverter.giornoTMin(giorno)}"
                     android:textAppearance="@style/TextAppearance.Medium"
                     android:textColor="@color/temp_min"
                     app:layout_constraintStart_toEndOf="@+id/textView16"
@@ -105,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="4dp"
-                    android:text="@{(giorno != null &amp;&amp; giorno.tMaxGiorno != null) ? String.format(`%d°C`, giorno.tMaxGiorno) : ``}"
+                    android:text="@{GiornoConverter.giornoTMax(giorno)}"
                     android:textAppearance="@style/TextAppearance.Medium"
                     android:textColor="@color/temp_max"
                     app:layout_constraintStart_toEndOf="@+id/textView"
@@ -120,7 +122,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginRight="4dp"
-                    android:text="@{giorno != null ? StringConverter.capitalize(giorno.testoGiorno) : ``}"
+                    android:text="@{GiornoConverter.giornoTesto(giorno)}"
                     android:textAppearance="@style/TextAppearance.Medium"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iconaImageView"
@@ -133,9 +135,9 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
+                    android:text="@{GiornoConverter.giornoData(giorno)}"
                     android:textAppearance="@style/TextAppearance.Medium"
                     android:textStyle="bold"
-                    android:text="@{giorno != null ? StringConverter.dateToString(giorno.data) : ``}"
                     app:layout_constraintStart_toEndOf="@+id/iconaImageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -147,6 +149,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="fitCenter"
+                    app:giornoThemeIcon="@{giorno}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

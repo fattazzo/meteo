@@ -52,7 +52,7 @@ class NewsActivity : BaseActivity<ActivityNewsBinding>() {
     @Inject
     lateinit var viewModelFactory: DaggerViewModelFactory
 
-    lateinit var viewModel: NewsViewModel
+    private lateinit var viewModel: NewsViewModel
 
     override fun getLayoutResID(): Int = R.layout.activity_news
 
@@ -73,7 +73,7 @@ class NewsActivity : BaseActivity<ActivityNewsBinding>() {
                 NewsAdapter(this, it)
         })
 
-        viewModel.init()
+        viewModel.loadNews()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -85,7 +85,7 @@ class NewsActivity : BaseActivity<ActivityNewsBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.refreshAction -> {
-                viewModel.loadNews(true)
+                viewModel.loadNews()
                 true
             }
             else -> super.onOptionsItemSelected(item)

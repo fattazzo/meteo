@@ -51,7 +51,7 @@ object GlideHelper {
         return circularProgressDrawable
     }
 
-    fun createOptions(context: Context, addLoadingPlaceholder: Boolean, addTimeOut: Boolean, errorDrawable: Int = 0, errorColor: Int = 0): RequestOptions {
+    private fun createOptions(context: Context, addLoadingPlaceholder: Boolean, addTimeOut: Boolean, errorDrawable: Int = 0, errorColor: Int = 0): RequestOptions {
         var options = RequestOptions()
 
         if (addLoadingPlaceholder) {

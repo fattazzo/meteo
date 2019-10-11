@@ -33,8 +33,8 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gmail.fattazzo.meteo.data.MeteoService
+import com.gmail.fattazzo.meteo.data.db.entities.Localita
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.PrevisioneLocalita
-import com.gmail.fattazzo.meteo.db.Localita
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import com.gmail.fattazzo.meteo.utils.ioJob
 import com.gmail.fattazzo.meteo.utils.uiJob
@@ -56,6 +56,7 @@ open class MainViewModel @Inject constructor(
     var localitaSelezionata = MutableLiveData<String>()
 
     val loadingPrevisione: ObservableBoolean = ObservableBoolean(false)
+    val loadingLocalita: ObservableBoolean = ObservableBoolean(false)
 
     val previsioneLocalita = MediatorLiveData<PrevisioneLocalita>().apply {
         addSource(localitaSelezionata) {
@@ -68,8 +69,9 @@ open class MainViewModel @Inject constructor(
 
     fun caricaPrevisione(forceDownload: Boolean) {
         if (forceDownload || (!loadingPrevisione.get() && localitaSelezionata.value != null && !isCurrentPrevisioneForLocalita(
-                localitaSelezionata.value)
+                localitaSelezionata.value
             )
+                    )
         ) {
             loadingPrevisione.set(true)
             ioJob {
@@ -88,10 +90,11 @@ open class MainViewModel @Inject constructor(
 
     fun caricaLocalita(forceDownload: Boolean) {
 
-        if(!forceDownload && !localita.value.isNullOrEmpty()) {
+        if (!forceDownload && (loadingLocalita.get() || !localita.value.isNullOrEmpty())) {
             return
         }
 
+        loadingLocalita.set(true)
         ioJob {
 
             val loc = meteoService.caricaLocalita(forceDownload)
@@ -102,6 +105,8 @@ open class MainViewModel @Inject constructor(
                 if (localitaSelezionata.value == null) {
                     localitaSelezionata.postValue(preferencesService.getNomeLocalitaPreferita())
                 }
+
+                loadingLocalita.set(false)
             }
         }
     }

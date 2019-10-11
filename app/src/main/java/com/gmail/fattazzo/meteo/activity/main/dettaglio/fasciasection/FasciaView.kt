@@ -30,9 +30,8 @@ package com.gmail.fattazzo.meteo.activity.main.dettaglio.fasciasection
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
-import androidx.databinding.DataBindingUtil
-import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Giorni
 import com.gmail.fattazzo.meteo.databinding.ItemFasciaBinding
@@ -42,38 +41,19 @@ import com.gmail.fattazzo.meteo.databinding.ItemFasciaBinding
  *         <p/>
  *         date: 26/10/17
  */
-class FasciaView : LinearLayout {
+class FasciaView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     val binding: ItemFasciaBinding by lazy {
-        DataBindingUtil.inflate(
-            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-            R.layout.item_fascia,
-            this as LinearLayout,
-            false
-        ) as ItemFasciaBinding
+        ItemFasciaBinding.inflate(LayoutInflater.from(context), this, true).apply {
+            section = Sections.NONE
+            fascia = Fasce()
+            giorno = null
+        }
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
-        context, attrs, defStyle
-    ) {
-        initView()
-    }
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        initView()
-    }
-
-    constructor(context: Context) : super(context) {
-        initView()
-    }
-
-    private fun initView() {
-        binding.section = Sections.NONE
-        binding.fascia = Fasce()
-        binding.giorno = null
-
-        addView(binding.root)
-    }
+    override fun getRootView(): View = binding.root
 
     fun bind(giorno: Giorni?, fascia: Fasce, sections: Sections) {
         binding.section = sections

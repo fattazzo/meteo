@@ -31,7 +31,6 @@ package com.gmail.fattazzo.meteo.utils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.gmail.fattazzo.meteo.R
-import com.gmail.fattazzo.meteo.fragment.BaseFragment
 
 /**
  * @author fattazzo
@@ -47,10 +46,6 @@ class FragmentUtils {
         fun replace(activity: AppCompatActivity, fragment: Fragment, containerResId: Int = R.id.container) {
             val transaction = activity.supportFragmentManager.beginTransaction()
             transaction.replace(containerResId, fragment, fragment.javaClass.simpleName.replace("_", "")).commit()
-
-            if (fragment is BaseFragment) {
-                activity.setTitle(fragment.getTitleResId())
-            }
         }
 
         @JvmOverloads

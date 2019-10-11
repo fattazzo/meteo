@@ -32,8 +32,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.TipoDatoStazione
 import com.gmail.fattazzo.meteo.data.StazioniService
+import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.domain.datistazione.DatiStazione
-import com.gmail.fattazzo.meteo.db.StazioneMeteo
 import com.gmail.fattazzo.meteo.utils.ioJob
 import com.gmail.fattazzo.meteo.utils.uiJob
 import javax.inject.Inject

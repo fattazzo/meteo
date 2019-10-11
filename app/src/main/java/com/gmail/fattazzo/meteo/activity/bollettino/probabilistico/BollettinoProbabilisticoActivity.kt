@@ -140,7 +140,7 @@ class BollettinoProbabilisticoActivity : BaseActivity<ActivityBollettinoProbabil
     }
 
     private fun buildFenomeniRows() {
-        val elencoFenomeni: Set<String> = viewModel.bollettino.value?.fenomeniPresenti()!!
+        val elencoFenomeni: Set<String> = viewModel.bollettino.value?.fenomeniPresenti().orEmpty()
 
         for (fenomenoCorrente in elencoFenomeni) {
             val rowFenomeni = createTableRow()

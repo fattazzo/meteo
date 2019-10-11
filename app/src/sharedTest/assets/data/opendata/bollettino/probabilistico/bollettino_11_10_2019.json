@@ -1,0 +1,684 @@
+{
+  "dataPubblicazione": "2019-10-11T12:26+0200",
+  "giorni": [
+    {
+      "nomeGiorno": "Oggi",
+      "giorno": "2019-10-11",
+      "fasce": [
+        {
+          "fascia": "pomeriggio",
+          "fasciaOre": "12-18",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 3,
+              "probabilita": "alta"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3800,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "sera",
+          "fasciaOre": "18-24",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 4100,
+              "probabilita": "molto bassa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nomeGiorno": "sabato",
+      "giorno": "2019-10-12",
+      "fasce": [
+        {
+          "fascia": "notte",
+          "fasciaOre": "00-06",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 4200,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "mattina",
+          "fasciaOre": "06-12",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 4100,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "pomeriggio",
+          "fasciaOre": "12-18",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 4000,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "sera",
+          "fasciaOre": "18-24",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3900,
+              "probabilita": "molto bassa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nomeGiorno": "domenica",
+      "giorno": "2019-10-13",
+      "fasce": [
+        {
+          "fascia": "notte",
+          "fasciaOre": "00-06",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3900,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "mattina",
+          "fasciaOre": "06-12",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3900,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "pomeriggio",
+          "fasciaOre": "12-18",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3900,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "sera",
+          "fasciaOre": "18-24",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3900,
+              "probabilita": "molto bassa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nomeGiorno": "lunedì",
+      "giorno": "2019-10-14",
+      "fasce": [
+        {
+          "fascia": "mattina",
+          "fasciaOre": "00-12",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3900,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "pomeriggio",
+          "fasciaOre": "12-24",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3800,
+              "probabilita": "molto bassa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nomeGiorno": "martedì",
+      "giorno": "2019-10-15",
+      "fasce": [
+        {
+          "fascia": "mattina",
+          "fasciaOre": "00-12",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3400,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "pomeriggio",
+          "fasciaOre": "12-24",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 1,
+              "probabilita": "bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "valore": 2800,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3300,
+              "probabilita": "molto bassa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nomeGiorno": "mercoledì",
+      "giorno": "2019-10-16",
+      "fasce": [
+        {
+          "fascia": "mattina",
+          "fasciaOre": "00-12",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 1,
+              "probabilita": "bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "valore": 3000,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3200,
+              "probabilita": "molto bassa"
+            }
+          ]
+        },
+        {
+          "fascia": "pomeriggio",
+          "fasciaOre": "12-24",
+          "fenomeni": [
+            {
+              "fenomeno": "Precipitazioni abbondanti",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Rovesci o temporali",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in valle",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Vento forte in montagna",
+              "valore": 0,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Nevicate",
+              "valore": 1,
+              "probabilita": "bassa"
+            },
+            {
+              "fenomeno": "Limite Nevicate",
+              "valore": 3000,
+              "probabilita": "molto bassa"
+            },
+            {
+              "fenomeno": "Zero Termico (m)",
+              "valore": 3200,
+              "probabilita": "molto bassa"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

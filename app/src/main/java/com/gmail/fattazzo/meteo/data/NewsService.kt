@@ -27,35 +27,29 @@
 
 package com.gmail.fattazzo.meteo.data
 
+import com.gmail.fattazzo.meteo.data.news.News
 import com.gmail.fattazzo.meteo.data.news.NewsAvvisiType
 import com.gmail.fattazzo.meteo.data.news.NewsDownloader
-import com.gmail.fattazzo.meteo.db.News
 
 /**
  * @author fattazzo
  *         <p/>
  *         date: 30/09/19
  */
-class NewsService() {
+class NewsService {
 
-    fun load(types: List<NewsAvvisiType>, forceDownload: Boolean): List<News> {
+    fun load(types: List<NewsAvvisiType>): List<News> {
 
-        val news = News.loadAll(types)
+        val downloader = NewsDownloader()
 
-        return if (news.isEmpty() || forceDownload) {
-            val downloader = NewsDownloader()
-
-            val newsDownloaded = mutableListOf<News>()
-            types.forEach {
-                when (it) {
-                    NewsAvvisiType.NEWS -> newsDownloaded.addAll(downloader.getNews())
-                    NewsAvvisiType.AVVISI_ALLERTE -> newsDownloaded.addAll(downloader.getAvvisi())
-                }
+        val newsDownloaded = mutableListOf<News>()
+        types.forEach {
+            when (it) {
+                NewsAvvisiType.NEWS -> newsDownloaded.addAll(downloader.getNews())
+                NewsAvvisiType.AVVISI_ALLERTE -> newsDownloaded.addAll(downloader.getAvvisi())
             }
-
-            newsDownloaded
-        } else {
-            news
         }
+
+        return newsDownloaded
     }
 }
