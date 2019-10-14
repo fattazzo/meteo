@@ -32,7 +32,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gmail.fattazzo.meteo.data.MeteoService
+import com.gmail.fattazzo.meteo.app.services.MeteoService
 import com.gmail.fattazzo.meteo.data.db.entities.Localita
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.PrevisioneLocalita
 import com.gmail.fattazzo.meteo.preferences.PreferencesService

@@ -33,7 +33,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.app.MeteoApplication
-import com.gmail.fattazzo.meteo.data.VersioniService
+import com.gmail.fattazzo.meteo.app.services.VersioniService
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 

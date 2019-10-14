@@ -47,7 +47,7 @@ import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico.DateXAxisValueFormatter
 import com.gmail.fattazzo.meteo.activity.stazioni.meteo.rilevazioni.dati.grafico.UMValueFormatter
 import com.gmail.fattazzo.meteo.app.MeteoApplication
-import com.gmail.fattazzo.meteo.data.StazioniService
+import com.gmail.fattazzo.meteo.app.services.StazioniService
 import com.gmail.fattazzo.meteo.data.db.AppDatabase
 import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.domain.datistazione.IDatoStazione

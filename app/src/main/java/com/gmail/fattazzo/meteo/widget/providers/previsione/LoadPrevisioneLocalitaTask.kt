@@ -30,7 +30,7 @@ package com.gmail.fattazzo.meteo.widget.providers.previsione
 import android.content.Context
 import android.os.AsyncTask
 import com.gmail.fattazzo.meteo.app.MeteoApplication
-import com.gmail.fattazzo.meteo.data.MeteoService
+import com.gmail.fattazzo.meteo.app.services.MeteoService
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.PrevisioneLocalita
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import java.lang.ref.WeakReference

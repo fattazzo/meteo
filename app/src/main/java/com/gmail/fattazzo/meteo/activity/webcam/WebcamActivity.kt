@@ -32,7 +32,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.BaseActivity
 import com.gmail.fattazzo.meteo.app.MeteoApplication
-import com.gmail.fattazzo.meteo.data.WebcamService
+import com.gmail.fattazzo.meteo.app.services.WebcamService
 import com.gmail.fattazzo.meteo.data.webcam.Webcam
 import com.gmail.fattazzo.meteo.databinding.ActivityWebcamBinding
 import kotlinx.android.synthetic.main.app_bar_main.view.*

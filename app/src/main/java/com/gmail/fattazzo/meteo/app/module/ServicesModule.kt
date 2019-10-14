@@ -28,7 +28,7 @@
 package com.gmail.fattazzo.meteo.app.module
 
 import android.content.Context
-import com.gmail.fattazzo.meteo.data.*
+import com.gmail.fattazzo.meteo.app.services.*
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import com.gmail.fattazzo.meteo.utils.OpenForTesting
 import dagger.Module

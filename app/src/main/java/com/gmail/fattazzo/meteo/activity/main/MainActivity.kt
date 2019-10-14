@@ -54,7 +54,7 @@ import com.gmail.fattazzo.meteo.activity.stazioni.valanghe.StazioniValangheActiv
 import com.gmail.fattazzo.meteo.activity.webcam.WebcamActivity
 import com.gmail.fattazzo.meteo.app.MeteoApplication
 import com.gmail.fattazzo.meteo.app.module.viewmodel.DaggerViewModelFactory
-import com.gmail.fattazzo.meteo.data.VersioniService
+import com.gmail.fattazzo.meteo.app.services.VersioniService
 import com.gmail.fattazzo.meteo.data.db.entities.Localita
 import com.gmail.fattazzo.meteo.databinding.ActivityMainBinding
 import com.gmail.fattazzo.meteo.preferences.PreferencesService

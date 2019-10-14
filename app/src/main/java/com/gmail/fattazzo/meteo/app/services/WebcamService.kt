@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.data
+package com.gmail.fattazzo.meteo.app.services
 
 import android.content.Context
 import android.util.Log

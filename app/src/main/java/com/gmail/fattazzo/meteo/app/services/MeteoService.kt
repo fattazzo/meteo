@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.data
+package com.gmail.fattazzo.meteo.app.services
 
 import android.content.Context
 import android.os.Handler
@@ -34,6 +34,7 @@ import android.util.Log
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.data.Result
 import com.gmail.fattazzo.meteo.data.db.AppDatabase
 import com.gmail.fattazzo.meteo.data.db.entities.Localita
 import com.gmail.fattazzo.meteo.data.opendata.json.api.BollettinoProbabilisticoService
@@ -125,7 +126,7 @@ class MeteoService(private val context: Context) {
 
         e?.let {
             Crashlytics.logException(it)
-            Log.e(Companion.TAG, "Errore", it)
+            Log.e(TAG, "Errore", it)
         }
 
         Handler(Looper.getMainLooper()).post {

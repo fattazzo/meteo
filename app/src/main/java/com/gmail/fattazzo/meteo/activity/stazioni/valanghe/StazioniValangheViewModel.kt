@@ -30,7 +30,7 @@ package com.gmail.fattazzo.meteo.activity.stazioni.valanghe
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gmail.fattazzo.meteo.data.StazioniService
+import com.gmail.fattazzo.meteo.app.services.StazioniService
 import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 import com.gmail.fattazzo.meteo.data.stazioni.valanghe.domain.dati.DatoStazione
 import com.gmail.fattazzo.meteo.utils.ioJob

@@ -32,7 +32,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.app.TestApplication
 import com.gmail.fattazzo.meteo.app.component.TestAppComponent
-import com.gmail.fattazzo.meteo.data.*
+import com.gmail.fattazzo.meteo.app.services.*
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import com.gmail.fattazzo.meteo.utils.background
 import com.gmail.fattazzo.meteo.utils.io

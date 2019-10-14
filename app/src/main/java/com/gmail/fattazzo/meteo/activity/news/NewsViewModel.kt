@@ -31,7 +31,7 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gmail.fattazzo.meteo.data.NewsService
+import com.gmail.fattazzo.meteo.app.services.NewsService
 import com.gmail.fattazzo.meteo.data.news.News
 import com.gmail.fattazzo.meteo.data.news.NewsAvvisiType
 import com.gmail.fattazzo.meteo.utils.ioJob

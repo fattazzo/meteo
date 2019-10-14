@@ -30,7 +30,7 @@ package com.gmail.fattazzo.meteo.widget.providers.stazioni.meteo
 import android.content.Context
 import android.os.AsyncTask
 import com.gmail.fattazzo.meteo.app.MeteoApplication
-import com.gmail.fattazzo.meteo.data.StazioniService
+import com.gmail.fattazzo.meteo.app.services.StazioniService
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.domain.datistazione.DatiStazione
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import java.lang.ref.WeakReference

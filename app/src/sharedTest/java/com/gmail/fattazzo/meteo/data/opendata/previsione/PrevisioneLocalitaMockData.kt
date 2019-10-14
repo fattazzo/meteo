@@ -27,9 +27,9 @@
 
 package com.gmail.fattazzo.meteo.data.opendata.previsione
 
+import com.gmail.fattazzo.meteo.app.services.MeteoService
 import com.gmail.fattazzo.meteo.config.PrevisioneConfig
 import com.gmail.fattazzo.meteo.data.AbstractMockData
-import com.gmail.fattazzo.meteo.data.MeteoService
 import com.gmail.fattazzo.meteo.data.Result
 import io.mockk.every
 

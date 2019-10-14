@@ -28,6 +28,7 @@
 package com.gmail.fattazzo.meteo.data
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
+import com.gmail.fattazzo.meteo.app.services.RadarService
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert
 import org.hamcrest.Matchers

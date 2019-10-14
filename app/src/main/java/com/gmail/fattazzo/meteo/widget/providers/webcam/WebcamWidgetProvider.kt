@@ -41,7 +41,7 @@ import com.bumptech.glide.request.target.AppWidgetTarget
 import com.bumptech.glide.signature.ObjectKey
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.app.MeteoApplication
-import com.gmail.fattazzo.meteo.data.WebcamService
+import com.gmail.fattazzo.meteo.app.services.WebcamService
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import com.gmail.fattazzo.meteo.utils.VectorUtils
 import com.gmail.fattazzo.meteo.widget.providers.MeteoAppWidgetProvider

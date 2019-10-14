@@ -29,7 +29,7 @@ package com.gmail.fattazzo.meteo.activity.radar
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gmail.fattazzo.meteo.data.RadarService
+import com.gmail.fattazzo.meteo.app.services.RadarService
 import com.gmail.fattazzo.meteo.utils.ioJob
 import com.gmail.fattazzo.meteo.utils.uiJob
 import javax.inject.Inject

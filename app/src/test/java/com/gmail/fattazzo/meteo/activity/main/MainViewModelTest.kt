@@ -28,7 +28,7 @@
 package com.gmail.fattazzo.meteo.activity.main
 
 import com.gmail.fattazzo.meteo.AbstractViewModelTest
-import com.gmail.fattazzo.meteo.data.MeteoService
+import com.gmail.fattazzo.meteo.app.services.MeteoService
 import com.gmail.fattazzo.meteo.data.opendata.previsione.LocalitaMockData
 import com.gmail.fattazzo.meteo.preferences.PreferencesService
 import org.hamcrest.CoreMatchers.*

@@ -1,6 +1,6 @@
 /*
  * Project: meteo
- * File: NewsService.kt
+ * File: RadarService.kt
  *
  * Created by fattazzo
  * Copyright © 2019 Gianluca Fattarsi. All rights reserved.
@@ -25,31 +25,45 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.data
+package com.gmail.fattazzo.meteo.app.services
 
-import com.gmail.fattazzo.meteo.data.news.News
-import com.gmail.fattazzo.meteo.data.news.NewsAvvisiType
-import com.gmail.fattazzo.meteo.data.news.NewsDownloader
+import com.gmail.fattazzo.meteo.Config
+import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.activity.radar.RadarModel
 
 /**
  * @author fattazzo
  *         <p/>
- *         date: 30/09/19
+ *         date: 11/10/19
  */
-class NewsService {
+class RadarService {
 
-    fun load(types: List<NewsAvvisiType>): List<News> {
-
-        val downloader = NewsDownloader()
-
-        val newsDownloaded = mutableListOf<News>()
-        types.forEach {
-            when (it) {
-                NewsAvvisiType.NEWS -> newsDownloaded.addAll(downloader.getNews())
-                NewsAvvisiType.AVVISI_ALLERTE -> newsDownloaded.addAll(downloader.getAvvisi())
-            }
-        }
-
-        return newsDownloaded
+    fun loadRadars(): List<RadarModel> {
+        return listOf(
+            RadarModel(
+                1,
+                "Precipitazioni",
+                Config.RADAR_PRECIPITAZIONI,
+                R.drawable.drop
+            ),
+            RadarModel(
+                2,
+                "Infrarossi",
+                Config.RADAR_INFRAROSSI,
+                R.drawable.infrared
+            ),
+            RadarModel(
+                3,
+                "Neve",
+                Config.RADAR_NEVE,
+                R.drawable.snowflake
+            ),
+            RadarModel(
+                4,
+                "Europa",
+                Config.RADAR_EUROPA,
+                R.drawable.europe
+            )
+        )
     }
 }

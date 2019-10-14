@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package com.gmail.fattazzo.meteo.data
+package com.gmail.fattazzo.meteo.app.services
 
 import android.content.Context
 import android.os.Handler
@@ -34,12 +34,14 @@ import android.util.Log
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.gmail.fattazzo.meteo.R
+import com.gmail.fattazzo.meteo.data.Result
 import com.gmail.fattazzo.meteo.data.db.AppDatabase
 import com.gmail.fattazzo.meteo.data.db.entities.StazioneMeteo
 import com.gmail.fattazzo.meteo.data.db.entities.StazioneValanghe
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.StazioniMeteoDownloader
 import com.gmail.fattazzo.meteo.data.stazioni.meteo.domain.datistazione.DatiStazione
 import com.gmail.fattazzo.meteo.data.stazioni.valanghe.StazioniValangheDownloader
+import com.gmail.fattazzo.meteo.data.stazioni.valanghe.domain.dati.DatoStazione
 
 
 /**
@@ -125,7 +127,7 @@ class StazioniService(private val context: Context) {
         }
     }
 
-    fun caricaDatiStazioneValanghe(suppressError: Boolean = false): Result<List<com.gmail.fattazzo.meteo.data.stazioni.valanghe.domain.dati.DatoStazione>> {
+    fun caricaDatiStazioneValanghe(suppressError: Boolean = false): Result<List<DatoStazione>> {
 
         return try {
             val datiStazione = StazioniValangheDownloader().downloadDatiStazioneNeve()

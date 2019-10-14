@@ -29,7 +29,7 @@ package com.gmail.fattazzo.meteo.activity.bollettino.probabilistico
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gmail.fattazzo.meteo.data.MeteoService
+import com.gmail.fattazzo.meteo.app.services.MeteoService
 import com.gmail.fattazzo.meteo.data.opendata.json.model.bollettinoprobabilistico.BollettinoProbabilistico
 import com.gmail.fattazzo.meteo.utils.ioJob
 import com.gmail.fattazzo.meteo.utils.uiJob
