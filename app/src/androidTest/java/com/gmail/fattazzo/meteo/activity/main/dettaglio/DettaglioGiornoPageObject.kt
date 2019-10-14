@@ -36,13 +36,11 @@ import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.gmail.fattazzo.meteo.R
-import com.gmail.fattazzo.meteo.activity.main.dettaglio.fasciasection.Sections
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Giorni
 import com.gmail.fattazzo.meteo.databinding.converters.FasciaConverter
 import com.gmail.fattazzo.meteo.databinding.converters.GiornoConverter
 import com.gmail.fattazzo.meteo.matcher.Matcher
-import com.gmail.fattazzo.meteo.matcher.Matcher.withRecyclerView
 
 /**
  * @author fattazzo
@@ -93,76 +91,37 @@ object DettaglioGiornoPageObject {
     }
 
     private fun checkDatiFasciaHeaderView(fascia: Fasce) {
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.HEADER.ordinal, R.id.descrizioneIconaTV)
-        )
-            .check(matches(withText(fascia.descIcona.orEmpty())))
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.HEADER.ordinal, R.id.descrizioneTV)
-        )
-            .check(matches(withText(FasciaConverter.fasciaOre(fascia))))
+        onView(withId(R.id.descrizioneIconaTV)).check(matches(withText(fascia.descIcona.orEmpty())))
+
+        onView(withId(R.id.descrizioneTV)).check(matches(withText(FasciaConverter.fasciaOre(fascia))))
     }
 
     private fun checkDatiFasciaTemperatureView(giorno: Giorni?, fascia: Fasce) {
 
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.massimaTV)
-        )
-            .check(matches(withText(GiornoConverter.giornoTMax(giorno))))
+        onView(withId(R.id.massimaTV)).check(matches(withText(GiornoConverter.giornoTMax(giorno))))
 
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.minimaTV)
-        )
-            .check(matches(withText(GiornoConverter.giornoTMin(giorno))))
+        onView(withId(R.id.minimaTV)).check(matches(withText(GiornoConverter.giornoTMin(giorno))))
 
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.zeroTermicoTV)
-        )
-            .check(matches(withText(FasciaConverter.zeroTermico(fascia))))
+        onView(withId(R.id.zeroTermicoTV)).check(matches(withText(FasciaConverter.zeroTermico(fascia))))
     }
 
     private fun checkDatiFasciaPrecipitazioniView(giorno: Giorni?, fascia: Fasce) {
 
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.probPrecTV)
-        )
-            .check(matches(withText(fascia.descPrecProb.orEmpty())))
+        onView(withId(R.id.probPrecTV)).check(matches(withText(fascia.descPrecProb.orEmpty())))
 
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.intensitaPrecTV)
-        )
-            .check(matches(withText(fascia.descPrecInten.orEmpty())))
+        onView(withId(R.id.intensitaPrecTV)).check(matches(withText(fascia.descPrecInten.orEmpty())))
 
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.descTemporaliTV)
-        )
-            .check(matches(withText(fascia.descTempProb.orEmpty())))
+        onView(withId(R.id.descTemporaliTV)).check(matches(withText(fascia.descTempProb.orEmpty())))
     }
 
     private fun checkDatiFasciaVentoView(fascia: Fasce) {
 
         val ventoValleDesc =
             "${fascia.descVentoIntValle.orEmpty()}\nDirezione ${fascia.descVentoDirValle.orEmpty()}"
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.ventoValleDescTV)
-        )
-            .check(matches(withText(ventoValleDesc)))
+        onView(withId(R.id.ventoValleDescTV)).check(matches(withText(ventoValleDesc)))
 
         val ventoQuotaDesc =
             "${fascia.descVentoIntQuota.orEmpty()}\nDirezione ${fascia.descVentoDirQuota.orEmpty()}"
-        onView(
-            withRecyclerView(R.id.fasceRecyclerView)
-                .atPositionOnView(Sections.TEMPERATURE.ordinal, R.id.ventoQuotaDescTV)
-        )
-            .check(matches(withText(ventoQuotaDesc)))
+        onView(withId(R.id.ventoQuotaDescTV)).check(matches(withText(ventoQuotaDesc)))
     }
 }

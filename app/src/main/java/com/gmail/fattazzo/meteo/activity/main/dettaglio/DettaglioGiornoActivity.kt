@@ -31,15 +31,12 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.gmail.fattazzo.meteo.R
 import com.gmail.fattazzo.meteo.activity.BaseActivity
-import com.gmail.fattazzo.meteo.activity.main.dettaglio.fasciasection.FasceAdapter
-import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Giorni
 import com.gmail.fattazzo.meteo.databinding.ActivityDettaglioGiornoBinding
 import com.gmail.fattazzo.meteo.databinding.converters.GiornoConverter
 import com.gmail.fattazzo.meteo.utils.ItemOffsetDecoration
 
-open class DettaglioGiornoActivity : BaseActivity<ActivityDettaglioGiornoBinding>(),
-    FasceHeaderAdapter.OnClickListener {
+open class DettaglioGiornoActivity : BaseActivity<ActivityDettaglioGiornoBinding>() {
 
     companion object {
         const val GIORNO_EXTRA = "giorno"
@@ -55,32 +52,16 @@ open class DettaglioGiornoActivity : BaseActivity<ActivityDettaglioGiornoBinding
         viewModel = ViewModelProvider(this).get(DettaglioGiornoViewModel::class.java)
         binding.model = viewModel
 
-        viewModel.giorno.observe(this, androidx.lifecycle.Observer {
-            binding.dataTV.text = GiornoConverter.giornoData(it)
+        viewModel.giorno.observe(this, androidx.lifecycle.Observer { giorno ->
+            binding.dataTV.text = GiornoConverter.giornoData(giorno)
 
             binding.fasceHeaderRecyclerView.addItemDecoration(ItemOffsetDecoration(0, 0, 10, 10))
             binding.fasceHeaderRecyclerView.adapter =
-                FasceHeaderAdapter(
-                    it.fasce.orEmpty(),
-                    this,
-                    this
-                )
-
-            updateDetailView(it.fasce?.firstOrNull())
+                FasceHeaderAdapter(giorno.fasce.orEmpty(), this) { viewModel.fascia.postValue(it) }
         })
 
         if (intent.extras?.containsKey(GIORNO_EXTRA) == true) {
             viewModel.giorno.postValue(intent.extras!!.getSerializable(GIORNO_EXTRA) as Giorni?)
         }
-    }
-
-    override fun onClick(fascia: Fasce) {
-        updateDetailView(fascia)
-    }
-
-    open fun updateDetailView(fasce: Fasce?) {
-        val fasceAdapter = FasceAdapter(viewModel.giorno.value, fasce, this)
-        binding.fasceRecyclerView.adapter = fasceAdapter
-        binding.fasceRecyclerView.scheduleLayoutAnimation()
     }
 }

@@ -27,8 +27,10 @@
 
 package com.gmail.fattazzo.meteo.activity.main.dettaglio
 
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasce
 import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Giorni
 
 /**
@@ -39,4 +41,8 @@ import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Gior
 class DettaglioGiornoViewModel: ViewModel() {
 
     val giorno = MutableLiveData<Giorni>()
+
+    val fascia = MediatorLiveData<Fasce>().apply {
+        addSource(giorno){ postValue(it.fasce?.firstOrNull())}
+    }
 }

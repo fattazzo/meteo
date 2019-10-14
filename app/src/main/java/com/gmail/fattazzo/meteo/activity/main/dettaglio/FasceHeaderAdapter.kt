@@ -42,7 +42,7 @@ import com.gmail.fattazzo.meteo.data.opendata.json.model.previsionelocalita.Fasc
 open class FasceHeaderAdapter(
     var data: List<Fasce>,
     val context: Context,
-    private val clickListener: OnClickListener
+    private val onClick: (fascia: Fasce) -> Unit
 ) : RecyclerView.Adapter<FasceHeaderAdapter.FasciaViewHolder>() {
 
     private var oldPos = 0
@@ -53,7 +53,7 @@ open class FasceHeaderAdapter(
         holder.itemView.setOnClickListener {
             oldPos = position
             notifyDataSetChanged()
-            clickListener.onClick(data[position])
+            onClick(data[position])
         }
 
         (holder.itemView as FasciaHeaderView).setSelectedView(oldPos == position)

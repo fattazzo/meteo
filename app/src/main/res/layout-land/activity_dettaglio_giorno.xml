@@ -27,7 +27,8 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -37,52 +38,63 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
+        android:layout_margin="4dp"
+        android:orientation="vertical"
         tools:context=".activity.main.dettaglio.DettaglioGiornoActivity">
 
         <TextView
             android:id="@+id/dataTV"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:textAppearance="@style/TextAppearance.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Large" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fasceHeaderRecyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/margin"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dataTV" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fasceRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/margin"
-            android:layout_marginTop="8dp"
-            android:layoutAnimation="@anim/layout_animation_slide_from_right"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fasceHeaderRecyclerView"
-            app:layout_constraintTop_toBottomOf="@+id/dataTV" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fasceHeaderRecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_fascia_section_header"
+                        android:id="@+id/fascia_header"
+                        bind:fascia="@{model.fascia}"/>
+
+                    <include layout="@layout/item_fascia_section_temperature"
+                        android:id="@+id/fascia_temperature"
+                        bind:giorno="@{model.giorno}"
+                        bind:fascia="@{model.fascia}"/>
+
+                    <include layout="@layout/item_fascia_section_precipitazioni"
+                        android:id="@+id/fascia_precipitazioni"
+                        bind:fascia="@{model.fascia}"/>
+
+                    <include layout="@layout/item_fascia_section_venti"
+                        android:id="@+id/fascia_venti"
+                        bind:fascia="@{model.fascia}"/>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </layout>
